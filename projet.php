@@ -28,7 +28,7 @@
     </div>
 
     <div class="hero-text2">
-      <h1>Olivier Prieur</h1>
+      <h1>< Olivier Prieur /></h1>
       <p class="title1">Développeur web et web mobile</p>
     </div>
   </div>
