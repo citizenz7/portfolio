@@ -36,8 +36,8 @@
   <div class="container pt-5 pb-5">
     <div class="row">
       <div class="col-sm-12 px-5 text-justify">
-        <div class="text-center pb-5">
-          <h1>Projet d'intégration d'une maquette au format PSD avec Bootstrap</h1>
+        <div class="pb-5">
+          <h1 class="titre-projet">Projet d'intégration d'une maquette au format PSD avec Bootstrap</h1>
           <p class="text-muted"><i class="far fa-calendar-alt"></i> Publié le : 21/06/2020, 18h24 | <i class="fas fa-tag"></i> Catégorie : HTML, CSS, Bootstrap | <i class="fas fa-eye"></i> Lectures : 87</p>
         </div>
         <img class="img-fluid img-thumbnail float-left img-article" src="img/projet-maquette1.jpg" alt="projet 1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
@@ -57,9 +57,9 @@
   </div>
 
 
-  <div class="container-fluid pt-3 pb-5 bg-light">
+  <div class="container-fluid pt-3 pb-5 bg-dark">
     <div class="row">
-      <div class="col text-center">
+      <div class="col text-center text-white">
         <h2 id="contact">Réseaux sociaux</h2>
         <div>
           <!--<a class="text-decoration-none" href="mailto:oprieur@protonmail.com">
@@ -77,13 +77,12 @@
         </div>
 
         <div class="pt-5">
-          <a href="#tothetop" title="Haut de page"><i class="fas fa-chevron-up fa-3x"></i></a>
+          <a href="#tothetop" class="text-white" title="Haut de page"><i class="fas fa-chevron-up fa-3x text-white"></i><br>Top</a>
         </div>
 
       </div>
     </div>
   </div>
-
 
 
 
