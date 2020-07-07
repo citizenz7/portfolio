@@ -27,7 +27,7 @@
       <span onclick="openNav()">&#9776;</span>
     </div>
 
-    <div class="hero-text">
+    <div class="hero-text2">
       <h1>Olivier Prieur</h1>
       <p class="title1">Développeur web et web mobile</p>
     </div>
