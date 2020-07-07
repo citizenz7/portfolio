@@ -8,7 +8,7 @@ body, html {
 /* The hero image */
 .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../img/code-bg1.jpg");
+  background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../img/code-bg1.jpg");
   /* Set a specific height */
   height: 100%;
   /* Position and center the image to scale nicely on all screens */
@@ -16,6 +16,8 @@ body, html {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  /* Clip path for header background image */
+  clip-path: polygon(0 0, 100% 0, 100% 87vh, 0 100%);
 }
 
 .hero-image2 {
@@ -28,13 +30,14 @@ body, html {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 45vh, 0 100%);
 }
 
 /* Place text in the middle of the image */
 .hero-text {
   text-align: center;
   position: absolute;
-  top: 80%;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
@@ -132,10 +135,6 @@ body, html {
 h1 {
   font-size: 50px;
   word-break: break-all;
-}
-
-.row {
-  margin: 8px -16px;
 }
 
 /* Add padding BETWEEN each column (if you want) */
@@ -248,9 +247,19 @@ h1 {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../img/neversbg.jpg");
   /* Set a specific height */
-  height: 100%;
   /* Position and center the image to scale nicely on all screens */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+@media only screen and (max-width: 767px) {
+  #apropos2 {
+    /* The file size of this background image is 93% smaller
+       to improve page load speed on mobile internet connections */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../img/neversbg-small.jpg");
+  }
 }
