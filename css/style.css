@@ -1,18 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
 
 body, html {
-    height: 100%;
-    font-family: 'Ubuntu', sans-serif;
+  height: 100%;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 /* The hero image */
 .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../img/code-bg1.jpg");
-
   /* Set a specific height */
   height: 100%;
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
 
+.hero-image2 {
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../img/code-bg1.jpg");
+  /* Set a specific height */
+  height: 50%;
   /* Position and center the image to scale nicely on all screens */
   background-position: center;
   background-repeat: no-repeat;
@@ -45,18 +55,17 @@ body, html {
 }
 
 .smalltext {
-  font-size:13px;
+  font-size: 13px;
   text-align: justify;
 }
 
 .tinytext {
-  font-size:10px;
+  font-size: 10px;
 }
-
 
 /* burger */
 .burger {
-  cursor:pointer;
+  cursor: pointer;
   font-size: 48px;
   color: white;
 }
@@ -68,8 +77,8 @@ body, html {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.9);
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
   overflow-x: hidden;
   transition: 0.5s;
 }
@@ -95,7 +104,7 @@ body, html {
   color: #f1f1f1;
 }
 
-.overlay .closebtn {
+.overlay .closebtn2 {
   position: absolute;
   top: 20px;
   right: 45px;
@@ -103,15 +112,16 @@ body, html {
 }
 
 @media screen and (max-height: 450px) {
-  .overlay a {font-size: 20px}
-  .overlay .closebtn {
-  font-size: 40px;
-  top: 15px;
-  right: 35px;
+  .overlay a {
+    font-size: 20px
+  }
+
+  .overlay .closebtn2 {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
   }
 }
-
-
 
 /* Center website */
 .main {
@@ -130,7 +140,7 @@ h1 {
 
 /* Add padding BETWEEN each column (if you want) */
 .row,
-.row > .column {
+.row>.column {
   padding: 8px;
 }
 
@@ -138,7 +148,8 @@ h1 {
 .column {
   float: left;
   width: 33.33%;
-  display: none; /* Hide columns by default */
+  display: none;
+  /* Hide columns by default */
 }
 
 /* Clear floats after rows */
@@ -160,7 +171,7 @@ h1 {
 }
 
 /* Style the buttons */
-.btn {
+.btn2 {
   border: none;
   outline: none;
   padding: 12px 16px;
@@ -169,25 +180,29 @@ h1 {
 }
 
 /* Add a grey background color on mouse-over */
-.btn:hover {
+.btn2:hover {
   background-color: #ddd;
 }
 
 /* Add a dark background color to the active button */
-.btn.active {
+.btn2.active {
   background-color: #666;
-   color: white;
+  color: white;
 }
 
 .photo {
-  max-height: 230px;
+  max-height: 170px;
+  margin-right: 20px;
+}
+
+.img-article {
+  max-height: 250px;
   margin-right: 20px;
 }
 
 .img-social {
-  max-height:80px;
+  max-height: 60px;
 }
-
 
 .container2 {
   position: relative;
@@ -227,4 +242,15 @@ h1 {
   color: white;
   font-size: 16px;
   padding: 16px 32px;
+}
+
+#apropos2 {
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../img/neversbg.jpg");
+  /* Set a specific height */
+  height: 100%;
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
