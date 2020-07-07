@@ -19,7 +19,7 @@ body, html {
   background-size: cover;
   position: relative;
   /* Clip path for header background image */
-  clip-path: polygon(0 0, 100% 0, 100% 87vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 88vh, 0 100%);
 }
 
 .hero-image2 {
@@ -106,7 +106,7 @@ body, html {
   }
 
   to {
-    width: 15em;
+    width: 17em;
   }
 }
 
