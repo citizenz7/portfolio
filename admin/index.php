@@ -1,3 +1,13 @@
+<?php
+//include config
+require_once('../includes/config.php');
+
+//if not logged in redirect to login page
+if(!$user->is_logged_in()){
+  header('Location: login.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -37,21 +47,64 @@
     <div class="row">
       <div class="col-sm-12 px-5 text-justify">
         <div class="pb-5">
-          <h1 class="titre-projet">Projet d'intégration d'une maquette au format PSD avec Bootstrap</h1>
-          <p class="text-muted"><i class="far fa-calendar-alt"></i> Publié le : 21/06/2020, 18h24 | <i class="fas fa-tag"></i> Catégorie : <a href="#">HTML, CSS, Bootstrap</a> | <i class="fas fa-eye"></i> Lectures : 87</p>
-        </div>
-        <img class="img-fluid img-thumbnail float-left img-article" src="img/projet-maquette1.jpg" alt="projet 1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br>
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+          <table>
+            <tr>
+              <th>Title</th>
+              <th>Date</th>
+              <th>Action</th>
+              </tr>
+              <?php
+              try {
+                $stmt = $db->query('SELECT projetID, projetTitre, projetDate FROM projets ORDER BY projetID DESC');
+                while($row = $stmt->fetch()){
+
+                  echo '<tr>';
+                  echo '<td>'.$row['projetID'].'</td>';
+                  echo '<td>'.date('j M Y', strtotime($row['projetDate'])).'</td>';
+                  ?>
+                  <td>
+                    <a href="edit-projet.php?id=<?php echo $row['projetID'];?>">Edit</a> |
+                    <a href="javascript:delpost('<?php echo $row['projetID'];?>','<?php echo $row['projetTitre'];?>')">Delete</a>
+                  </td>
+                  <?php
+                  echo '</tr>';
+                }
+
+              }
+              catch(PDOException $e) {
+                echo $e->getMessage();
+              }
+              ?>
+            </table>
+
+            <!-- Delete javascript alert -->
+            <script language="JavaScript" type="text/javascript">
+              function delpost(id, title) {
+                if (confirm("Are you sure you want to delete '" + title + "'")) {
+                  window.location.href = 'index.php?delpost=' + id;
+                }
+              }
+            </script>
+
+            <!-- Delete in SQL -->
+            <?php
+            if(isset($_GET['delpost'])) {
+              $stmt = $db->prepare('DELETE FROM blog_posts WHERE postID = :postID') ;
+              $stmt->execute(array(':postID' => $_GET['delpost']));
+
+              header('Location: index.php?action=deleted');
+              exit;
+            }
+
+            if(isset($_GET['action'])){
+              echo '<h3>Post '.$_GET['action'].'.</h3>';
+            }
+            ?>
+
+            <?php include('menu.php');?>
+
+
       </div>
     </div>
   </div>
