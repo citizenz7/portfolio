@@ -15,10 +15,10 @@
   <div id="myNav" class="overlay">
     <a href="javascript:void(0)" class="closebtn2" onclick="closeNav()">&times;</a>
     <div class="overlay-content">
-      <a href="index.html">Accueil</a>
-      <a href="index.html#articles">Articles</a>
-      <a href="index.html#apropos">A propos</a>
-      <a href="#contact">Contact / Réseaux sociaux</a>
+      <a href="index.html">< Accueil /></a>
+      <a href="index.html#articles">< Articles /></a>
+      <a href="index.html#apropos">< A propos /></a>
+      <a href="#contact">< Contact /></a>
     </div>
   </div>
 

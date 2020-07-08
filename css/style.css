@@ -86,12 +86,15 @@ body, html {
   font-size: 2.1vw;
   font-weight: bold;
   text-align: justify;
+  word-break: normal;
 }
 
 .titre-projet {
   font-size: 2.1vw;
   font-weight: bold;
   text-align: justify;
+  word-break: normal;
+
 }
 
 .titre-menu {
