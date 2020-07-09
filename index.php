@@ -1,79 +1,18 @@
-<?php include_once 'includes/config.php'; ?>
+<?php include_once 'header.php'; ?>
 
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<div id="projets" class="container-fluid">
+  <div class="container pb-3">
+    <div class="text-center">
+      <h2>Projets / Portfolio</h2>
+    </div>
 
-<head>
-  <meta charset="utf-8">
-  <title>Portfolio d'Olivier Prieur</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-  <link rel="apple-touch-icon" sizes="57x57" href="img/icons/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="img/icons/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="img/icons/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="img/icons/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="img/icons/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="img/icons/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="img/icons/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="img/icons/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="img/icons/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="img/icons/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="img/icons/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="img/icons/favicon-16x16.png">
-  <link rel="manifest" href="img/icons/manifest.json">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="img/icons/ms-icon-144x144.png">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body id="tothetop">
-
-  <div id="myNav" class="overlay">
-    <a href="javascript:void(0)" class="closebtn2" onclick="closeNav()">&times;</a>
-    <div class="overlay-content">
-      <a href="#projets">
-        < Projets /></a>
-      <a href="#articles">
-        < Articles /></a>
-      <a href="#apropos">
-        < A propos /></a>
-      <a href="#contact">
-        < Contact /></a>
+    <div class="text-center" id="mybtn2Container">
+      <button class="btn2 active" onclick="filterSelection('all')"> Tous</button>
+      <button class="btn2" onclick="filterSelection('html')"> HTML/CSS</button>
+      <button class="btn2" onclick="filterSelection('php')"> PHP/MySQL</button>
+      <button class="btn2" onclick="filterSelection('js')"> Javascript</button>
     </div>
   </div>
-
-  <div class="hero-image">
-    <div class="px-3 py-3 burger">
-      <span onclick="openNav()">&#9776;</span>
-    </div>
-    <div class="hero-text">
-      <div class="type-writer-text pb-5">
-        Je suis un <span class="barre">Dave</span> <i class="fas fa-music barre"></i> ... dev !
-      </div>
-      <h1>
-        < Olivier Prieur />
-      </h1>
-      <p class="title1">Développeur web et web mobile</p>
-    </div>
-  </div>
-
-  <div id="projets" class="container-fluid">
-    <div class="container pb-3">
-      <div class="text-center">
-        <h2>Projets / Portfolio</h2>
-      </div>
-
-      <div class="text-center" id="mybtn2Container">
-        <button class="btn2 active" onclick="filterSelection('all')"> Tous</button>
-        <button class="btn2" onclick="filterSelection('html')"> HTML/CSS</button>
-        <button class="btn2" onclick="filterSelection('php')"> PHP/MySQL</button>
-        <button class="btn2" onclick="filterSelection('js')"> Javascript</button>
-      </div>
-    </div>
-
     <!-- Portfolio Gallery Grid -->
     <div class="container pb-5">
       <div class="row">
@@ -105,73 +44,6 @@
         echo $e->getMessage();
       }
       ?>
-
-        <!--
-        <div class="column html">
-          <div class="content">
-            <div class="container2">
-              <img class="img-fluid img-thumbnail image2" src="img/projet-maquette1.jpg" alt="HTML CSS Bootstrap">
-              <div class="middle">
-                <div class="text2">HTML / CSS / BOOTSTRAP</div>
-              </div>
-            </div>
-            <h4 class="title-articles"><a href="projet.php">Intégration d'une maquette au format PSD avec Bootstrap</a></h4>
-            <p class="smalltext">Premier projet HTML/Bootstrap à l'Acces Code School : depuis un fichier .psd, réaliser la maquette du site web en HTML, CSS et Bootstrap</p>
-          </div>
-        </div>
-
-        <div class="column html">
-          <div class="content">
-            <div class="container2">
-              <img class="img-fluid img-thumbnail image2" src="img/projet-maquette2.jpg" alt="HTML CSS">
-              <div class="middle">
-                <div class="text2">HTML / CSS</div>
-              </div>
-            </div>
-            <h4 class="title-articles"><a href="projet.php">Intégration d'une maquette avec CSS flex-box et media-queries</a></h4>
-            <p class="smalltext">Intégration de la maquette d'un collègue de formation en utilisant suelement HTML et CSS (flex-box et media-queries)</p>
-          </div>
-        </div>
-
-        <div class="column html">
-          <div class="content">
-            <div class="container2">
-              <img class="img-fluid img-thumbnail image2" src="img/projet3-portfolio.jpg" alt="HTML CSS Bootstrap">
-              <div class="middle">
-                <div class="text2">HTML / CSS / PHP</div>
-              </div>
-            </div>
-            <h4 class="title-articles"><a href="projet.php">Portfolio</a></h4>
-            <p class="smalltext">Creéation d'un portfolio avec backend PHP / MySQL</p>
-          </div>
-        </div>
-
-        <div class="column php">
-          <div class="content">
-            <div class="container2">
-              <img class="img-fluid img-thumbnail image2" src="img/projet4-filesexplorer.jpg" alt="PHP">
-              <div class="middle">
-                <div class="text2">HTML / CSS / PHP</div>
-              </div>
-            </div>
-            <h4 class="title-articles"><a href="projet.php">Projet Explorateur de fichiers en PHP</a></h4>
-            <p class="smalltext">Lorem ipsum dolor..</p>
-          </div>
-        </div>
-
-        <div class="column js">
-          <div class="content">
-            <div class="container2">
-              <img class="img-fluid img-thumbnail image2" src="img/projet5-bomberman.jpg" alt="Javascript">
-              <div class="middle">
-                <div class="text2">Javascript / CSSP</div>
-              </div>
-            </div>
-            <h4 class="title-articles"><a href="projet.php">Projet Bomberman (jeu) en Javascript</a></h4>
-            <p class="smalltext">Lorem ipsum dolor..</p>
-          </div>
-        </div>
-        -->
 
       </div><!-- END GRID -->
 
@@ -318,53 +190,4 @@
   </div>
 
 
-
-
-  <div class="container-fluid pt-3 pb-5 bg-dark">
-    <div class="row">
-      <div class="col text-center text-white">
-        <h2 id="contact">Réseaux sociaux</h2>
-        <div>
-          <!--<a class="text-decoration-none" href="mailto:oprieur@protonmail.com">
-            <img src="img/email.png" class="img-fluid img-social" alt="E-mail">
-          </a>-->
-          <a class="text-decoration-none" href="https://www.facebook.com/oprieur.pro.7">
-            <img src="img/facebook.png" class="img-fluid img-social" alt="Facebook">
-          </a>
-          <a class="text-decoration-none" href="https://twitter.com/citizenz58">
-            <img src="img/twitter.png" class="img-fluid img-social" alt="Facebook">
-          </a>
-          <a class="text-decoration-none" href="https://www.linkedin.com/in/olivier-prieur">
-            <img src="img/linkedin.png" class="img-fluid img-social" alt="LinkedIn">
-          </a>
-        </div>
-
-        <div class="pt-5">
-          <a href="#tothetop" class="text-white" title="Haut de page"><i class="fas fa-chevron-up fa-3x text-white"></i><br>Top</a>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-
-
-
-  <script>
-    function openNav() {
-      document.getElementById("myNav").style.width = "100%";
-    }
-
-    function closeNav() {
-      document.getElementById("myNav").style.width = "0%";
-    }
-  </script>
-  <script src="js/script.js"></script>
-
-
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-</body>
-
-</html>
+<?php include_once 'footer.php'; ?>

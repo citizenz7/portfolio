@@ -1,13 +1,18 @@
 <?php
-
-//include config
-require_once('../includes/config.php');
+require_once 'header.php';
 
 //if not logged in redirect to login page
 if(!$user->is_logged_in()){
   header('Location: login.php');
 }
+?>
 
+<div class="container pt-3 pb-5">
+  <div class="row">
+    <div class="col-sm-12 px-5 text-justify">
+      <div class="pb-5">
+
+<?php
 $stmt = $db->query('SELECT memberID, username, email FROM membres ORDER BY username');
 while($row = $stmt->fetch()){
 
@@ -54,3 +59,10 @@ if(isset($_GET['deluser'])){
     }
 }
 ?>
+
+</div>
+</div>
+</div>
+</div>
+
+<?php include_once 'footer.php'; ?>

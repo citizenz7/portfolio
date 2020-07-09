@@ -27,6 +27,18 @@ define('SITEDATE','08/07/20');
 define('COPYDATE','2020');
 define('CHARSET','UTF-8');
 
+//----------------------------------------------------
+//Images
+//----------------------------------------------------
+$EXTENSIONS_VALIDES = array( 'jpg' , 'png' ); //extensions d'images valides
+define('MAX_FILE_SIZE', 1048576); //Taille maxi en octets du fichier .torrent
+$WIDTH_MAX = 500; //Largeur max de l'image en pixels
+$HEIGHT_MAX = 400; //Hauteur max de l'image en pixels
+$REP_IMAGES_PROJETS = 'img/projets'; //Répertoires des images projets
+$REP_IMAGES_ARTICLES = 'img/articles'; //Répertoires des images projets
+
+
+
 //set timezone
 date_default_timezone_set('Europe/Paris');
 

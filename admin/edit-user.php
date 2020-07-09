@@ -1,7 +1,5 @@
 <?php
-
-//include config
-require_once('../includes/config.php');
+include_once 'header.php';
 
 //if not logged in redirect to login page
 if(!$user->is_logged_in()){
@@ -133,3 +131,6 @@ include('menu.php');
 		<p><input type='submit' name='submit' value='Update User'></p>
 
 	</form>
+
+
+  <?php include_once 'footer.php'; ?>

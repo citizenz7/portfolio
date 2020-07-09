@@ -1,17 +1,25 @@
 <?php
 //include config
-require_once('../includes/config.php');
+require_once 'header.php';
 
 //if not logged in redirect to login page
 if(!$user->is_logged_in()){
   header('Location: login.php');
 }
+?>
 
+
+
+  <div class="container pt-5 pb-5">
+    <div class="row">
+      <div class="col-sm-12 px-5 text-justify">
+        <div class="pb-5">
+
+<?php
 include('menu.php');
 ?>
-	<p><a href="./">Blog Admin Index</a></p>
 
-	<h2>Editer le projet</h2>
+	<div class="pt-5"><h2>Editer le projet</h2></div>
 
 
 	<?php
@@ -85,14 +93,26 @@ include('menu.php');
 	?>
 
 	<form action='' method='post'>
-		<input type='hidden' name='projetID' size='18' value='<?php echo $row['projetID'];?>'>
+      <input type='hidden' name='projetID' size='18' value='<?php echo $row['projetID'];?>'>
+        <div class="form-group">
+		      <label for="titreProjet">Titre</label>
+		      <input type='text' class="form-control" id="projetTitre" name='projetTitre' value='<?php echo $row['projetTitre'];?>'>
+        </div>
 
-		<p><label>Title</label><br />
-		<input type='text' name='projetTitre' value='<?php echo $row['projetTitre'];?>'></p>
+        <div class="form-group">
+		        <label for="textProjet">Texte</label>
+		        <textarea name='projetTexte' class="form-control" rows="10"><?php echo $row['projetTexte'];?></textarea>
+        </div>
 
-		<p><label>Content</label><br />
-		<textarea name='projetTexte' cols='60' rows='10'><?php echo $row['projetTexte'];?></textarea></p>
-
-		<p><input type='submit' name='submit' value='Update'></p>
+		    <div class="text-right"><button type='submit' class="btn btn-primary" name='submit'>Mettre à jour</button></div>
 
 	</form>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+<?php include_once 'footer.php'; ?>
