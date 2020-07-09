@@ -17,7 +17,7 @@ if(!$user->is_logged_in()){
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body id="tothetop">
@@ -48,7 +48,11 @@ if(!$user->is_logged_in()){
       <div class="col-sm-12 px-5 text-justify">
         <div class="pb-5">
 
-          <table>
+          <?php include('menu.php');?>
+
+          <div class="pt-4 pb-3"><h2>Projets</h2></div>
+
+          <table class="table">
             <tr>
               <th>Title</th>
               <th>Date</th>
@@ -102,8 +106,6 @@ if(!$user->is_logged_in()){
             }
             ?>
 
-            <?php include('menu.php');?>
-
 
       </div>
     </div>
@@ -119,13 +121,13 @@ if(!$user->is_logged_in()){
             <img src="img/email.png" class="img-fluid img-social" alt="E-mail">
           </a>-->
           <a class="text-decoration-none" href="https://www.facebook.com/oprieur.pro.7">
-            <img src="img/facebook.png" class="img-fluid img-social" alt="Facebook">
+            <img src="../img/facebook.png" class="img-fluid img-social" alt="Facebook">
           </a>
           <a class="text-decoration-none" href="https://twitter.com/citizenz58">
-            <img src="img/twitter.png" class="img-fluid img-social" alt="Facebook">
+            <img src="../img/twitter.png" class="img-fluid img-social" alt="Facebook">
           </a>
           <a class="text-decoration-none" href="https://www.linkedin.com/in/olivier-prieur">
-            <img src="img/linkedin.png" class="img-fluid img-social" alt="LinkedIn">
+            <img src="../img/linkedin.png" class="img-fluid img-social" alt="LinkedIn">
           </a>
         </div>
 
