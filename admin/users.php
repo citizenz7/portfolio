@@ -16,7 +16,20 @@ if(!$user->is_logged_in()){
 $stmt = $db->query('SELECT memberID, username, email FROM membres ORDER BY username');
 while($row = $stmt->fetch()){
 
+include_once 'menu.php';
+?>
+
+  <h2>Gestion des utilisateurs</h2>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Pseudo</th>
+      <th>E-mail</th>
+      <th>Action</th>
+      </tr>
+<?php
     echo '<tr>';
+    echo '<td>'.$row['memberID'].'</td>';
     echo '<td>'.$row['username'].'</td>';
     echo '<td>'.$row['email'].'</td>';
     ?>
@@ -29,7 +42,7 @@ while($row = $stmt->fetch()){
     </td>
 
     <?php
-    echo '</tr>';
+    echo '</tr></table>';
 
 }
 ?>
