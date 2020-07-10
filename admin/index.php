@@ -14,7 +14,7 @@ include_once 'header.php';
     <div class="row">
       <div class="col-sm-12 px-5 text-justify">
         <div class="pb-5">
-          <div class="text-center mb-4 alert alert-primary lead" role="alert">Bienvenue <b><?php echo $_SESSION['username']; ?></b> ! Vous êtes connecté.</div>
+          <div class="text-center mb-4 alert alert-primary" role="alert">Bienvenue <b><?php echo $_SESSION['username']; ?></b> !<br>Vous êtes connecté.</div>
           <?php include('menu.php');?>
 
             <table class="table">
@@ -28,7 +28,7 @@ include_once 'header.php';
             <tr>
               <th>ID</th>
               <th>Titre</th>
-              <th>Date</th>
+              <th>Date d'ajout</th>
               <th>Action</th>
               </tr>
               <?php
@@ -39,11 +39,11 @@ include_once 'header.php';
                   echo '<tr>';
                   echo '<td>'.$row['projetID'].'</td>';
                   echo '<td>'.$row['projetTitre'].'</td>';
-                  echo '<td>'.date('j M Y', strtotime($row['projetDate'])).'</td>';
+                  echo '<td class="small">'.date_fr('d-m-Y à H:i:s', strtotime(($row['projetDate']))).'</td>';
                   ?>
                   <td>
-                    <a title="Editer le projets" href="edit-projet.php?id=<?php echo $row['projetID'];?>"><button type="button" class="btn btn-sm btn-primary">Editer</button></a> |
-                    <a title="Supprimer le projet" href="javascript:supprprojet('<?php echo $row['projetID'];?>','<?php echo $row['projetTitre'];?>')"><button type="button" class="btn btn-secondary btn-sm">Suppr.</button></a>
+                    <a class="btn btn-primary btn-sm" role="button" aria-pressed="true" title="Editer le projets" href="edit-projet.php?id=<?php echo $row['projetID'];?>">Editer</a> |
+                    <a class="btn btn-danger btn-sm" role="button" aria-pressed="true" title="Supprimer le projet" href="javascript:delprojet('<?php echo $row['projetID'];?>','<?php echo $row['projetTitre'];?>')">Suppr.</a>
                   </td>
                   <?php
                   echo '</tr>';
@@ -56,27 +56,25 @@ include_once 'header.php';
               ?>
             </table>
 
-            <!-- Delete javascript alert -->
-            <script language="JavaScript" type="text/javascript">
-              function supprprojet(id, title) {
-                if (confirm("Etes-vous certain de vouloir supprimer le projet " + title + " ?")) {
-                  window.location.href = 'index.php?delprojet=' + id;
-                }
-              }
-            </script>
-
             <!-- Delete in SQL -->
             <?php
-            if(isset($_GET['delpost'])) {
-              $stmt = $db->prepare('DELETE FROM blog_posts WHERE postID = :postID') ;
-              $stmt->execute(array(':postID' => $_GET['delpost']));
+            if(isset($_GET['delprojet'])) {
+              $stmt = $db->prepare('DELETE FROM projets WHERE projetID = :projetID') ;
+              $stmt->execute(array(':projetID' => $_GET['delprojet']));
 
               header('Location: index.php?action=deleted');
               exit;
             }
 
             if(isset($_GET['action'])){
-              echo '<div class="alert alert-success text-center font-weight-bold mt-4" role="alert">Projet '.$_GET['action'].' !</div>';
+              echo '
+              <div class="alert alert-info alert-dismissible fade show text-center font-weight-bold mt-4" role="alert">
+                Projet '.$_GET['action'].' !
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              ';
             }
             ?>
 

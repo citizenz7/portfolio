@@ -19,11 +19,11 @@ define('SITEDESCRIPTION','Portfolio d\'Olivier Prieur');
 define('SITEKEYWORDS','Nevers,'.SITENAME.',libre,free,opensource,gnu,téléchargement,download,upload,xbt,tracker,php,mysql,linux,bsd,os,système,system,exploitation,debian,arch,fedora,ubuntu,manjaro,mint,film,movie,picture,video,mp3,musique,music,mkv,avi,mpeg,gpl,creativecommons,cc,mit,apache,cecill,artlibre');
 //define('SITEURL','http://www.'.SITENAMELONG);
 //define('SITEURLHTTPS','https://www.'.SITENAMELONG);
-define('SITEOWNORNAME','OLivier Prieur');
+define('SITEOWNORNAME','Olivier Prieur');
 define('SITEAUTOR','citizenz7');
-define('SITEOWNORADDRESS','xxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+define('SITEOWNORADDRESS','57 rue de Marzy 58000 Nevers');
 define('SITEVERSION','1.0.1');
-define('SITEDATE','08/07/20');
+define('SITEDATE','10/07/20');
 define('COPYDATE','2020');
 define('CHARSET','UTF-8');
 
@@ -81,3 +81,6 @@ function my_autoloader($class) {
 spl_autoload_register('my_autoloader');
 
 $user = new User($db);
+
+
+require_once('functions.php');

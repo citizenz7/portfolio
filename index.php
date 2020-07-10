@@ -19,22 +19,36 @@
 
         <?php
         try {
-          $stmt = $db->query('SELECT projetID, projetTitre, projetTexte, projetDate, projetImage, projetFilter, projetCat FROM projets ORDER BY projetID DESC');
+          //Pagination : on instancie la class
+          $pages = new Paginator('3','p');
+
+          //on collecte tous les enregistrements de la fonction
+          $stmt = $db->query('SELECT projetID FROM projets');
+
+          //On détermine le nombre total d'enregistrements
+          $pages->set_total($stmt->rowCount());
+
+          $stmt = $db->query('SELECT projetID, projetTitre, projetTexte, projetDate, projetImage, projetFilter, projetCat FROM projets ORDER BY projetID DESC ' .$pages->get_limit());
+
           while($row = $stmt->fetch()){
         ?>
         <div class="column <?php echo $row['projetFilter']; ?>">
           <div class="content">
             <div class="container2">
-              <img class="img-fluid img-thumbnail image2" src="img/projets/<?php echo $row['projetImage']; ?>" alt="<?php echo $row['projetTitre']; ?>">
+              <img class="img-fluid img-thumbnail image2" src="<?php echo $row['projetImage']; ?>" alt="<?php echo $row['projetTitre']; ?>">
               <div class="middle">
                 <div class="text2"><?php echo $row['projetCat']; ?></div>
               </div>
             </div>
             <h4 class="title-articles"><a href="projet.php?id=<?php echo $row['projetID']; ?>"><?php echo $row['projetTitre']; ?></a></h4>
-            <p class="smalltext"><?php echo nl2br($row['projetTexte']); ?></p>
-            <small class="text-muted tinytext"><i class="far fa-calendar-alt"></i> Publié le : <?php echo $row['projetDate']; ?> | <i class="fas fa-tag"></i> Catégorie : Sécurité</small>
-
+            <p class="smalltext">
+              <?php echo nl2br($row['projetTexte']); ?>
             </p>
+            <small class="text-muted tinytext">
+              <i class="far fa-calendar-alt"></i> Publié le : <?php echo date_fr('d-m-Y à H:i:s', strtotime($row['projetDate'])); ?>
+              <br>
+              <i class="fas fa-tag"></i> Catégorie : <?php echo $row['projetCat']; ?>
+            </small>
           </div>
         </div>
         <?php
@@ -44,8 +58,14 @@
         echo $e->getMessage();
       }
       ?>
-
       </div><!-- END GRID -->
+
+      <!-- Pagination -->
+      <div class="row justify-content-center">
+        <div class="col-4">
+          <?php echo $pages->page_links(); ?>
+        </div>
+      </div>
 
     </div><!-- //container -->
   </div><!-- //container-fluid -->
@@ -147,7 +167,7 @@
 
   <div class="container-fluid">
 
-    <div class="container">
+    <div id="contact" class="container">
       <div class="row">
         <div class="col pt-5">
           <h3 class="text-center">Me contacter</h3>

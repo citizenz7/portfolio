@@ -39,6 +39,22 @@
       toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
     });
 </script>
+<!-- Delete javascript alert -->
+<script language="JavaScript" type="text/javascript">
+  function delprojet(id, title) {
+    if (confirm("Etes-vous certain de vouloir supprimer le projet " + title + " ?")) {
+      window.location.href = 'index.php?delprojet=' + id;
+    }
+  }
+</script>
+<!-- Suppression de l'image du torrent -->
+<script language="JavaScript" type="text/javascript">
+function delimage(id, title) {
+  if (confirm("Etes-vous certain de vouloir supprimer '" + title + "'")) {
+    window.location.href = 'edit-projet.php?delimage=' + id;
+  }
+}
+</script>
 </head>
 
 <body id="tothetop">
