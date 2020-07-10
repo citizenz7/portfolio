@@ -16,7 +16,7 @@ if(!$user->is_logged_in()){
 				':projetID' => $delimage
 			));
 			$sup = $stmt->fetch();
-			$file = $sup['projetImage'];
+			$file = "../" . $sup['projetImage'];
 			if (file_exists($file)) {
 				unlink($file);
 			}
@@ -105,22 +105,23 @@ if(!$user->is_logged_in()){
 			try {
 
 				//insert into database
-				$stmt = $db->prepare('UPDATE projets SET projetTitre = :projetTitre, projetTexte = :projetTexte, projetCat = :projetCat, projetFilter = :projetFilter, projetDate = :projetFate, projetVues = :projetVues WHERE projetID = :projetID') ;
+				$stmt = $db->prepare('UPDATE projets SET projetTitre = :projetTitre, projetTexte = :projetTexte, projetCat = :projetCat, projetFilter = :projetFilter, projetDate = :projetDate, projetVues = :projetVues
+          WHERE projetID = :projetID');
 				$stmt->execute(array(
-          ':projetID' => $projetID,
 					':projetTitre' => $projetTitre,
 					':projetTexte' => $projetTexte,
           ':projetCat' => $projetCat,
           ':projetFilter' => $projetFilter,
           ':projetDate' => date('Y-m-d H:i:s'),
-          ':projetVues' => '1'
+          ':projetVues' => '1',
+          ':projetID' => $projetID
 				));
 
-        if(isset($_FILES['pprojetImage'])){
-	         $stmt = $db->prepare('UPDATE projets SET projetImage = :projetImage WHERE projetID = :projetID') ;
+        if(isset($_FILES['projetImage'])){
+	         $stmt = $db->prepare('UPDATE projets SET projetImage = :projetImage WHERE projetID = :projetID');
            $stmt->execute(array(
-             ':projetID' => $projetID,
-             ':projetImage' => $target
+            ':projetImage' => $target,
+            ':projetID' => $projetID
            ));
         }
 
@@ -163,7 +164,7 @@ if(!$user->is_logged_in()){
   include('menu.php');
   ?>
 
-  <div class="pt-3"><h2>Editer le projet : <?php $row['projetTitre']; ?></h2></div>
+  <div class="pt-3"><h3>Editer le projet : "<?php echo $row['projetTitre']; ?>"</h3></div>
 
   <form action="" method="post" enctype="multipart/form-data">
     <input type='hidden' name='projetID' value='<?php echo $row['projetID'];?>'>

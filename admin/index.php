@@ -8,6 +8,28 @@ if(!$user->is_logged_in()){
 }
 
 include_once 'header.php';
+
+//Si on supprime l'image du projet...
+		if(isset($_GET['delprojet'])) {
+			$delimage = $_GET['delprojet'];
+			//on supprime le fichier image
+			$stmt = $db->prepare('SELECT projetImage FROM projets WHERE projetID = :projetID');
+			$stmt->execute(array(
+				':projetID' => $delimage
+			));
+			$sup = $stmt->fetch();
+			$file = "../" . $sup['projetImage'];
+			if (file_exists($file)) {
+				unlink($file);
+			}
+			//puis on supprime l'image dans la base
+			// $stmt = $db->prepare('UPDATE projets SET projetImage = NULL WHERE projetID = :projetID');
+			// $stmt->execute(array(
+      //   ':projetID' => $delimage
+      // ));
+			// header('Location: edit-projet.php?id='.$delimage);
+		}
+
 ?>
 
   <div class="container pt-3 pb-5">
