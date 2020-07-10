@@ -46,6 +46,8 @@
   <div id="myNav" class="overlay">
     <a href="javascript:void(0)" class="closebtn2" onclick="closeNav()">&times;</a>
     <div class="overlay-content">
+      <a href="./">
+        < Accueil /></a>
       <a href="#projets">
         < Projets /></a>
       <a href="#articles">

@@ -1,4 +1,4 @@
-<div class="container-fluid pt-3 pb-5 bg-dark">
+<div class="container-fluid pt-3 pb-3 bg-dark">
   <div class="row">
     <div class="col text-center text-white">
       <h2 id="contact">Réseaux sociaux</h2>

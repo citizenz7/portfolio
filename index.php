@@ -1,8 +1,8 @@
 <?php include_once 'header.php'; ?>
 
 <div id="projets" class="container-fluid">
-  <div class="container pb-3">
-    <div class="text-center">
+  <div class="container pb-3 mb-4 border">
+    <div class="text-center pb-3">
       <h2>Projets / Portfolio</h2>
     </div>
 
@@ -12,9 +12,9 @@
       <button class="btn2" onclick="filterSelection('php')"> PHP/MySQL</button>
       <button class="btn2" onclick="filterSelection('js')"> Javascript</button>
     </div>
-  </div>
+
     <!-- Portfolio Gallery Grid -->
-    <div class="container pb-5">
+
       <div class="row">
 
         <?php
@@ -169,7 +169,7 @@
 
     <div id="contact" class="container">
       <div class="row">
-        <div class="col pt-5">
+        <div class="col pt-4 mt-4 mb-2 border">
           <h3 class="text-center">Me contacter</h3>
           <p class="text-center"><em>Merci d'utiliser le formulaire ci-dessous pour m'envoyer un message. J'y répondrai dès que possible.</em></p>
           <form class="form-group" action="" method="post">

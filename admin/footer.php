@@ -1,4 +1,4 @@
-<div class="container-fluid pt-3 pb-5 bg-dark">
+<div class="container-fluid pt-3 pb-3 bg-dark">
   <div class="row">
     <div class="col text-center text-white">
       <h2 id="contact">Réseaux sociaux</h2>
@@ -35,7 +35,7 @@
     document.getElementById("myNav").style.width = "0%";
   }
 </script>
-<script src="js/script.js"></script>
+<script src="../js/script.js"></script>
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

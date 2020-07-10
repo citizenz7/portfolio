@@ -204,7 +204,7 @@ if(!$user->is_logged_in()){
        <input type="text" name="projetFilter" class="form-control" id="projetFilter" value="<?php echo $row['projetFilter']; ?>">
      </div>
 
-      <div class="text-right"><button type='submit' class="btn btn-primary" name='submit'>Ajouter</button></div>
+      <div class="text-right pt-5"><button type='submit' class="btn btn-primary" name='submit'>Editer le projet</button></div>
   </form>
 
 </div>

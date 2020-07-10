@@ -55,7 +55,16 @@ include_once 'header.php';
               </tr>
               <?php
               try {
-                $stmt = $db->query('SELECT projetID, projetTitre, projetDate FROM projets ORDER BY projetID DESC');
+                //Pagination : on instancie la class
+                $pages = new Paginator('3','p');
+
+                //on collecte tous les enregistrements de la fonction
+                $stmt = $db->query('SELECT projetID FROM projets');
+
+                //On détermine le nombre total d'enregistrements
+                $pages->set_total($stmt->rowCount());
+
+                $stmt = $db->query('SELECT projetID, projetTitre, projetDate FROM projets ORDER BY projetID DESC ' .$pages->get_limit());
                 while($row = $stmt->fetch()){
 
                   echo '<tr>';
@@ -101,7 +110,14 @@ include_once 'header.php';
             ?>
 
       </div>
+      <!-- Pagination -->
+      <div class="row justify-content-center">
+        <div class="col-4">
+          <?php echo $pages->page_links(); ?>
+        </div>
+      </div>
     </div>
   </div>
+</div>
 
 <?php include_once 'footer.php'; ?>

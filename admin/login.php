@@ -5,7 +5,7 @@ require_once('../includes/config.php');
 include_once 'header.php';
 ?>
 
-
+<div class="container-fluid">
   <div class="container pt-5 pb-5">
     <div class="row text-center">
       <div class="col-md-4 offset-md-4">
@@ -53,6 +53,7 @@ if(isset($_POST['submit'])){
 if(isset($message)){ echo $message; }
 ?>
 
+</div>
 </div>
 </div>
 </div>

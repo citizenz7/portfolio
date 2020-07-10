@@ -8,7 +8,7 @@
  */
 class Paginator{
 
-        /**
+  /**
 	 * set the number of items per page.
 	 *
 	 * @var numeric
