@@ -42,9 +42,10 @@ while($row = $stmt->fetch()){
     ?>
 
     <td>
-        <a href="edit-user.php?id=<?php echo $row['memberID'];?>">Edit</a>
+        <a class="btn btn-primary btn-sm" role="button" aria-pressed="true" title="Editer le projets" href="edit-user.php?id=<?php echo $row['memberID'];?>">Editer</a>
+        <!-- On ne peut pas effacer le User N°1, l'admin -->
         <?php if($row['memberID'] != 1){?>
-            | <a href="javascript:deluser('<?php echo $row['memberID'];?>','<?php echo $row['username'];?>')">Delete</a>
+            | <a class="btn btn-danger btn-sm" role="button" aria-pressed="true" title="Supprimer le projet"href="javascript:deluser('<?php echo $row['memberID'];?>','<?php echo $row['username'];?>')">Supprimer</a>
         <?php } ?>
     </td>
 

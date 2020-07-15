@@ -1,4 +1,13 @@
-<?php include_once 'header.php'; ?>
+<?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendors/PHPMailer/src/Exception.php';
+require 'vendors/PHPMailer/src/PHPMailer.php';
+require 'vendors/PHPMailer/src/SMTP.php';
+
+include_once 'header.php';
+?>
 
 <div id="projets" class="container-fluid">
   <div class="container pb-3 mb-4 border">
@@ -180,44 +189,13 @@
   </div>
 
   <div class="container-fluid">
-
     <div id="contact" class="container">
       <div class="row">
-        <div class="col pt-4 mt-4 mb-2 border">
+        <div class="col py-4 my-5 border">
           <h3 class="text-center">Me contacter</h3>
-          <p class="text-center"><em>Merci d'utiliser le formulaire ci-dessous pour m'envoyer un message. J'y répondrai dès que possible.</em></p>
-          <form class="form-group" action="" method="post">
-            <div class="row">
-              <div class="col">
-                <div class="row">
-                  <div class="col-sm-6 form-group">
-                    <input class="form-control" id="name" name="name" placeholder="Votre nom" type="text" required>
-                  </div>
-                  <div class="col-sm-6 form-group">
-                    <input class="form-control" id="email" name="from" placeholder="Votre E-mail" type="email" required>
-                  </div>
-                  <div class="col-sm-12 form-group">
-                    <input class="form-control" id="subject" name="subject" placeholder="Sujet" type="text" required>
-                  </div>
-                  <div class="col-sm-12 form-group">
-                    <textarea class="form-control" id="message" name="message" placeholder="Votre message" rows="6" required></textarea>
-                  </div>
-                </div>
-
-                <!--<br>
-                <label for="verif_box">Anti-spam : <br>
-                  <div class="g-recaptcha" data-sitekey="6LfrmrUUAAAAAOU9sv-UO9A6joAVpLvrRB3sCbtt"></div>
-                </label>
-               -->
-                <div class="row">
-                  <div class="col-md-12 form-group text-right">
-                    <button class="btn btn-primary mb-2 mt-3" name="submit" type="submit">Envoyer</button>
-                    <button class="btn btn-secondary ml-3 mb-2 mt-3" type="reset">Annuler</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
+          <p class="text-center">
+            <em>Merci d'utiliser <a href="contact.php">le formulaire de contact</a> pour m'envoyer un message.<br>J'y répondrai dès que possible.</em>
+          </p>
         </div>
       </div>
     </div>
