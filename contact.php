@@ -1,5 +1,6 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendors/PHPMailer/src/Exception.php';
@@ -80,18 +81,25 @@ if (isset($_POST['submit'])) {
            <div class="h4 mt-0 title">Me contacter</div>
               <form class="contact" method="post" action="contact.php">
                   <div class="form-group">
-                    <input class="form-control" type="email" name="email" placeholder="Votre adresse e-mail" required>
+                    <label for="email">Votre adresse e-mail</label>
+                    <input class="form-control" type="email" id="email" name="email">
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="text" name="name" placeholder="Votre nom" required>
+                    <label for="name">Votre nom/pseudo</label>
+                    <input class="form-control" type="text" id="name" name="name">
                   </div>
                   <div class="form-group">
-                    <input class="form-control" type="text" name="subject" placeholder="Sujet" required>
+                    <label for="subject">Sujet du message</label>
+                    <input class="form-control" type="text" id="subject" name="subject">
                   </div>
                   <div class="form-group">
-                    <textarea class="form-control" name="msg" placeholder="Votre message" required></textarea>
+                    <label for="msg">Message</label>
+                    <textarea class="form-control" id="msg" name="msg" rows="7"></textarea>
                   </div>
-                  <input type="submit" name="submit" value="Envoyer">
+                  <div class="form-group">
+                    <button type="submit" name="submit" class="btn btn-primary">Envoyer</button> 
+                    <button type="reset" class="btn btn-secondary">Annuler</button>
+                  </div>
               </form>
         </div>
 
