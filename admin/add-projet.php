@@ -92,7 +92,7 @@ if(!$user->is_logged_in()){
 	        	}
 
                 //redirect to index page
-                header('Location: index.php?action=added');
+                header('Location: index.php?actionP=added');
                 exit;
               }
 

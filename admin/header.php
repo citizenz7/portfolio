@@ -55,6 +55,15 @@ function delimage(id, title) {
   }
 }
 </script>
+<script language="JavaScript" type="text/javascript">
+function deluser(id, title)
+{
+  if (confirm("Etes-vous certain de vouloir suprimer l'utilisateur '" + title + "'"))
+  {
+      window.location.href = 'users.php?deluser=' + id;
+  }
+}
+</script>
 </head>
 
 <body id="tothetop">

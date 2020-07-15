@@ -12,21 +12,28 @@ if(!$user->is_logged_in()){
     <div class="col-sm-12 px-5 text-justify">
       <div class="pb-5">
 
+      <?php include_once 'menu.php'; ?>
+
+      <table class="table">
+        <tr>
+          <td><span class="lead font-weight-bold">Gestion des utilisateurs</span></td>
+          <td class="text-right"><a href="add-user.php" class="mx-auto"><button type="button" class="btn btn-success btn-sm">Ajouter un utilisateur</button></a></td>
+        </tr>
+      </table>
+
+      <table class="table">
+        <tr>
+          <th>ID</th>
+          <th>Pseudo</th>
+          <th>E-mail</th>
+          <th>Action</th>
+          </tr>
+
 <?php
 $stmt = $db->query('SELECT memberID, username, email FROM membres ORDER BY username');
 while($row = $stmt->fetch()){
-
-include_once 'menu.php';
 ?>
 
-  <h2>Gestion des utilisateurs</h2>
-  <table class="table">
-    <tr>
-      <th>ID</th>
-      <th>Pseudo</th>
-      <th>E-mail</th>
-      <th>Action</th>
-      </tr>
 <?php
     echo '<tr>';
     echo '<td>'.$row['memberID'].'</td>';
@@ -42,20 +49,12 @@ include_once 'menu.php';
     </td>
 
     <?php
-    echo '</tr></table>';
-
-}
-?>
-
-<script language="JavaScript" type="text/javascript">
-function deluser(id, title)
-{
-  if (confirm("Are you sure you want to delete '" + title + "'"))
-  {
-      window.location.href = 'users.php?deluser=' + id;
   }
-}
-</script>
+  ?>
+
+</tr>
+</table>
+
 
 <?php
 if(isset($_GET['deluser'])){

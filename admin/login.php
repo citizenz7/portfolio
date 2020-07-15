@@ -45,7 +45,7 @@ if(isset($_POST['submit'])){
         exit;
 
     } else {
-        $message = '<div class="alert alert-danger text-center" role="alert">Wrong username or password</div>';
+        $message = '<div class="alert alert-danger text-center" role="alert">Mauvais identifiants ! :(</div>';
     }
 
 }//end if submit

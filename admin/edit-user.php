@@ -5,13 +5,14 @@ include_once 'header.php';
 if(!$user->is_logged_in()){
   header('Location: login.php');
 }
-
-include('menu.php');
 ?>
-	<p><a href="users.php">User Admin Index</a></p>
 
-	<h2>Edit User</h2>
+<div class="container pt-3 pb-5">
+  <div class="row">
+    <div class="col-sm-12 px-5 text-justify">
+      <div class="pb-5">
 
+      <?php echo include('menu.php'); ?>
 
 	<?php
 
@@ -23,28 +24,27 @@ include('menu.php');
 
 		//very basic validation
 		if($username ==''){
-			$error[] = 'Please enter the username.';
+			$error[] = 'Veuillez entrer un nom d\'utilisateur.';
 		}
 
 		if( strlen($password) > 0){
 
 			if($password ==''){
-				$error[] = 'Please enter the password.';
+				$error[] = 'Veuuillez entrer un mot de passe.';
 			}
 
 			if($passwordConfirm ==''){
-				$error[] = 'Please confirm the password.';
+				$error[] = 'Veuullez confirmer le mot de passe.';
 			}
 
 			if($password != $passwordConfirm){
-				$error[] = 'Passwords do not match.';
+				$error[] = 'Les mots de passe ne correspondent pas.';
 			}
 
 		}
 
-
 		if($email ==''){
-			$error[] = 'Please enter the email address.';
+			$error[] = 'Veuillez netrer une adresse e-mail.';
 		}
 
 		if(!isset($error)){
@@ -76,7 +76,6 @@ include('menu.php');
 					));
 
 				}
-
 
 				//redirect to index page
 				header('Location: users.php?action=updated');
@@ -113,24 +112,36 @@ include('menu.php');
 
 	?>
 
+  <h2 class="pb-5">Editer l'utilisateur : <?php echo html($row['username']); ?></h2>
+
 	<form action='' method='post'>
 		<input type='hidden' name='memberID' value='<?php echo $row['memberID'];?>'>
 
-		<p><label>Username</label><br />
-		<input type='text' name='username' value='<?php echo $row['username'];?>'></p>
+    <div class="form-group">
+		   <label for="username">Pseudo</label>
+		   <input type='text' name='username' class="form-control" value='<?php echo html($row['username']) ;?>'>
+    </div>
+    <div class="form-group">
+		   <label for="password">Mot de passe (seulement en cas de chnagement)</label>
+		   <input type='password' name='password' class="form-control" value=''>
+    </div>
+    <div class="form-group">
+		   <label for="passwordConfirm">Confirm Password</label>
+		   <input type='password' name='passwordConfirm' class="form-control" value=''>
+    </div>
+    <div class="form-group">
+		   <label for="email">Email</label>
+		   <input type='text' name='email' class="form-control" value='<?php echo html($row['email']) ;?>'>
+    </div>
 
-		<p><label>Password (only to change)</label><br />
-		<input type='password' name='password' value=''></p>
-
-		<p><label>Confirm Password</label><br />
-		<input type='password' name='passwordConfirm' value=''></p>
-
-		<p><label>Email</label><br />
-		<input type='text' name='email' value='<?php echo $row['email'];?>'></p>
-
-		<p><input type='submit' name='submit' value='Update User'></p>
+    <div class="text-right pt-5"><button type='submit' class="btn btn-primary" name='submit'>Editer cet utilisateur</button></div>
 
 	</form>
+
+</div>
+</div>
+</div>
+</div>
 
 
   <?php include_once 'footer.php'; ?>
