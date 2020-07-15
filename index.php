@@ -37,7 +37,7 @@ include_once 'header.php';
           //On détermine le nombre total d'enregistrements
           $pages->set_total($stmt->rowCount());
 
-          $stmt = $db->query('SELECT projetID, projetTitre, projetTexte, projetDate, projetImage, projetFilter, projetCat FROM projets ORDER BY projetID DESC ' .$pages->get_limit());
+          $stmt = $db->query('SELECT projetID, projetTitre, projetTexte, projetDate, projetImage, projetFilter, projetCat, projetVues FROM projets ORDER BY projetID DESC ' .$pages->get_limit());
 
           while($row = $stmt->fetch()){
         ?>
@@ -54,7 +54,7 @@ include_once 'header.php';
               <?php echo nl2br($row['projetTexte']); ?>
             </p>
             <small class="text-muted tinytext">
-              <i class="far fa-calendar-alt"></i> Publié le : <?php echo date_fr('d-m-Y à H:i:s', strtotime($row['projetDate'])); ?>
+              <i class="far fa-calendar-alt"></i> Publié le : <?php echo date_fr('d-m-Y à H:i:s', strtotime($row['projetDate'])); ?> | Lectures : <?php echo $row['projetVues']; ?>
               <br>
               <i class="fas fa-tag"></i> Catégorie : <?php echo $row['projetCat']; ?>
             </small>

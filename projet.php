@@ -25,10 +25,23 @@ if($row['projetID'] == ''){
         </div>
         <img class="img-fluid img-thumbnail float-left img-article" src="<?php echo $row['projetImage']; ?>" alt="<?php html($row['projetTitre']); ?>">
           <?php echo $row['projetTexte']; ?>
-          <br>
-          <a class="text-dark" href="https://github.com/citizenz7/JS-bomberman" target="_blank"><i class="fab fa-github fa-2x"></i> <?php echo $row['projetGithub']; ?></a>
+
+          <?php
+          if(!empty($row['projetGithub'])) {
+          ?>
+            <br>
+            <a class="text-dark" href="<?php echo $row['projetGithub']; ?>" target="_blank"><i class="fab fa-github fa-2x"></i> <?php echo $row['projetGithub']; ?></a>
+          <?php
+          }
+          ?>
+
       </div>
     </div>
   </div>
+
+  <?php
+  // on met à jour le nb de vues de l'article
+  $stmt2 = $db->query('UPDATE projets SET projetVues = projetVues+1 WHERE projetID = '.$row['projetID']);
+  ?>
 
 <?php include_once 'footer.php'; ?>
