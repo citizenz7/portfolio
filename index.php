@@ -190,16 +190,28 @@ include_once 'header.php';
 
   <div class="container-fluid">
     <div id="contact" class="container">
-      <div class="row">
-        <div class="col py-4 my-5 border">
+      <div class="row py-3 px-3">
+        <div class="col-sm-6 py-4 border">
           <h3 class="text-center">Me contacter</h3>
           <p class="text-center">
             <em>Merci d'utiliser <a href="contact.php">le formulaire de contact</a> pour m'envoyer un message.<br>J'y répondrai dès que possible.</em>
           </p>
         </div>
+        <div class="col-sm-6 py-4 border">
+            <h2 class="text-center">Archives</h2>
+            <ul>
+              <?php
+              $stmt = $db->query("SELECT Month(projetDate) as Month, Year(projetDate) as Year FROM projets GROUP BY Month(projetDate), Year(projetDate) ORDER BY projetDate DESC");
+              while($row = $stmt->fetch()){
+                $monthName = date_fr("F", mktime(0, 0, 0, $row['Month'], 10));
+                //$slug = 'a-'.$row['Month'].'-'.$row['Year'];
+                echo "<li><a href='archives.php?month=" . $row['Month'] . "&year=" . $row['Year'] . "'>" . $monthName . "-" . $row['Year'] . "</a></li>";
+              }
+              ?>
+            </ul>
+        </div>
       </div>
     </div>
   </div>
-
 
 <?php include_once 'footer.php'; ?>

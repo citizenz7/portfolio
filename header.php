@@ -48,13 +48,13 @@
     <div class="overlay-content">
       <a href="./">
         < Accueil /></a>
-      <a href="#projets">
+      <a href="index.php#projets">
         < Projets /></a>
-      <a href="#articles">
+      <a href="index.php#articles">
         < Articles /></a>
-      <a href="#apropos">
+      <a href="index.php#apropos">
         < A propos /></a>
-      <a href="#contact">
+      <a href="index.php#contact">
         < Contact /></a>
     </div>
   </div>
