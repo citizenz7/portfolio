@@ -44,14 +44,14 @@ if (isset($_POST['submit'])) {
                 $mail->Body = nl2br($message);                          // Le contenu du mail en HTML
 
                 if(!$mail->send()) {
-                        header("Location: /contact.php?action=notok");
+                        header("Location: contact.php?action=notok");
                         //echo '<div>';
                         //echo '<span class="fa fa-warning"></span>&nbsp;Le message ne peut être envoyé :( <br>';
                         //echo 'Erreur: ' . $mail->ErrorInfo;
                         //echo '</div>';
                 }
                 else {
-                        header("Location: /contact.php?action=ok");
+                        header("Location: contact.php?action=ok");
                 }
 
                 // PHPMailer
