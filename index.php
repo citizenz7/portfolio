@@ -20,7 +20,7 @@
         <?php
         try {
           //Pagination : on instancie la class
-          $pages = new Paginator('3','p');
+          $pages = new Paginator('3','proj');
 
           //on collecte tous les enregistrements de la fonction
           $stmt = $db->query('SELECT projetID FROM projets');
@@ -75,46 +75,60 @@
       <div class="row">
         <div class="col text-center pt-3 pb-5">
           <h2 class="text-white">Articles</h2>
-          <div class="card-deck">
+            <div class="card-deck">
+
+          <?php
+          try {
+            //Pagination : on instancie la class
+            $pages = new Paginator('3','art');
+
+            //on collecte tous les enregistrements de la fonction
+            $stmt = $db->query('SELECT articleID FROM articles');
+
+            //On détermine le nombre total d'enregistrements
+            $pages->set_total($stmt->rowCount());
+
+            $stmt = $db->query('SELECT articleID, articleTitre, articleTexte, articleDate, articleImage FROM articles ORDER BY articleID DESC ' .$pages->get_limit());
+
+            while($row = $stmt->fetch()){
+          ?>
+
             <div class="card">
-              <img src="img/article11.jpg" class="card-img-top" alt="article 1">
+              <img class="card-img-top" src="<?php echo $row['articleImage']; ?>" alt="<?php echo $row['articleTitre']; ?>">
+
               <div class="card-body">
-                <h5 class="card-title"><a href="article.php">Article N°1</a></h5>
-                <p class="card-text smalltext">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <h4 class="card-title"><a href="article.php?id=<?php echo $row['articleID']; ?>"><?php echo $row['articleTitre']; ?></a></h4>
+
+                <p class="card-text smalltext">
+                  <?php echo nl2br($row['articleTexte']); ?>
+                </p>
               </div>
               <div class="card-footer">
-                <small class="text-muted tinytext"><i class="far fa-calendar-alt"></i> Publié le : 24/06/20 - 11h30<br><i class="fas fa-tag"></i> Catégorie : Opensource</small>
+                <small class="text-muted tinytext">
+                  <i class="far fa-calendar-alt"></i> Publié le : <?php echo date_fr('d-m-Y à H:i:s', strtotime($row['articleDate'])); ?>
+                </small>
               </div>
             </div>
-            <div class="card">
-              <img src="img/article2.jpg" class="card-img-top" alt="article 2">
-              <div class="card-body">
-                <h5 class="card-title"><a href="article.php">Article N°2</a></h5>
-                <p class="card-text smalltext">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat.
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted  tinytext"><i class="far fa-calendar-alt"></i> Publié le : 21/06/20 - 17h58<br><i class="fas fa-tag"></i> Catégorie : Développement web</small>
-              </div>
-            </div>
-            <div class="card">
-              <img src="img/article3.jpg" class="card-img-top" alt="article 3">
-              <div class="card-body">
-                <h5 class="card-title"><a href="article.php">Article N°3</a></h5>
-                <p class="card-text smalltext">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted  tinytext"><i class="far fa-calendar-alt"></i> Publié le : 07/06/20 - 19h40<br><i class="fas fa-tag"></i> Catégorie : Sécurité</small>
-              </div>
+
+          <?php
+          }
+        }
+        catch(PDOException $e) {
+          echo $e->getMessage();
+        }
+        ?>
+          </div>
+          <!-- Pagination -->
+          <div class="row justify-content-center">
+            <div class="col-4">
+              <?php echo $pages->page_links(); ?>
             </div>
           </div>
+        </div><!-- END GRID -->
+
         </div>
       </div>
     </div>
-  </div>
 
   <div id="apropos2" class="container-fluid">
     <div id="apropos" class="container">
