@@ -91,12 +91,11 @@ include_once 'header.php';
       <div class="row">
         <div class="col text-center pt-3 pb-5">
           <h2 class="text-white">Articles</h2>
-            <div class="card-deck">
 
           <?php
           try {
             //Pagination : on instancie la class
-            $pages = new Paginator('3','art');
+            $pages = new Paginator('2','art');
 
             //on collecte tous les enregistrements de la fonction
             $stmt = $db->query('SELECT articleID FROM articles');
@@ -109,20 +108,19 @@ include_once 'header.php';
             while($row = $stmt->fetch()){
           ?>
 
-            <div class="card">
-              <img class="card-img-top" src="<?php echo $row['articleImage']; ?>" alt="<?php echo $row['articleTitre']; ?>">
-
-              <div class="card-body">
+            <div class="card mb-4">
+              <div class="card-body text-justify">
                 <h4 class="card-title"><a href="article.php?id=<?php echo $row['articleID']; ?>"><?php echo $row['articleTitre']; ?></a></h4>
 
-                <p class="card-text smalltext">
+                <p class="smalltext">
+                  <img class="img-article" src="<?php echo $row['articleImage']; ?>" alt="<?php echo $row['articleTitre']; ?>">
                   <?php
-                    $max = 155;
+                    $max = 500;
                     $chaine = $row['articleTexte'];
                     if (strlen($chaine) >= $max) {
     	                 $chaine = substr($chaine, 0, $max);
     	                 $espace = strrpos($chaine, " ");
-    	                 $chaine = substr($chaine, 0, $espace).' ...';
+    	                 $chaine = substr($chaine, 0, $espace).'<p class="text-right pt-4"><i class="fas fa-angle-double-right"></i> <a href="article.php?id=' . $row['articleID'] . '">Lire la suite</a></p>';
                     }
                     echo nl2br($chaine);
 
@@ -130,7 +128,7 @@ include_once 'header.php';
                 </p>
               </div>
               <div class="card-footer">
-                <small class="text-muted tinytext">
+                <small class="text-muted smalltext">
                   <i class="far fa-calendar-alt"></i> Publié le : <?php echo date_fr('d-m-Y à H:i:s', strtotime($row['articleDate'])); ?>
                 </small>
               </div>
@@ -143,7 +141,7 @@ include_once 'header.php';
           echo $e->getMessage();
         }
         ?>
-          </div>
+
           <!-- Pagination -->
           <div class="row justify-content-center">
             <div class="col-4">
