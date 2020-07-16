@@ -25,10 +25,10 @@ if (isset($_POST['submit'])) {
                 $mail = new PHPMailer;
                 $mail->CharSet = 'UTF-8';
                 $mail->isSMTP();                                        // Active l'envoi via SMTP
-                $mail->Host = 'xxxxxxxxxxxxx';                          // À remplacer par le nom de votre serveur SMTP
+                $mail->Host = 'mail.s2ii.xyz';                          // À remplacer par le nom de votre serveur SMTP
                 $mail->SMTPAuth = true;                                 // Active l'authentification par SMTP
-                $mail->Username = 'xxxxxxxxxxxxxxxxxxxxxxxx';           // Nom d'utilisateur SMTP (votre adresse email complète)
-                $mail->Password = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx';      // Mot de passe de l'adresse email indiquée précédemment
+                $mail->Username = 'contact@olivierprieur.fr';           // Nom d'utilisateur SMTP (votre adresse email complète)
+                $mail->Password = '7T=u82VPzp!f8Ns2mS';                 // Mot de passe de l'adresse email indiquée précédemment
                 $mail->Port = 587;                                      // Port SMTP
                 $mail->SMTPSecure = 'tls';                              // Utiliser SSL / TLS
                 $mail->isHTML(true);                                    // Format de l'email en HTML
@@ -79,8 +79,10 @@ if (isset($_POST['submit'])) {
 
         <div class="card-body">
            <div class="h4 mt-0 title">Me contacter</div>
-              <form class="contact" method="post" action="contact.php">
-                  <div class="form-group">
+           Vous pouvez me contacter par mail pour tout sujet concernant mes projets, mes articles, mon CV, ... Merci d'utiliser le formulaire ci-dessous. J'essaierai de répondre le plus rapidement possible à votre message.
+
+              <form class="" method="post" action="contact.php">
+                  <div class="form-group pt-4">
                     <label for="email">Votre adresse e-mail</label>
                     <input class="form-control" type="email" id="email" name="email">
                   </div>
@@ -96,8 +98,8 @@ if (isset($_POST['submit'])) {
                     <label for="msg">Message</label>
                     <textarea class="form-control" id="msg" name="msg" rows="7"></textarea>
                   </div>
-                  <div class="form-group">
-                    <button type="submit" name="submit" class="btn btn-primary">Envoyer</button>
+                  <div class="form-group text-right pt-4">
+                    <button type="submit" name="submit" class="btn btn-primary">Envoyer le message</button>
                     <button type="reset" class="btn btn-secondary">Annuler</button>
                   </div>
               </form>
