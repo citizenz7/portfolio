@@ -203,17 +203,17 @@ include_once 'header.php';
     </div>
   </div>
 
-  <div class="container-fluid">
+  <div class="container-fluid my-4">
     <div id="contact" class="container">
-      <div class="row py-3 px-3">
-        <div class="col-sm-6 py-4 border">
+      <div class="row py-3 px-3 justify-content-center">
+        <div class="col-sm-5 py-4 mr-2 border">
           <h3 class="text-center">Me contacter</h3>
           <p class="text-center">
-            <em>Merci d'utiliser <a href="contact.php">le formulaire de contact</a> pour m'envoyer un message.<br>J'y répondrai dès que possible.</em>
+            <em>Merci d'utiliser <a href="contact.php">le formulaire de contact</a> pour m'envoyer un message. J'y répondrai dès que possible.</em>
           </p>
         </div>
-        <div class="col-sm-6 py-4 border">
-            <h2 class="text-center">Archives</h2>
+        <div class="col-sm-5 py-4 ml-2 border">
+            <h3 class="text-center">Archives des projets</h3>
             <!-- <ul class="list-group">
               <?php
               $stmt = $db->query("SELECT Month(projetDate) as Month, Year(projetDate) as Year FROM projets GROUP BY Month(projetDate), Year(projetDate) ORDER BY projetDate DESC");
