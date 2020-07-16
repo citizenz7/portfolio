@@ -22,9 +22,7 @@ include_once 'header.php';
       <button class="btn2" onclick="filterSelection('js')"> Javascript</button>
     </div>
 
-    <!-- Portfolio Gallery Grid -->
-
-      <div class="row">
+    <div class="row">
 
         <?php
         try {
@@ -51,7 +49,16 @@ include_once 'header.php';
             </div>
             <h4 class="title-articles"><a href="projet.php?id=<?php echo $row['projetID']; ?>"><?php echo $row['projetTitre']; ?></a></h4>
             <p class="smalltext">
-              <?php echo nl2br($row['projetTexte']); ?>
+              <?php
+                $max = 125;
+                $chaine = $row['projetTexte'];
+                if (strlen($chaine) >= $max) {
+	                 $chaine = substr($chaine, 0, $max);
+	                 $espace = strrpos($chaine, " ");
+	                 $chaine = substr($chaine, 0, $espace).' ...';
+                }
+                echo nl2br($chaine);
+                ?>
             </p>
             <small class="text-muted tinytext">
               <i class="far fa-calendar-alt"></i> Publié le : <?php echo date_fr('d-m-Y à H:i:s', strtotime($row['projetDate'])); ?> | Lectures : <?php echo $row['projetVues']; ?>
@@ -109,7 +116,17 @@ include_once 'header.php';
                 <h4 class="card-title"><a href="article.php?id=<?php echo $row['articleID']; ?>"><?php echo $row['articleTitre']; ?></a></h4>
 
                 <p class="card-text smalltext">
-                  <?php echo nl2br($row['articleTexte']); ?>
+                  <?php
+                    $max = 155;
+                    $chaine = $row['articleTexte'];
+                    if (strlen($chaine) >= $max) {
+    	                 $chaine = substr($chaine, 0, $max);
+    	                 $espace = strrpos($chaine, " ");
+    	                 $chaine = substr($chaine, 0, $espace).' ...';
+                    }
+                    echo nl2br($chaine);
+
+                ?>
                 </p>
               </div>
               <div class="card-footer">
@@ -199,16 +216,30 @@ include_once 'header.php';
         </div>
         <div class="col-sm-6 py-4 border">
             <h2 class="text-center">Archives</h2>
-            <ul>
+            <!-- <ul class="list-group">
               <?php
               $stmt = $db->query("SELECT Month(projetDate) as Month, Year(projetDate) as Year FROM projets GROUP BY Month(projetDate), Year(projetDate) ORDER BY projetDate DESC");
               while($row = $stmt->fetch()){
                 $monthName = date_fr("F", mktime(0, 0, 0, $row['Month'], 10));
                 //$slug = 'a-'.$row['Month'].'-'.$row['Year'];
-                echo "<li><a href='archives.php?month=" . $row['Month'] . "&year=" . $row['Year'] . "'>" . $monthName . "-" . $row['Year'] . "</a></li>";
+                echo "<li class='list-group-item'><a href='archives.php?month=" . $row['Month'] . "&year=" . $row['Year'] . "'>" . $monthName . "-" . $row['Year'] . "</a></li>";
               }
               ?>
-            </ul>
+            </ul> -->
+
+            <select onchange="document.location.href = this.value" class="custom-select custom-select-sm smalltext">
+					         <option selected>Mois - années</option>
+					         <?php
+					         $stmt = $db->query("SELECT Month(projetDate) as Month, Year(projetDate) as Year FROM projets GROUP BY Month(projetDate), Year(projetDate) ORDER BY projetDate DESC");
+					         while($row = $stmt->fetch()){
+						            $monthName = date_fr("F", mktime(0, 0, 0, html($row['Month']), 10));
+						            $year = date_fr(html($row['Year']));
+						            //$slug = 'a-'.html($row['Month']).'-'.html($row['Year']);
+						            echo "<option value='archives.php?month=" . $row['Month'] . "&year=" . $row['Year'] . "'>" . $monthName . "-" . $row['Year'] . "</option>";
+					        }
+					        ?>
+				   </select>
+
         </div>
       </div>
     </div>

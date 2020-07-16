@@ -117,7 +117,7 @@ if(!$user->is_logged_in()){
           ':projetID' => $projetID
 				));
 
-        if(isset($_FILES['projetImage'])){
+        if(isset($_FILES['projetImage']) && !empty($projetImage)){
 	         $stmt = $db->prepare('UPDATE projets SET projetImage = :projetImage WHERE projetID = :projetID');
            $stmt->execute(array(
             ':projetImage' => $target,

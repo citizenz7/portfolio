@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
                 $mail->From = $from;                                    // L'adresse mail de l'emetteur du mail
                 $mail->FromName = $name;                                // Le nom de l'emetteur qui s'affichera dans le mail
                 $mail->addAddress('contact@olivierprieur.fr');          // Destinataire du mail
-                $mail->Subject = 'Message depuis olivierprieur.fr : '.$subject;  // Le sujet de l'email
+                $mail->Subject = 'Message depuis portfolio.olivierprieur.fr : '.$subject;  // Le sujet de l'email
 
                 $message = "Nom: ".$name."<br><br>".$message;
                 $message = "De: ".$from."<br>".$message;
@@ -97,7 +97,7 @@ if (isset($_POST['submit'])) {
                     <textarea class="form-control" id="msg" name="msg" rows="7"></textarea>
                   </div>
                   <div class="form-group">
-                    <button type="submit" name="submit" class="btn btn-primary">Envoyer</button> 
+                    <button type="submit" name="submit" class="btn btn-primary">Envoyer</button>
                     <button type="reset" class="btn btn-secondary">Annuler</button>
                   </div>
               </form>
