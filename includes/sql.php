@@ -1,7 +1,7 @@
 <?php
 define('DBHOST','localhost');
-define('DBUSER','portfolio');
-define('DBPASS','ujdx645a');
+define('DBUSER','xxxxxxxxxxxxxxxxxxxxxxx');
+define('DBPASS','xxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
 define('DBNAME','portfolio');
 
 try {
