@@ -166,7 +166,7 @@ label {
 
 .overlay-content {
   position: relative;
-  top: 12%;
+  top: 8%;
   width: 100%;
   text-align: center;
   margin-top: 30px;
@@ -273,8 +273,9 @@ h1 {
 }
 
 .img-article {
-  max-height: 250px;
-  margin-right: 20px;
+  max-width: 200px;
+  float: left;
+  margin-right: 10px;
 }
 
 .img-social {

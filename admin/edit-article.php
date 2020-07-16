@@ -98,11 +98,11 @@ if(!$user->is_logged_in()){
           ':articleID' => $articleID
 				));
 
-        if(isset($_FILES['articleImage']) && !empty($_FILES['articleImage'])) {
-	     $stmt = $db->prepare('UPDATE articles SET articleImage = :articleImage WHERE articleID = :articleID');
-             $stmt->execute(array(
-                 ':articleImage' => $target,
-                 ':articleID' => $articleID
+        if(isset($_FILES['articleImage']['name']) && !empty($_FILES['articleImage']['name'])) {
+	         $stmt = $db->prepare('UPDATE articles SET articleImage = :articleImage WHERE articleID = :articleID');
+            $stmt->execute(array(
+              ':articleImage' => $target,
+              ':articleID' => $articleID
              ));
         }
 
