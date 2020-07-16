@@ -25,10 +25,10 @@ if (isset($_POST['submit'])) {
                 $mail = new PHPMailer;
                 $mail->CharSet = 'UTF-8';
                 $mail->isSMTP();                                        // Active l'envoi via SMTP
-                $mail->Host = 'mail.s2ii.xyz';                          // À remplacer par le nom de votre serveur SMTP
+                $mail->Host = 'xxxxxxxxxxxxx';                          // À remplacer par le nom de votre serveur SMTP
                 $mail->SMTPAuth = true;                                 // Active l'authentification par SMTP
-                $mail->Username = 'contact@olivierprieur.fr';           // Nom d'utilisateur SMTP (votre adresse email complète)
-                $mail->Password = '7T=u82VPzp!f8Ns2mS';                 // Mot de passe de l'adresse email indiquée précédemment
+                $mail->Username = 'xxxxxxxxxxxxxxxxxxxxxxxx';           // Nom d'utilisateur SMTP (votre adresse email complète)
+                $mail->Password = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx';      // Mot de passe de l'adresse email indiquée précédemment
                 $mail->Port = 587;                                      // Port SMTP
                 $mail->SMTPSecure = 'tls';                              // Utiliser SSL / TLS
                 $mail->isHTML(true);                                    // Format de l'email en HTML
