@@ -127,7 +127,7 @@ include_once 'header.php';
                 ?>
                 </p>
               </div>
-              <div class="card-footer">
+              <div class="card-footer text-center">
                 <small class="text-muted smalltext">
                   <i class="far fa-calendar-alt"></i> Publié le : <?php echo date_fr('d-m-Y à H:i:s', strtotime($row['articleDate'])); ?>
                 </small>
