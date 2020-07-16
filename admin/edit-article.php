@@ -8,8 +8,8 @@ if(!$user->is_logged_in()){
 }
 
 //Si on supprime l'image du article...
-		if(isset($_GET['delimage'])) {
-			$delimage = $_GET['delimage'];
+		if(isset($_GET['delimageArt'])) {
+			$delimage = $_GET['delimageArt'];
 			//on supprime le fichier image
 			$stmt = $db->prepare('SELECT articleImage FROM articles WHERE articleID = :articleID');
 			$stmt->execute(array(
@@ -98,7 +98,7 @@ if(!$user->is_logged_in()){
           ':articleID' => $articleID
 				));
 
-        if(isset($_FILES['articleImage']) && !empty($articleImage)){
+        if(isset($_FILES['articleImage']) && !empty($_FILES['articleImage'])) {
 	     $stmt = $db->prepare('UPDATE articles SET articleImage = :articleImage WHERE articleID = :articleID');
              $stmt->execute(array(
                  ':articleImage' => $target,
@@ -164,7 +164,7 @@ if(!$user->is_logged_in()){
        if(!empty($row['articleImage']) && file_exists("../" . $row['articleImage'])) {
          echo '<img class="img-thumbnail" style="max-width: 150px;" src="../'.html($row['articleImage']).'" alt="Image de présentation de '.html($row['articleTitre']).'" />';
        ?>
-       <a href="javascript:delimage('<?php echo html($row['articleID']);?>','<?php echo html($row['articleImage']);?>')">Supprimer l'image</a>
+       <a href="javascript:delimageArt('<?php echo html($row['articleID']);?>','<?php echo html($row['articleImage']);?>')">Supprimer l'image</a>
        <?php
 				}
 				else {

@@ -8,8 +8,8 @@ if(!$user->is_logged_in()){
 }
 
 //Si on supprime l'image du projet...
-		if(isset($_GET['delimage'])) {
-			$delimage = $_GET['delimage'];
+		if(isset($_GET['delimageProj'])) {
+			$delimage = $_GET['delimageProj'];
 			//on supprime le fichier image
 			$stmt = $db->prepare('SELECT projetImage FROM projets WHERE projetID = :projetID');
 			$stmt->execute(array(
@@ -117,7 +117,7 @@ if(!$user->is_logged_in()){
           ':projetID' => $projetID
 				));
 
-        if(isset($_FILES['projetImage']) && !empty($projetImage)){
+        if(isset($_FILES['projetImage']) && !empty($_FILES['projetImage'])){
 	         $stmt = $db->prepare('UPDATE projets SET projetImage = :projetImage WHERE projetID = :projetID');
            $stmt->execute(array(
             ':projetImage' => $target,
@@ -183,7 +183,7 @@ if(!$user->is_logged_in()){
        if(!empty($row['projetImage']) && file_exists("../" . $row['projetImage'])) {
          echo '<img class="img-thumbnail" style="max-width: 150px;" src="../'.html($row['projetImage']).'" alt="Image de présentation de '.html($row['projetTitre']).'" />';
        ?>
-       <a href="javascript:delimage('<?php echo html($row['projetID']);?>','<?php echo html($row['projetImage']);?>')">Supprimer l'image</a>
+       <a href="javascript:delimageProj('<?php echo html($row['projetID']);?>','<?php echo html($row['projetImage']);?>')">Supprimer l'image</a>
        <?php
 				}
 				else {

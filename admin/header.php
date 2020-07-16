@@ -39,7 +39,8 @@
       toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
     });
 </script>
-<!-- Delete javascript alert -->
+
+<!-- Suppression projet -->
 <script language="JavaScript" type="text/javascript">
   function delprojet(id, title) {
     if (confirm("Etes-vous certain de vouloir supprimer le projet " + title + " ?")) {
@@ -47,14 +48,26 @@
     }
   }
 </script>
-<!-- Suppression de l'image du torrent -->
+
+<!-- Suppression de l'image du projet -->
 <script language="JavaScript" type="text/javascript">
-function delimage(id, title) {
+function delimageProj(id, title) {
   if (confirm("Etes-vous certain de vouloir supprimer '" + title + "'")) {
-    window.location.href = 'edit-projet.php?delimage=' + id;
+    window.location.href = 'edit-projet.php?delimageProj=' + id;
   }
 }
 </script>
+
+<!-- Suppression de l'image de l'article -->
+<script language="JavaScript" type="text/javascript">
+function delimageArt(id, title) {
+  if (confirm("Etes-vous certain de vouloir supprimer '" + title + "'")) {
+    window.location.href = 'edit-article.php?delimageArt=' + id;
+  }
+}
+</script>
+
+<!-- Suppression du user -->
 <script language="JavaScript" type="text/javascript">
 function deluser(id, title)
 {
@@ -64,6 +77,7 @@ function deluser(id, title)
   }
 }
 </script>
+
 </head>
 
 <body id="tothetop">
