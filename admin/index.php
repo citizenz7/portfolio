@@ -33,10 +33,10 @@ include_once 'header.php';
 ?>
 
 <!-- Projets -->
-  <div class="container pt-3 pb-5">
+  <div class="container pt-3 pb-3">
     <div class="row">
       <div class="col-sm-12 px-5 text-justify">
-        <div class="pb-5">
+        <div class="pb-2">
           <div class="text-center mb-4 alert alert-primary" role="alert">Bienvenue <b><?php echo $_SESSION['username']; ?></b> !<br>Vous êtes connecté.</div>
 
           <?php include('menu.php');?>
@@ -48,10 +48,10 @@ include_once 'header.php';
               </tr>
             </table>
 
-          <table class="table">
+          <table class="table table-sm table-hover">
             <tr>
               <th>ID</th>
-              <th>Titre</th>
+              <th width="70%">Titre</th>
               <th>Date d'ajout</th>
               <th>Action</th>
               </tr>
@@ -127,7 +127,7 @@ include_once 'header.php';
 <div class="container pb-5">
   <div class="row">
     <div class="col-sm-12 px-5 text-justify">
-      <div class="pb-5">
+      <div class="pb-2">
 
           <table class="table">
             <tr>
@@ -136,10 +136,10 @@ include_once 'header.php';
             </tr>
           </table>
 
-        <table class="table">
+        <table class="table table-sm table-hover">
           <tr>
             <th>ID</th>
-            <th>Titre</th>
+            <th width="70%">Titre</th>
             <th>Date d'ajout</th>
             <th>Action</th>
             </tr>

@@ -3,17 +3,23 @@
 require_once('../includes/config.php');
 
 include_once 'header.php';
+
+//if not logged in redirect to login page
+if($user->is_logged_in()){
+  header('Location: index.php');
+}
 ?>
 
 <div class="container-fluid">
-  <div class="container pt-5 pb-5">
+  <div class="container pt-3 pb-5">
     <div class="row text-center">
       <div class="col-md-4 offset-md-4">
         <div class="card">
           <div class="card-body">
 
-            <div class="pb-3"><h4>Connexion Espace Admin</h4></div>
-
+            <div class="pb-3"><h4>Connexion Espace Admin</h4>
+              <i class="fas fa-sign-in-alt fa-4x"></i>
+            </div>
             <form action="" method="post">
               <div class="form-group py-2 px-2">
                 <label for="usernameInput">Pseudo</label>

@@ -1,11 +1,11 @@
 <?php include_once '../includes/config.php'; ?>
 
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="fr" dir="ltr">
 
 <head>
   <meta charset="utf-8">
-  <title>Portfolio d'Olivier Prieur</title>
+  <title><?php echo SITENAMELONG; ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
@@ -26,6 +26,9 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="../img/icons/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
+  <meta name="author" content="<?php echo SITEAUTOR; ?>">
+  <meta name="description" content="<?php echo SITEDESCRIPTION; ?>">
+  <meta name="keywords" content="<?php echo SITEKEYWORDS; ?>">
   <link rel="stylesheet" href="../css/style.css">
   <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
   <script>

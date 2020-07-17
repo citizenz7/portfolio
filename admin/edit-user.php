@@ -12,8 +12,6 @@ if(!$user->is_logged_in()){
     <div class="col-sm-12 px-5 text-justify">
       <div class="pb-5">
 
-      <?php echo include('menu.php'); ?>
-
 	<?php
 
 	//if form has been submitted process it
@@ -27,14 +25,14 @@ if(!$user->is_logged_in()){
 			$error[] = 'Veuillez entrer un nom d\'utilisateur.';
 		}
 
-		if( strlen($password) > 0){
+		if(strlen($password) > 0){
 
 			if($password ==''){
-				$error[] = 'Veuuillez entrer un mot de passe.';
+				$error[] = 'Veuillez entrer un mot de passe.';
 			}
 
 			if($passwordConfirm ==''){
-				$error[] = 'Veuullez confirmer le mot de passe.';
+				$error[] = 'Veullez confirmer le mot de passe.';
 			}
 
 			if($password != $passwordConfirm){
@@ -44,17 +42,13 @@ if(!$user->is_logged_in()){
 		}
 
 		if($email ==''){
-			$error[] = 'Veuillez netrer une adresse e-mail.';
+			$error[] = 'Veuillez entrer une adresse e-mail.';
 		}
 
 		if(!isset($error)){
-
 			try {
-
 				if(isset($password)){
-
 					$hashedpassword = $user->password_hash($password, PASSWORD_BCRYPT);
-
 					//update into database
 					$stmt = $db->prepare('UPDATE membres SET username = :username, password = :password, email = :email WHERE memberID = :memberID') ;
 					$stmt->execute(array(
@@ -63,10 +57,9 @@ if(!$user->is_logged_in()){
 						':email' => $email,
 						':memberID' => $memberID
 					));
+				}
 
-
-				} else {
-
+        else {
 					//update database
 					$stmt = $db->prepare('UPDATE membres SET username = :username, email = :email WHERE memberID = :memberID') ;
 					$stmt->execute(array(
@@ -74,14 +67,14 @@ if(!$user->is_logged_in()){
 						':email' => $email,
 						':memberID' => $memberID
 					));
-
 				}
 
 				//redirect to index page
 				header('Location: users.php?action=updated');
 				exit;
+			}
 
-			} catch(PDOException $e) {
+      catch(PDOException $e) {
 			    echo $e->getMessage();
 			}
 
@@ -89,19 +82,14 @@ if(!$user->is_logged_in()){
 
 	}
 
-	?>
-
-
-	<?php
 	//check for any errors
 	if(isset($error)){
 		foreach($error as $error){
-			echo $error.'<br />';
+			echo $error.'<br>';
 		}
 	}
 
 		try {
-
 			$stmt = $db->prepare('SELECT memberID, username, email FROM membres WHERE memberID = :memberID') ;
 			$stmt->execute(array(':memberID' => $_GET['id']));
 			$row = $stmt->fetch();
@@ -110,7 +98,8 @@ if(!$user->is_logged_in()){
 		    echo $e->getMessage();
 		}
 
-	?>
+  include_once 'menu.php';
+  ?>
 
   <h2 class="pb-5">Editer l'utilisateur : <?php echo html($row['username']); ?></h2>
 
@@ -144,4 +133,4 @@ if(!$user->is_logged_in()){
 </div>
 
 
-  <?php include_once 'footer.php'; ?>
+<?php include_once 'footer.php'; ?>

@@ -61,7 +61,7 @@ while($row = $stmt->fetch()){
 if(isset($_GET['deluser'])){
 
     //if user id is 1 ignore
-    if($_GET['deluser'] !='1'){
+    if($_GET['deluser'] !=1){
 
         $stmt = $db->prepare('DELETE FROM membres WHERE memberID = :memberID') ;
         $stmt->execute(array(':memberID' => $_GET['deluser']));
