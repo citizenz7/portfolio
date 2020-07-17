@@ -11,18 +11,18 @@ include_once 'sql.php';
 //-----------------------------------------------------
 //Paramètres du site
 //-----------------------------------------------------
-define('SITENAME','xxxxxxxxxxxxxxxxxxx');
-define('SITENAMELONG','xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-define('SITESLOGAN','xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-define('SITEDESCRIPTION','xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-define('SITEKEYWORDS','Nevers,'.SITENAME.'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+define('SITENAME','Port folio');
+define('SITENAMELONG','Portfolio d\'Olivier Prieur');
+define('SITESLOGAN','');
+define('SITEDESCRIPTION','Portfolio d\'Olivier Prieur');
+define('SITEKEYWORDS','Nevers, '.SITENAME.', ACS, HTML, PHP, MySQL, Javascript, Bootstrap, PC, C, C++');
 //define('SITEURL','http://www.'.SITENAMELONG);
 //define('SITEURLHTTPS','https://www.'.SITENAMELONG);
-define('SITEOWNORNAME','xxxxxxxxxxxxxxxxxxxxxxx');
-define('SITEAUTOR','xxxxxxxxxxxxxxxx');
-define('SITEOWNORADDRESS','xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-define('SITEVERSION','xxxxx');
-define('SITEDATE','xxxxxxxxxxxxxxxxx');
+define('SITEOWNORNAME','Olivier Prieur');
+define('SITEAUTOR','citizenz7');
+define('SITEOWNORADDRESS','');
+define('SITEVERSION','1.0.2');
+define('SITEDATE','17/07/20');
 define('COPYDATE','2020');
 define('CHARSET','UTF-8');
 
@@ -42,10 +42,10 @@ date_default_timezone_set('Europe/Paris');
 //-----------------------------------------------------
 //MAIL
 //-----------------------------------------------------
-define('SITEMAIL','xxxxxxxxxxxxxxxxxxxxxxxxxxx');
-define('SITEMAILPASSWORD','xxxxxxxxxxxxxxxxxxxxxxxx');
-define('SMTPHOST','xxxxxxxxxxxxxxxxx');
-define('SMTPPORT','xxxxxxxxxx');
+define('SITEMAIL','contact@olivierprieur.fr');
+define('SITEMAILPASSWORD','7T=u82VPzp!f8Ns2mS');
+define('SMTPHOST','mail.s2ii.xyz');
+define('SMTPPORT','587');
 
 
 //-----------------------------------------------------

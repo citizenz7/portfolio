@@ -11,6 +11,13 @@
         <a class="nav-link" href="users.php"><i class="fas fa-users"></i> Utilisateurs</a>
       </li>
     </ul>
-      <a class="nav-link text-white" href="logout.php"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+	<?php
+	if(!$user->is_logged_in()){
+  		echo '<a class="nav-link text-white" href="login.php"><i class="fas fa-sign-in-alt"></i> Connexion</a>';
+	}
+	else {
+	?>
+        	<a class="nav-link text-white" href="logout.php"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+	<?php } ?> 
   </div>
 </nav>

@@ -92,7 +92,7 @@ if (isset($_POST['submit'])) {
     }
 ?>
 
-<div class="container pt-3 pb-5">
+<div class="container pt-3 pb-3">
   <div class="row">
     <div class="col-sm-12 px-3 py-3 text-justify border">
 
@@ -109,7 +109,8 @@ if (isset($_POST['submit'])) {
 					}
       ?>
 
-      <h4 class="py-3 px-3">Vous avez oublié votre mot de passe ?</h4>
+	<img src="../img/pass-oubli.png" alt="Oubli mot de passe" class="img-fluid">
+      <h4 class="py-3">Vous avez oublié votre mot de passe ?</h4>
 
 	   			<div class="small alert alert-warning text-justify rounded py-3 px-3">
         				Vous allez faire une demande de nouveau mot de passe.<br>
@@ -118,7 +119,7 @@ if (isset($_POST['submit'])) {
                 Veuillez donc entrer ci-dessous l'adresse e-mail associée à votre compte :
 	   			</div>
 
-				<div class="container bg-light py-2 px-2 small">
+				<div class="container bg-light py-2 px-3 small">
 	   				<form class="form-group" action='' method='post'>
 	        					<label for="email">Entrez votre adresse e-mail :
 		    						<input class="form-control" type="text" style="width:450px;" name="email" required>
