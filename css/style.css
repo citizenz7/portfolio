@@ -368,7 +368,7 @@ h1 {
 .pagination a:hover, .pagination a:active {
     background:#efefef;
 }
-.pagination span.current {
+.pagination span.disabled {
     background-color: #687282;
     border: 1px solid #D5D5D5;
     color: #ffffff;
@@ -379,7 +379,7 @@ h1 {
     text-decoration: none;
     margin:2px;
 }
-.pagination span.disabled {
+.pagination span.current {
     border: 1px solid #EEEEEE;
     color: #DDDDDD;
     margin: 2px;
