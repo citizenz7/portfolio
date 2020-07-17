@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col text-center text-white">
       <h2 id="contact">Réseaux sociaux</h2>
-      <div>
+
         <!--<a class="text-decoration-none" href="mailto:oprieur@protonmail.com">
           <img src="img/email.png" class="img-fluid img-social" alt="E-mail">
         </a>-->
@@ -15,7 +15,7 @@
         <a class="text-decoration-none" href="https://www.linkedin.com/in/olivier-prieur">
           <img src="img/linkedin.png" class="img-fluid img-social" alt="LinkedIn">
         </a>
-      </div>
+
 
       <div class="pt-5">
         <a href="#tothetop" class="text-white" title="Haut de page"><i class="fas fa-chevron-up fa-3x text-white"></i><br>Top</a>

@@ -35,7 +35,7 @@ $stmt->execute(array(
 
 <div class="container pt-3 pb-5">
   <div class="row">
-    <div class="col-sm-12 px-3 py-3 text-justify">
+    <div class="col-sm-12 px-3 py-3">
 
           <h2 class="pt-3 pb-4">Archives mois de <?php echo $monthName; ?> <?php echo $yearNumber; ?></h2>
 
@@ -43,27 +43,16 @@ $stmt->execute(array(
 					while($row = $stmt->fetch()){
 
 						echo '<div class="border my-3">';
-						echo '<h3 class="px-3 py-3"><a href="projet.php?id='.$row['projetID'].'">'.$row['projetTitre'].'</a></h3>';
-						echo '<p class="muted smalltext px-3">publié le '.date_fr('d-m-Y H:i:s', strtotime($row['projetDate'])).' dans ' . $row['projetCat'];
+							  echo '<h3 class="px-3 py-3"><a href="projet.php?id='.$row['projetID'].'">'.$row['projetTitre'].'</a></h3>';
+							  echo '<p class="muted smalltext px-3">publié le '.date_fr('d-m-Y H:i:s', strtotime($row['projetDate'])).' dans <em>' . $row['projetCat'] . '</em></p>';
+							  echo '<div class="px-3 text-justify">';
+									  echo nl2br($row['projetTexte']);
+							  echo '</div>';
+							  echo '<p class="px-3"><a href="projet.php?id=' . $row['projetID'] . '">Lire la suite</a></p>';
+					  echo '</div>';
+				}
 
-						// $stmt2 = $db->prepare('SELECT catTitle, catSlug	FROM blog_cats, blog_projet_cats WHERE blog_cats.catID = blog_projet_cats.catID AND blog_projet_cats.projetID = :projetID');
-						// $stmt2->execute(array(':projetID' => $row['projetID']));
-    				//
-						// $catRow = $stmt2->fetchAll(PDO::FETCH_ASSOC);
-
-						// $links = array();
-						// foreach ($catRow as $cat) {
-						// 	 $links[] = "<a href='c-".$cat['catSlug']."'>".$cat['catTitle']."</a>";
-						// }
-						// echo implode(", ", $links);
-
-						echo '</p>';
-						echo '<p class="px-3 text-justify">' . nl2br($row['projetTexte']) . '</p>';
-						echo '<p class="px-3"><a href="projet.php?id=' . $row['projetID'] . '">Lire la suite</a></p>';
-						echo '</div>';
-					}
-
-					echo '<div class="text-center">' . $pages->page_links("archives.php?month=$month&year=$year&") . '</div>';
+				echo '<div class="text-center">' . $pages->page_links("archives.php?month=$month&year=$year&") . '</div>';
 
 	}
 

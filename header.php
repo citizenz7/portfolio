@@ -54,8 +54,10 @@
         < Articles /></a>
       <a href="index.php#apropos">
         < A propos /></a>
-      <a href="index.php#contact">
+      <a href="contact.php">
         < Contact /></a>
+      <a href="index.php#archives">
+        < Archives /></a>
     </div>
   </div>
 

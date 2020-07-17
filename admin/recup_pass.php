@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
 		            $subject = 'Votre nouveau mot de passe sur '.SITENAMELONG;
 
 		            $body = "Bonjour,<br>\n";
-		            $body .= "Vous avez demandé un nouveau mot de passe pour votre compte sur " . SITENAMELONG . ".<br>\n";
+		            $body .= "Vous avez demandé un nouveau mot de passe pour votre compte sur le " . SITENAMELONG . ".<br>\n";
 		            $body .= "Votre nouveau mot de passe est : " . $new_password . "<br>\n\n";
 		            $body .= "Cordialement,<br>\n\n";
 		            $body .= "L'equipe de " . SITENAMELONG;
@@ -55,11 +55,11 @@ if (isset($_POST['submit'])) {
                 $mail = new PHPMailer;
                 $mail->CharSet = 'UTF-8';
                 $mail->isSMTP();                                        // Active l'envoi via SMTP
-                $mail->Host = 'xxxxxxxxxxxxx';                          // À remplacer par le nom de votre serveur SMTP
+                $mail->Host = SMTPHOST;                                 // A remplacer par le nom de votre serveur SMTP
                 $mail->SMTPAuth = true;                                 // Active l'authentification par SMTP
-                $mail->Username = 'xxxxxxxxxxxxxxxxxxxxxxxx';           // Nom d'utilisateur SMTP (votre adresse email complète)
-                $mail->Password = 'xxxxxxxxxxxxxxxxxx';                 // Mot de passe de l'adresse email indiquée précédemment
-                $mail->Port = 587;                                      // Port SMTP
+                $mail->Username = SITEMAIL;                             // Nom d'utilisateur SMTP (votre adresse email complète)
+                $mail->Password = SITEMAILPASSWORD;                     // Mot de passe de l'adresse email indiquée précédemment
+                $mail->Port = SMTPPORT;                                 // Port SMTP
                 $mail->SMTPSecure = 'tls';                              // Utiliser SSL / TLS
                 $mail->isHTML(true);                                    // Format de l'email en HTML
                 //$mail->SMTPDebug = 2;                                 // Debug perposes
@@ -101,7 +101,11 @@ if (isset($_POST['submit'])) {
 
       // Affichage : message envoyé !
       if(isset($_GET['action'])){
-						echo '<div class="alert alert-success mt-3 alert-dismissible fade show" role="alert">Un mail contenant votre nouveau mot de passe vous a été envoyé.<br/>Veuillez le consulter avant de vous reconnecter sur ' . SITENAMELONG . ' ! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+						echo '<div class="alert alert-success mt-3 alert-dismissible fade show" role="alert">
+                Un mail contenant votre nouveau mot de passe vous a été envoyé.<br/>
+                Veuillez le consulter avant de vous reconnecter sur le ' . SITENAMELONG . ' !
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>';
 					}
       ?>
 

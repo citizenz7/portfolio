@@ -183,14 +183,14 @@ include_once 'header.php';
             $stmt = $db->prepare('DELETE FROM articles WHERE articleID = :articleID') ;
             $stmt->execute(array(':articleID' => $_GET['delarticle']));
 
-            header('Location: index.php?actionP=deleted');
+            header('Location: index.php?actionA=deleted');
             exit;
           }
 
-          if(isset($_GET['actionP'])){
+          if(isset($_GET['actionA'])){
             echo '
             <div class="alert alert-info alert-dismissible fade show text-center font-weight-bold mt-4" role="alert">
-              Projet '.$_GET['actionP'].' !
+              Article '.$_GET['actionA'].' !
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>

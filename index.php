@@ -86,6 +86,7 @@ include_once 'header.php';
     </div><!-- //container -->
   </div><!-- //container-fluid -->
 
+
   <div id="articles" class="container-fluid bg-dark">
     <div class="container">
       <div class="row">
@@ -111,7 +112,6 @@ include_once 'header.php';
             <div class="card mb-4">
               <div class="card-body text-justify">
                 <h4 class="card-title"><a href="article.php?id=<?php echo $row['articleID']; ?>"><?php echo $row['articleTitre']; ?></a></h4>
-
                 <p class="smalltext">
                   <img class="img-article" src="<?php echo $row['articleImage']; ?>" alt="<?php echo $row['articleTitre']; ?>">
                   <?php
@@ -123,7 +123,6 @@ include_once 'header.php';
     	                 $chaine = substr($chaine, 0, $espace).'<p class="text-right pt-4"><i class="fas fa-angle-double-right"></i> <a href="article.php?id=' . $row['articleID'] . '">Lire la suite</a></p>';
                     }
                     echo nl2br($chaine);
-
                 ?>
                 </p>
               </div>
@@ -153,6 +152,7 @@ include_once 'header.php';
         </div>
       </div>
     </div>
+
 
   <div id="apropos2" class="container-fluid">
     <div id="apropos" class="container">
@@ -203,8 +203,9 @@ include_once 'header.php';
     </div>
   </div>
 
-  <div class="container-fluid my-4">
-    <div id="contact" class="container">
+  <div class="container-fluid py-4 bg-light">
+    <div id="archives" class="container">
+
       <div class="row py-3 px-3 justify-content-center">
         <div class="col-sm-5 py-4 mr-2 border">
           <h3 class="text-center">Me contacter</h3>

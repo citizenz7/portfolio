@@ -166,7 +166,7 @@ label {
 
 .overlay-content {
   position: relative;
-  top: 8%;
+  top: 5%;
   width: 100%;
   text-align: center;
   margin-top: 30px;
@@ -175,7 +175,7 @@ label {
 .overlay a {
   padding: 8px;
   text-decoration: none;
-  font-size: 36px;
+  font-size: 28px;
   color: #818181;
   display: block;
   transition: 0.3s;

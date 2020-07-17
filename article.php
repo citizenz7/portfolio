@@ -27,4 +27,9 @@ if($row['articleID'] == ''){
     </div>
   </div>
 
+  <?php
+  // on met à jour le nb de vues de l'article
+  $stmt2 = $db->query('UPDATE articles SET articleVues = articleVues+1 WHERE articleID = '.$row['articleID']);
+  ?>
+
 <?php include_once 'footer.php'; ?>

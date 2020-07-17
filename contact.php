@@ -1,4 +1,6 @@
 <?php
+include_once 'header.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -11,32 +13,46 @@ $response = '';
 
 if (isset($_POST['submit'])) {
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-                $response = "Votre e-mail n'est pas valide";
+                $error[] = "Votre e-mail n'est pas valide";
         }
-        else if (empty($_POST['email']) || empty($_POST['subject']) || empty($_POST['name']) || empty($_POST['msg'])) {
-                $response = "Veuillez remplir tous les champs";
+
+        if (empty($_POST['email']) || empty($_POST['subject']) || empty($_POST['name']) || empty($_POST['msg'])) {
+                $error[] = "Veuillez remplir tous les champs";
         }
-        else {
-                $name = htmlspecialchars($_POST["name"]);
-                $subject = htmlspecialchars(strip_tags($_POST["subject"]));
-                $message = htmlspecialchars(strip_tags($_POST["msg"]));
-                $from = htmlspecialchars($_POST["email"]);
+
+        //reCaptcha
+				// $secret = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+				// $response = $_POST['g-recaptcha-response'];
+				// $remoteip = $_SERVER['REMOTE_ADDR'];
+				// $api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
+        // 		. $secret
+        // 		. "&response=" . $response
+        // 		. "&remoteip=" . $remoteip ;
+  			// $decode = json_decode(file_get_contents($api_url), true);
+
+        // if ($decode['success'] == true) {
+
+           if(!isset($error)) {
+                $name = $_POST["name"];
+                $subject = $_POST["subject"];
+                $message = $_POST["msg"];
+                $from = $_POST["email"];
 
                 $mail = new PHPMailer;
                 $mail->CharSet = 'UTF-8';
                 $mail->isSMTP();                                        // Active l'envoi via SMTP
-                $mail->Host = 'mail.s2ii.xyz';                          // À remplacer par le nom de votre serveur SMTP
+                $mail->Host = SMTPHOST;                                 // A remplacer par le nom de votre serveur SMTP
                 $mail->SMTPAuth = true;                                 // Active l'authentification par SMTP
-                $mail->Username = 'contact@olivierprieur.fr';           // Nom d'utilisateur SMTP (votre adresse email complète)
-                $mail->Password = '7T=u82VPzp!f8Ns2mS';                 // Mot de passe de l'adresse email indiquée précédemment
-                $mail->Port = 587;                                      // Port SMTP
+                $mail->Username = SITEMAIL;                             // Nom d'utilisateur SMTP (votre adresse email complète)
+                $mail->Password = SITEMAILPASSWORD;                     // Mot de passe de l'adresse email indiquée précédemment
+                $mail->Port = SMTPPORT;                                 // Port SMTP
                 $mail->SMTPSecure = 'tls';                              // Utiliser SSL / TLS
                 $mail->isHTML(true);                                    // Format de l'email en HTML
                 //$mail->SMTPDebug = 2;                                 // Debug perposes
                 $mail->From = $from;                                    // L'adresse mail de l'emetteur du mail
                 $mail->FromName = $name;                                // Le nom de l'emetteur qui s'affichera dans le mail
-                $mail->addAddress('contact@olivierprieur.fr');          // Destinataire du mail
-                $mail->Subject = 'Message depuis portfolio.olivierprieur.fr : '.$subject;  // Le sujet de l'email
+                $mail->addAddress(SITEMAIL);          // Destinataire du mail
+                $mail->Subject = 'Message depuis le ' . SITEDESCRIPTION . ' : '.$subject;  // Le sujet de l'email
 
                 $message = "Nom: ".$name."<br><br>".$message;
                 $message = "De: ".$from."<br>".$message;
@@ -53,12 +69,11 @@ if (isset($_POST['submit'])) {
                 else {
                         header("Location: contact.php?action=ok");
                 }
-
                 // PHPMailer
-        }
-    }
 
-    include_once 'header.php';
+            }// if no $error
+        //}// captcha
+      }// if post submit
 ?>
 
 <div class="container pt-3 pb-5">
@@ -69,12 +84,17 @@ if (isset($_POST['submit'])) {
           if(isset($_GET['action']) && $_GET['action'] == "ok"){
               echo '<div class="alert-success" style="font-weight:bold; font-size:19px; text-align:center;">Votre message a bien été envoyé.<br>Merci.</div><br>';
           }
+
           if(isset($_GET['action']) && $_GET['action'] == "notok"){
               echo '<div class="alert-danger">';
               echo '<span class="fa fa-warning"></span>&nbsp;Le message ne peut être envoyé :( <br>';
               echo 'Erreur: ' . $mail->ErrorInfo;
               echo '</div>';
           }
+
+          // if(isset($_GET['wrong_code'])) {
+					//     echo '<div class="alert alert-danger mt-3 alert-dismissible fade show">Mauvais code anti-spam !<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+				  // }
       ?>
 
         <div class="card-body">
@@ -98,6 +118,11 @@ if (isset($_POST['submit'])) {
                     <label for="msg">Message</label>
                     <textarea class="form-control" id="msg" name="msg" rows="7"></textarea>
                   </div>
+                  <!-- <div class="form-group">
+                    <label for="verif_box">Anti-spam : <br>
+           							<div class="g-recaptcha" data-sitekey="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"></div>
+        						</label>
+                  </div> -->
                   <div class="form-group text-right pt-4">
                     <button type="submit" name="submit" class="btn btn-primary">Envoyer le message</button>
                     <button type="reset" class="btn btn-secondary">Annuler</button>

@@ -1,8 +1,8 @@
 <?php
 define('DBHOST','localhost');
-define('DBUSER','xxxxxxxxxxxxxxxxxxxxxxx');
-define('DBPASS','xxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-define('DBNAME','portfolio');
+define('DBUSER','xxxxxxxxx');
+define('DBPASS','xxxxxxxxx');
+define('DBNAME','xxxxxxxxx');
 
 try {
         $db = new PDO("mysql:host=".DBHOST.";port=3306;dbname=".DBNAME, DBUSER, DBPASS);
