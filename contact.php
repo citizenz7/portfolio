@@ -98,6 +98,7 @@ if (isset($_POST['submit'])) {
       ?>
 
         <div class="card-body">
+           <img class="img-fluid pb-3" src="img/letters-bg.jpg" alt="letters BG">
            <div class="h4 mt-0 title">Me contacter</div>
            Vous pouvez me contacter par mail pour tout sujet concernant mes projets, mes articles, mon CV, ... Merci d'utiliser le formulaire ci-dessous. J'essaierai de répondre le plus rapidement possible à votre message.
 
