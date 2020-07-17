@@ -82,14 +82,13 @@ if(!$user->is_logged_in()){
 
                 $projetID = $db->lastInsertId();
 
-                if(isset($_FILES['projetImage'])){
-
-	            	$stmt = $db->prepare('UPDATE projets SET projetImage = :projetImage WHERE projetID = :projetID') ;
-		            $stmt->execute(array(
-		                ':projetID' => $projetID,
-		                ':projetImage' => $target
-		            ));
-	        	}
+                if(isset($_FILES['projetImage']['name']) && !empty($_FILES['projetImage']['name'])) {
+	            	    $stmt = $db->prepare('UPDATE projets SET projetImage = :projetImage WHERE projetID = :projetID') ;
+		                $stmt->execute(array(
+		                     ':projetID' => $projetID,
+		                     ':projetImage' => $target
+		                ));
+	        	    }
 
                 //redirect to index page
                 header('Location: index.php?actionP=added');

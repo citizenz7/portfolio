@@ -72,14 +72,13 @@ if(!$user->is_logged_in()){
 
                 $articleID = $db->lastInsertId();
 
-                if(isset($_FILES['articleImage'])){
-
-	            	$stmt = $db->prepare('UPDATE articles SET articleImage = :articleImage WHERE articleID = :articleID') ;
-		            $stmt->execute(array(
-		                ':articleID' => $articleID,
-		                ':articleImage' => $target
-		            ));
-	        	}
+                if(isset($_FILES['articleImage']['name']) && !empty($_FILES['articleImage']['name'])) {
+	            	    $stmt = $db->prepare('UPDATE articles SET articleImage = :articleImage WHERE articleID = :articleID') ;
+		                $stmt->execute(array(
+		                    ':articleID' => $articleID,
+		                    ':articleImage' => $target
+		                ));
+	              }
 
                 //redirect to index page
                 header('Location: index.php?action=added');
