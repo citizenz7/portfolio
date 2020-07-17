@@ -87,10 +87,11 @@ include_once 'header.php';
   </div><!-- //container-fluid -->
 
 
+
   <div id="articles" class="container-fluid bg-dark">
-    <div class="container">
+    <div class="container mt-4">
       <div class="row">
-        <div class="col text-center pt-3 pb-5">
+        <div class="col text-center pt-4 pb-4">
           <h2 class="text-white">Articles</h2>
 
           <?php
@@ -141,17 +142,18 @@ include_once 'header.php';
         }
         ?>
 
-          <!-- Pagination -->
-          <div class="row justify-content-center">
-            <div class="col-4">
-              <?php echo $pages->page_links(); ?>
-            </div>
+        <div class="row justify-content-center">
+          <div class="col-4">
+            <?php echo $pages->page_links(); ?>
           </div>
-        </div><!-- END GRID -->
+        </div>
+        
+        </div>
 
         </div>
       </div>
     </div>
+  </div>
 
 
   <div id="apropos2" class="container-fluid">
