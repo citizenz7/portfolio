@@ -52,8 +52,14 @@ $stmt->execute(array(
 					  echo '</div>';
 				}
 
-				echo '<div class="text-center">' . $pages->page_links("archives.php?month=$month&year=$year&") . '</div>';
-
+				//echo '<div class="text-center">' . $pages->page_links("archives.php?month=$month&year=$year&") . '</div>';
+				?>
+				<div class="row justify-content-center">
+          <div class="col-4">
+            <?php echo $pages->page_links("archives.php?month=$month&year=$year&"); ?>
+          </div>
+        </div>
+<?php
 	}
 
   catch(PDOException $e) {
