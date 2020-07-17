@@ -50,21 +50,22 @@ if(!$user->is_logged_in()){
 				if(isset($password)){
 					$hashedpassword = $user->password_hash($password, PASSWORD_BCRYPT);
 					//update into database
-					$stmt = $db->prepare('UPDATE membres SET username = :username, password = :password, email = :email WHERE memberID = :memberID') ;
+					$stmt = $db->prepare('UPDATE membres SET username = :username, password = :password, email = :email, apropos = :apropos WHERE memberID = :memberID') ;
 					$stmt->execute(array(
 						':username' => $username,
 						':password' => $hashedpassword,
 						':email' => $email,
+            ':apropos' => $apropos,
 						':memberID' => $memberID
 					));
 				}
-
         else {
 					//update database
-					$stmt = $db->prepare('UPDATE membres SET username = :username, email = :email WHERE memberID = :memberID') ;
+					$stmt = $db->prepare('UPDATE membres SET username = :username, email = :email, apropos = :apropos WHERE memberID = :memberID') ;
 					$stmt->execute(array(
 						':username' => $username,
 						':email' => $email,
+            ':apropos' => $apropos,
 						':memberID' => $memberID
 					));
 				}
@@ -90,7 +91,7 @@ if(!$user->is_logged_in()){
 	}
 
 		try {
-			$stmt = $db->prepare('SELECT memberID, username, email FROM membres WHERE memberID = :memberID') ;
+			$stmt = $db->prepare('SELECT memberID, username, email, apropos FROM membres WHERE memberID = :memberID') ;
 			$stmt->execute(array(':memberID' => $_GET['id']));
 			$row = $stmt->fetch();
 
@@ -111,7 +112,7 @@ if(!$user->is_logged_in()){
 		   <input type='text' name='username' class="form-control" value='<?php echo html($row['username']) ;?>'>
     </div>
     <div class="form-group">
-		   <label for="password">Mot de passe (seulement en cas de chnagement)</label>
+		   <label for="password">Mot de passe (seulement en cas de changement)</label>
 		   <input type='password' name='password' class="form-control" value=''>
     </div>
     <div class="form-group">
@@ -121,6 +122,10 @@ if(!$user->is_logged_in()){
     <div class="form-group">
 		   <label for="email">Email</label>
 		   <input type='text' name='email' class="form-control" value='<?php echo html($row['email']) ;?>'>
+    </div>
+    <div class="form-group">
+      <label for="apropos">A propos</label>
+      <textarea name="apropos" class="form-control" id="apropos" rows="10"><?php echo html($row['apropos']); ?></textarea>
     </div>
 
     <div class="text-right pt-5"><button type='submit' class="btn btn-primary" name='submit'>Editer cet utilisateur</button></div>

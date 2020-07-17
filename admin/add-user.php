@@ -52,11 +52,12 @@ if(!$user->is_logged_in()){
 			try {
 
 				//insert into database
-				$stmt = $db->prepare('INSERT INTO membres (username,password,email) VALUES (:username, :password, :email)') ;
+				$stmt = $db->prepare('INSERT INTO membres (username,password,email,apropos) VALUES (:username, :password, :email, apropos)') ;
 				$stmt->execute(array(
 					':username' => $username,
 					':password' => $hashedpassword,
-					':email' => $email
+					':email' => $email,
+          ':apropos' => $apropos
 				));
 
 				//redirect to index page
@@ -105,6 +106,11 @@ if(!$user->is_logged_in()){
     <div class="form-group">
 		  <label for="email">E-mail</label>
 		  <input type='text' name='email' class="form-control" value='<?php if(isset($error)){ echo $_POST['email'];}?>'>
+    </div>
+
+    <div class="form-group">
+      <label for="apropos">Apropos</label>
+      <textarea name="apropos" class="form-control" id="apropos" rows="10"><?php if(isset($error)){ echo $_POST['apropos']; } ?></textarea>
     </div>
 
     <div class="text-right"><button type='submit' class="btn btn-primary" name='submit'>Ajouter un utilisateur</button></div>

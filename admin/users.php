@@ -21,24 +21,33 @@ if(!$user->is_logged_in()){
         </tr>
       </table>
 
-      <table class="table">
+      <table class="table table-sm">
         <tr>
           <th>ID</th>
           <th>Pseudo</th>
           <th>E-mail</th>
+          <th width="55%">A propos</th>
           <th>Action</th>
           </tr>
 
 <?php
-$stmt = $db->query('SELECT memberID, username, email FROM membres ORDER BY username');
+$stmt = $db->query('SELECT memberID, username, email, apropos FROM membres ORDER BY username');
 while($row = $stmt->fetch()){
 ?>
 
 <?php
-    echo '<tr>';
+$max = 250;
+$chaine = $row['apropos'];
+if (strlen($chaine) >= $max) {
+   $chaine = substr($chaine, 0, $max);
+   $espace = strrpos($chaine, " ");
+   $chaine = substr($chaine, 0, $espace) . ' ...';
+}
+    echo '<tr class="smalltext">';
     echo '<td>'.$row['memberID'].'</td>';
     echo '<td>'.$row['username'].'</td>';
     echo '<td>'.$row['email'].'</td>';
+    echo '<td>'.nl2br($chaine).'</td>';
     ?>
 
     <td>

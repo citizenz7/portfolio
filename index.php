@@ -147,7 +147,7 @@ include_once 'header.php';
             <?php echo $pages->page_links(); ?>
           </div>
         </div>
-        
+
         </div>
 
         </div>
@@ -163,16 +163,15 @@ include_once 'header.php';
           <div class="text-center text-white">
             <h2>A propos...</h2>
           </div>
-          <p class="text-white apropostext px-5 py-5 text-justify rounded">
-            <img src="img/citizenz2.png" class="img-fluid img-thumbnail rounded-circle float-left photo" alt="Olivier Prieur">
-            Linuxien depuis le début des années 2000, impliqué dans plusieurs projets associatifs de promotion du Libre,
-            de médiation numérique (animation, formation à destination du grand public), et ayant eu des expériences professionnelles requérant
-            du développement back-end et des interventions sur les réseaux de système d’informations d’organisations associatives,
-            j’ai décidé d’opérer une reconvention professionnelle et de faire de la programmation informatique mon métier en mettant
-            mes compétences précédemment acquises à profit.<br>
-            J’ai intégré l’Access Code School de Nevers où je me forme au développement web.<br>
-            Dans ce cadre je suis à la recherche d’un stage en entreprise du 30 novembre 2020 au 8 janvier 2021.
-          </p>
+          <div class="text-white apropostext px-5 py-5 text-justify rounded">
+            <?php
+            $stmt = $db->prepare('SELECT username, apropos FROM membres WHERE memberID = :memberID');
+            $stmt->execute(array(':memberID' => 1));
+            $row = $stmt->fetch();
+            ?>
+            <img src="img/citizenz2.png" class="img-fluid img-thumbnail rounded-circle float-left photo" alt="<?php echo $row['username']; ?>">
+            <?php echo $row['apropos']; ?>
+          </div>
           <div class="text-center text-white pt-5">
             <h4>Mes projets et sites web</h4>
           </div>
