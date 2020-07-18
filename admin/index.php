@@ -67,20 +67,20 @@ include_once 'header.php';
 
           <?php include('menu.php');?>
 
-            <table class="table">
+            <table class="table table-responsive-sm">
               <tr>
                 <td><span class="lead font-weight-bold">Projets</span></td>
                 <td class="text-right"><a href="add-projet.php" class="mx-auto"><button type="button" class="btn btn-success btn-sm">Ajouter un projet</button></a></td>
               </tr>
             </table>
 
-	  <table class="table table-sm table-hover">
+	  <table class="table table-sm table-hover table-responsive-sm">
 	    <thead class="thead-light">
             <tr>
               <th>ID</th>
               <th width="70%">Titre</th>
               <th>Date d'ajout</th>
-              <th>Action</th>
+              <th class="text-center">Action</th>
 	    </tr>
 	    </thead>
 	    <tbody>
@@ -103,9 +103,9 @@ include_once 'header.php';
                   echo '<td>'.$row['projetTitre'].'</td>';
                   echo '<td class="small">'.date_fr('d-m-Y à H:i:s', strtotime(($row['projetDate']))).'</td>';
                   ?>
-                  <td>
-                    <a class="btn btn-primary btn-sm" role="button" aria-pressed="true" title="Editer le projets" href="edit-projet.php?id=<?php echo $row['projetID'];?>">Editer</a> |
-                    <a class="btn btn-danger btn-sm" role="button" aria-pressed="true" title="Supprimer le projet" href="javascript:delprojet('<?php echo $row['projetID'];?>','<?php echo $row['projetTitre'];?>')">Suppr.</a>
+                  <td class="text-center">
+                    <a class="btn btn-primary btn-sm tinytext" role="button" aria-pressed="true" title="Editer le projets" href="edit-projet.php?id=<?php echo $row['projetID'];?>">Editer</a> |
+                    <a class="btn btn-danger btn-sm tinytext" role="button" aria-pressed="true" title="Supprimer le projet" href="javascript:delprojet('<?php echo $row['projetID'];?>','<?php echo $row['projetTitre'];?>')">Suppr.</a>
                   </td>
                   <?php
                   echo '</tr>';
@@ -159,20 +159,20 @@ include_once 'header.php';
     <div class="col-sm-12 px-5 text-justify">
       <div class="pb-2">
 
-          <table class="table">
+          <table class="table table-responsive-sm">
             <tr>
               <td><span class="lead font-weight-bold">Articles</span></td>
               <td class="text-right"><a href="add-article.php" class="mx-auto"><button type="button" class="btn btn-success btn-sm">Ajouter un article</button></a></td>
             </tr>
           </table>
 
-	<table class="table table-sm table-hover">
+	<table class="table table-sm table-hover table-responsive-sm">
 	  <thead class="thead-light">
           <tr>
             <th>ID</th>
             <th width="70%">Titre</th>
             <th>Date d'ajout</th>
-            <th>Action</th>
+            <th class="text-center">Action</th>
           </tr>
 	  </thead>
 	  <tbody>
@@ -195,9 +195,9 @@ include_once 'header.php';
                 echo '<td>'.$row['articleTitre'].'</td>';
                 echo '<td class="small">'.date_fr('d-m-Y à H:i:s', strtotime(($row['articleDate']))).'</td>';
                 ?>
-                <td>
-                  <a class="btn btn-primary btn-sm" role="button" aria-pressed="true" title="Editer le projets" href="edit-article.php?id=<?php echo $row['articleID'];?>">Editer</a> |
-                  <a class="btn btn-danger btn-sm" role="button" aria-pressed="true" title="Supprimer l'article'" href="javascript:delarticle('<?php echo $row['articleID'];?>','<?php echo $row['articleTitre'];?>')">Suppr.</a>
+                <td class="text-center">
+                  <a class="btn btn-primary btn-sm tinytext" role="button" aria-pressed="true" title="Editer le projets" href="edit-article.php?id=<?php echo $row['articleID'];?>">Editer</a> |
+                  <a class="btn btn-danger btn-sm tinytext" role="button" aria-pressed="true" title="Supprimer l'article'" href="javascript:delarticle('<?php echo $row['articleID'];?>','<?php echo $row['articleTitre'];?>')">Suppr.</a>
                 </td>
                 <?php
                 echo '</tr>';
