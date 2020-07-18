@@ -11,8 +11,8 @@ include_once 'header.php';
 
 <div id="projets" class="container-fluid">
   <div class="container pb-3 mb-4 border">
-    <div class="text-center pb-3">
-      <h2>Projets / Portfolio</h2>
+    <div class="pb-3">
+      <h2 class="text-center">Projets / Portfolio</h2>
     </div>
 
     <div class="text-center" id="mybtn2Container">
@@ -47,8 +47,8 @@ include_once 'header.php';
                 <div class="text2"><?php echo $row['projetCat']; ?></div>
               </div>
             </div>
-            <h4 class="title-articles"><a href="projet.php?id=<?php echo $row['projetID']; ?>"><?php echo $row['projetTitre']; ?></a></h4>
-            <p class="smalltext">
+            <h4 class="titre-projet"><a href="projet.php?id=<?php echo $row['projetID']; ?>"><?php echo $row['projetTitre']; ?></a></h4>
+            <p>
               <?php
                 $max = 125;
                 $chaine = $row['projetTexte'];
@@ -57,7 +57,7 @@ include_once 'header.php';
 	                 $espace = strrpos($chaine, " ");
 	                 $chaine = substr($chaine, 0, $espace).' ...';
                 }
-                echo nl2br($chaine);
+                echo '<div class="texte-projet">' . nl2br($chaine) . '</div>';
                 ?>
             </p>
             <small class="text-muted tinytext">
@@ -78,7 +78,7 @@ include_once 'header.php';
 
       <!-- Pagination -->
       <div class="row justify-content-center">
-        <div class="col-4">
+        <div class="col-sm-4">
           <?php echo $pages->page_links(); ?>
         </div>
       </div>
@@ -97,7 +97,7 @@ include_once 'header.php';
           <?php
           try {
             //Pagination : on instancie la class
-            $pages = new Paginator('2','art');
+            $pages = new Paginator('1','art');
 
             //on collecte tous les enregistrements de la fonction
             $stmt = $db->query('SELECT articleID FROM articles');
@@ -111,19 +111,19 @@ include_once 'header.php';
           ?>
 
             <div class="card mb-4">
-              <div class="card-body text-justify">
-                <h4 class="card-title"><a href="article.php?id=<?php echo $row['articleID']; ?>"><?php echo $row['articleTitre']; ?></a></h4>
-                <p class="smalltext">
-                  <img class="img-article" src="<?php echo $row['articleImage']; ?>" alt="<?php echo $row['articleTitre']; ?>">
+              <div class="card-body">
+                <h4 class="card-title titre-article"><a href="article.php?id=<?php echo $row['articleID']; ?>"><?php echo $row['articleTitre']; ?></a></h4>
+                <p>
+                  <img class="img-fluid img-article float-xl-left" src="<?php echo $row['articleImage']; ?>" alt="<?php echo $row['articleTitre']; ?>">
                   <?php
-                    $max = 500;
+                    $max = 800;
                     $chaine = $row['articleTexte'];
                     if (strlen($chaine) >= $max) {
     	                 $chaine = substr($chaine, 0, $max);
     	                 $espace = strrpos($chaine, " ");
-    	                 $chaine = substr($chaine, 0, $espace).'<p class="text-right pt-4"><i class="fas fa-angle-double-right"></i> <a href="article.php?id=' . $row['articleID'] . '">Lire la suite</a></p>';
+    	                 $chaine = substr($chaine, 0, $espace).'... <p class="text-right pt-4"><i class="fas fa-angle-double-right"></i> <a href="article.php?id=' . $row['articleID'] . '">Lire la suite</a></p>';
                     }
-                    echo nl2br($chaine);
+                    echo '<div class="texte-article">' . nl2br($chaine) . '</div>';
                 ?>
                 </p>
               </div>
@@ -143,7 +143,7 @@ include_once 'header.php';
         ?>
 
         <div class="row justify-content-center">
-          <div class="col-4">
+          <div class="col-sm-4">
             <?php echo $pages->page_links(); ?>
           </div>
         </div>
@@ -169,7 +169,7 @@ include_once 'header.php';
             $stmt->execute(array(':memberID' => 1));
             $row = $stmt->fetch();
             ?>
-            <img src="img/citizenz2.png" class="img-fluid img-thumbnail rounded-circle float-left photo" alt="<?php echo $row['username']; ?>">
+            <img src="img/citizenz2.png" class="mx-auto d-block mr-xl-4 img-fluid img-thumbnail rounded-circle float-xl-left" alt="<?php echo $row['username']; ?>">
             <?php echo $row['apropos']; ?>
           </div>
           <div class="text-center text-white pt-5">
@@ -177,24 +177,24 @@ include_once 'header.php';
           </div>
           <div class="card-deck">
             <div class="card">
-              <a href="https://www.citizenz.info" target="_blank"><img src="img/citizenzinfo.jpg" class="card-img-top" alt="citizenz.info"></a>
+              <a href="https://www.citizenz.info" target="_blank"><img src="img/citizenzinfo.jpg" class="img-fluid card-img-top" alt="citizenz.info"></a>
               <div class="card-body">
-                <h5 class="card-title">citizenz.info <i class="fas fa-link"></i></h5>
-                <p class="card-text">Blog Geek & Libre : tutoriels web, serveurs et desktop, actualités du monde du Libre, Gnu/linux, xBSD, etc.</p>
+                <h5 class="card-title titre-projet">citizenz.info <i class="fas fa-link"></i></h5>
+                <p class="card-text texte-projet">Blog Geek & Libre : tutoriels web, serveurs et desktop, actualités du monde du Libre, Gnu/linux, xBSD, etc.</p>
               </div>
             </div>
             <div class="card">
-              <a href="https://www.ft4a.fr" target="_blank"><img src="img/ft4afr.jpg" class="card-img-top" alt="fr4a.fr"></a>
+              <a href="https://www.ft4a.fr" target="_blank"><img src="img/ft4afr.jpg" class="img-fluid card-img-top" alt="fr4a.fr"></a>
               <div class="card-body">
-                <h5 class="card-title">ft4a.fr <i class="fas fa-link"></i></h5>
-                <p class="">Tracker bittorrent exclusivement réservé aux médias sous licence libre ou licence de libre diffusion.</p>
+                <h5 class="card-title titre-projet">ft4a.fr <i class="fas fa-link"></i></h5>
+                <p class="card-text texte-projet">Tracker bittorrent exclusivement réservé aux médias sous licence libre ou licence de libre diffusion.</p>
               </div>
             </div>
             <div class="card">
-              <a href="https://www.pengolincoin.xyz" target="_blank"><img src="img/pengolincoinxyz.jpg" class="card-img-top" alt="pengolincoin.xyz"></a>
+              <a href="https://www.pengolincoin.xyz" target="_blank"><img src="img/pengolincoinxyz.jpg" class="img-fluid card-img-top" alt="pengolincoin.xyz"></a>
               <div class="card-body">
-                <h5 class="card-title">Pengolincoin <i class="fas fa-link"></i></h5>
-                <p class="card-text">Projet de cryptomonnaie généraliste, populaire et écologique.</p>
+                <h5 class="card-title titre-projet">Pengolincoin <i class="fas fa-link"></i></h5>
+                <p class="card-text texte-projet">Projet de cryptomonnaie généraliste, populaire et écologique.</p>
               </div>
             </div>
           </div>
@@ -209,13 +209,13 @@ include_once 'header.php';
 
       <div class="row py-3 px-3 justify-content-center">
         <div class="col-sm-5 py-4 mr-2 border">
-          <h3 class="text-center">Me contacter</h3>
-          <p class="text-center">
+          <h3 class="text-center titre-projet">Me contacter</h3>
+          <p class="text-center texte-projet">
             <em>Merci d'utiliser <a href="contact.php">le formulaire de contact</a> pour m'envoyer un message. J'y répondrai dès que possible.</em>
           </p>
         </div>
         <div class="col-sm-5 py-4 ml-2 border">
-            <h3 class="text-center">Archives des projets</h3>
+            <h3 class="text-center titre-projet">Archives des projets</h3>
             <!-- <ul class="list-group">
               <?php
               $stmt = $db->query("SELECT Month(projetDate) as Month, Year(projetDate) as Year FROM projets GROUP BY Month(projetDate), Year(projetDate) ORDER BY projetDate DESC");

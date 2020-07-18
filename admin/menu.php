@@ -1,5 +1,8 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
-  <div class="collapse navbar-collapse titre-menu" id="navbarSupportedContent">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="index.php"><i class="fas fa-users-cog"></i> Page admin</a>
@@ -13,11 +16,11 @@
     </ul>
 	<?php
 	if(!$user->is_logged_in()){
-  		echo '<a class="nav-link text-white" href="login.php"><i class="fas fa-sign-in-alt"></i> Connexion</a>';
+		echo '<span class="navbar-text"><a class="text-white" href="login.php"><i class="fas fa-sign-in-alt"></i> Connexion</a></span>';
 	}
 	else {
-	?>
-        	<a class="nav-link text-white" href="logout.php"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
-	<?php } ?> 
+		echo '<span class="navbar-text"><a class="text-white" href="logout.php"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></span>';
+	}
+	?> 
   </div>
 </nav>
