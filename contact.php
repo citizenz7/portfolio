@@ -76,9 +76,9 @@ if (isset($_POST['submit'])) {
       }// if post submit
 ?>
 
-<div class="container pt-3 pb-5">
+<div class="container pb-5">
   <div class="row">
-    <div class="col-sm-12 px-3 py-3 text-justify border">
+    <div class="col-sm-12 px-3 py-1 text-justify border">
       <?php
       // Affichage : message envoyé !
           if(isset($_GET['action']) && $_GET['action'] == "ok"){
@@ -98,7 +98,7 @@ if (isset($_POST['submit'])) {
       ?>
 
         <div class="card-body">
-           <img class="img-fluid pb-3" src="img/letters-bg.jpg" alt="letters BG">
+           <img class="img-fluid mx-auto d-block pb-3" src="img/letters-contact-bg.jpg" alt="letters contact">
            <div class="h4 mt-0 title">Me contacter</div>
            Vous pouvez me contacter par mail pour tout sujet concernant mes projets, mes articles, mon CV, ... Merci d'utiliser le formulaire ci-dessous. J'essaierai de répondre le plus rapidement possible à votre message.
 
