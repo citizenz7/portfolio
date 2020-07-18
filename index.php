@@ -15,11 +15,20 @@ include_once 'header.php';
       <h2 class="text-center">Projets / Portfolio</h2>
     </div>
 
+<!--
     <div class="text-center" id="mybtn2Container">
       <button class="btn2 active" onclick="filterSelection('all')"> Tous</button>
       <button class="btn2" onclick="filterSelection('html')"> HTML/CSS</button>
       <button class="btn2" onclick="filterSelection('php')"> PHP/MySQL</button>
       <button class="btn2" onclick="filterSelection('js')"> Javascript</button>
+    </div>
+-->
+
+    <div class="text-center">
+	<a class="btn btn-sm btn-dark" href="./" role="button">Tous</a>
+	<a class="btn btn-sm btn-primary" href="index.php?cat=HTML-CSS" role="button">HTML-CSS</a>
+	<a class="btn btn-sm btn-success" href="index.php?cat=PHP-SQL" role="button">PHP-SQL</a>
+	<a class="btn btn-sm btn-warning" href="index.php?cat=JS" role="button">Javascript</a>
     </div>
 
     <div class="row">
@@ -29,17 +38,45 @@ include_once 'header.php';
           //Pagination : on instancie la class
           $pages = new Paginator('3','proj');
 
-          //on collecte tous les enregistrements de la fonction
-          $stmt = $db->query('SELECT projetID FROM projets');
+	if(isset($_GET['cat'])) {
+		$cat = html($_GET['cat']);
 
-          //On détermine le nombre total d'enregistrements
-          $pages->set_total($stmt->rowCount());
+		// Tri des projets par catégorie
+		if (!empty($cat) && !in_array($cat, array('HTML-CSS','PHP-SQL','JS'))) {
+                	header('Location: index.php');
+                	exit();
+		}
 
-          $stmt = $db->query('SELECT projetID, projetTitre, projetTexte, projetDate, projetImage, projetFilter, projetCat, projetVues FROM projets ORDER BY projetID DESC ' .$pages->get_limit());
+		//on collecte tous les enregistrements de la fonction
+                $stmt = $db->query('SELECT projetID FROM projets WHERE projetCat="'.$cat.'"');
 
-          while($row = $stmt->fetch()){
-        ?>
-        <div class="column <?php echo $row['projetFilter']; ?>">
+                //On détermine le nombre total d'enregistrements
+                $pages->set_total($stmt->rowCount());
+
+		if($cat == "HTML-CSS") {
+        		$stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetID DESC '.$pages->get_limit());
+		}
+		elseif($cat == "PHP-SQL") {
+                	$stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetID DESC '.$pages->get_limit());
+		}
+		elseif($cat == "JS") {
+                	$stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetID DESC '.$pages->get_limit());
+        	}
+	}
+	else {
+		//on collecte tous les enregistrements de la fonction
+          	$stmt = $db->query('SELECT projetID FROM projets');
+
+          	//On détermine le nombre total d'enregistrements
+          	$pages->set_total($stmt->rowCount());
+
+		$stmt = $db->query('SELECT * FROM projets ORDER BY projetID DESC ' .$pages->get_limit());
+	}
+
+        while($row = $stmt->fetch()){
+	?>
+
+        <div class="column <?php //echo $row['projetFilter']; ?>">
           <div class="content">
             <div class="container2">
               <img class="img-fluid img-thumbnail image2" src="<?php echo $row['projetImage']; ?>" alt="<?php echo $row['projetTitre']; ?>">
