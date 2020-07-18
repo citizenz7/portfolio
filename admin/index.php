@@ -48,13 +48,16 @@ include_once 'header.php';
               </tr>
             </table>
 
-          <table class="table table-sm table-hover">
+	  <table class="table table-sm table-hover">
+	    <thead class="thead-light">
             <tr>
               <th>ID</th>
               <th width="70%">Titre</th>
               <th>Date d'ajout</th>
               <th>Action</th>
-              </tr>
+	    </tr>
+	    </thead>
+	    <tbody>
               <?php
               try {
                 //Pagination : on instancie la class
@@ -86,7 +89,8 @@ include_once 'header.php';
               catch(PDOException $e) {
                 echo $e->getMessage();
               }
-              ?>
+	      ?>
+	    </tbody>
             </table>
 
             <!-- Delete in SQL -->
@@ -136,13 +140,16 @@ include_once 'header.php';
             </tr>
           </table>
 
-        <table class="table table-sm table-hover">
+	<table class="table table-sm table-hover">
+	  <thead class="thead-light">
           <tr>
             <th>ID</th>
             <th width="70%">Titre</th>
             <th>Date d'ajout</th>
             <th>Action</th>
-            </tr>
+          </tr>
+	  </thead>
+	  <tbody>
             <?php
             try {
               //Pagination : on instancie la class
@@ -174,7 +181,8 @@ include_once 'header.php';
             catch(PDOException $e) {
               echo $e->getMessage();
             }
-            ?>
+	    ?>
+	  </tbody>
           </table>
 
           <!-- Delete in SQL -->

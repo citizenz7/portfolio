@@ -29,6 +29,7 @@
   <meta name="author" content="<?php echo SITEAUTOR; ?>">
   <meta name="description" content="<?php echo SITEDESCRIPTION; ?>">
   <meta name="keywords" content="<?php echo SITEKEYWORDS; ?>">
+  <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
   <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
   <script>
