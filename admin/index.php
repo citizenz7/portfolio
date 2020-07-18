@@ -39,6 +39,32 @@ include_once 'header.php';
         <div class="pb-2">
           <div class="text-center mb-4 alert alert-primary" role="alert">Bienvenue <b><?php echo $_SESSION['username']; ?></b> !<br>Vous êtes connecté.</div>
 
+	  <?php
+	  if(isset($_GET['actionA']) && $_GET['actionA'] == "updated"){
+              echo '
+              <div class="alert alert-info alert-dismissible fade show text-center font-weight-bold mt-4" role="alert">
+                Article mis à jour !
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              ';
+            }
+
+          if(isset($_GET['actionP']) && $_GET['actionP'] == "updated"){
+              echo '
+              <div class="alert alert-info alert-dismissible fade show text-center font-weight-bold mt-4" role="alert">
+                Projet mis à jour !
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              ';
+            }
+	  ?>
+
+
+
           <?php include('menu.php');?>
 
             <table class="table">
@@ -103,10 +129,10 @@ include_once 'header.php';
               exit;
             }
 
-            if(isset($_GET['actionP'])){
+            if(isset($_GET['actionP']) && $_GET['actionP'] == "deleted"){
               echo '
               <div class="alert alert-info alert-dismissible fade show text-center font-weight-bold mt-4" role="alert">
-                Projet '.$_GET['actionP'].' !
+                Projet supprimé !
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -195,10 +221,10 @@ include_once 'header.php';
             exit;
           }
 
-          if(isset($_GET['actionA'])){
+          if(isset($_GET['actionA']) && $_GET['actionA'] == "deleted"){
             echo '
             <div class="alert alert-info alert-dismissible fade show text-center font-weight-bold mt-4" role="alert">
-              Article '.$_GET['actionA'].' !
+              Article supprimé !
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>

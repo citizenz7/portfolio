@@ -126,7 +126,7 @@ if(!$user->is_logged_in()){
         }
 
 				//redirect to index page
-				header('Location: index.php?action=updated');
+				header('Location: index.php?actionP=updated');
 				exit;
 
 			} catch(PDOException $e) {
