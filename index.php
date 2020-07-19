@@ -170,7 +170,7 @@ include_once 'header.php';
                 <p>
                   <img class="img-fluid img-article float-xl-left" src="<?php echo $row['articleImage']; ?>" alt="<?php echo $row['articleTitre']; ?>">
                   <?php
-                    $max = 800;
+                    $max = 900;
                     $chaine = $row['articleTexte'];
                     if (strlen($chaine) >= $max) {
     	                 $chaine = substr($chaine, 0, $max);
