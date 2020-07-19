@@ -27,7 +27,7 @@
   </div>
 </div>
 
-
+<!--
 <script>
   function openNav() {
     document.getElementById("myNav").style.width = "100%";
@@ -37,6 +37,7 @@
     document.getElementById("myNav").style.width = "0%";
   }
 </script>
+-->
 <script src="js/script.js"></script>
 
 

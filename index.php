@@ -10,7 +10,7 @@ include_once 'header.php';
 ?>
 
 <div id="projets" class="container-fluid">
-  <div class="container pb-3 mb-4 border">
+  <div class="container pb-3 mb-1 border">
     <div class="pb-3">
       <h2 class="text-center">Projets / Portfolio</h2>
     </div>
@@ -84,7 +84,7 @@ include_once 'header.php';
                 <div class="text2"><?php echo $row['projetCat']; ?></div>
               </div>
             </div>
-            <h4 class="titre-projet"><a href="projet.php?id=<?php echo $row['projetID']; ?>"><?php echo $row['projetTitre']; ?></a></h4>
+            <h4 class="titre-projet pt-2"><a href="projet.php?id=<?php echo $row['projetID']; ?>"><?php echo $row['projetTitre']; ?></a></h4>
             <p>
               <?php
                 $max = 125;
@@ -99,8 +99,7 @@ include_once 'header.php';
             </p>
             <small class="text-muted tinytext">
               <i class="far fa-calendar-alt"></i> Publié le : <?php echo date_fr('d-m-Y à H:i:s', strtotime($row['projetDate'])); ?> | Lectures : <?php echo $row['projetVues']; ?>
-              <br>
-              <i class="fas fa-tag"></i> Catégorie : <?php echo $row['projetCat']; ?>
+              <p style="margin-top: -5px;"><i class="fas fa-tag"></i> Catégorie : <?php echo $row['projetCat']; ?></p>
             </small>
           </div>
         </div>
@@ -244,27 +243,36 @@ include_once 'header.php';
   <div class="container-fluid py-4 bg-light">
     <div id="archives" class="container">
 
-      <div class="row py-3 px-3 justify-content-center">
-        <div class="col-sm-5 py-4 mr-2 border">
-          <h3 class="text-center titre-projet">Me contacter</h3>
-          <p class="text-center texte-projet">
-            <em>Merci d'utiliser <a href="contact.php">le formulaire de contact</a> pour m'envoyer un message. J'y répondrai dès que possible.</em>
-          </p>
+      <div class="row">
+	<div class="col-sm-6">
+	 <div class="card">
+	 <div class="card-body text-center">
+            <h5 class="card-title">Me contacter</h5>
+	    <p class="card-text">Merci d'utiliser le formulaire de contact pour m'envoyer un message. J'y répondrai dès que possible.</p>
+	    <a href="contact.php" class="btn btn-primary">Me contacter</a>
+	</div>
         </div>
-        <div class="col-sm-5 py-4 ml-2 border">
-            <h3 class="text-center titre-projet">Archives des projets</h3>
-            <!-- <ul class="list-group">
-              <?php
+       </div>
+       <div class="col-sm-6">
+	<div class="card">
+	 <div class="card-body text-center">
+             <h5 class="card-title">Archives des projets</h5>
+             <!-- <ul class="list-group">
+	      <?php
+	      /*
               $stmt = $db->query("SELECT Month(projetDate) as Month, Year(projetDate) as Year FROM projets GROUP BY Month(projetDate), Year(projetDate) ORDER BY projetDate DESC");
               while($row = $stmt->fetch()){
                 $monthName = date_fr("F", mktime(0, 0, 0, $row['Month'], 10));
                 //$slug = 'a-'.$row['Month'].'-'.$row['Year'];
                 echo "<li class='list-group-item'><a href='archives.php?month=" . $row['Month'] . "&year=" . $row['Year'] . "'>" . $monthName . "-" . $row['Year'] . "</a></li>";
-              }
+	      }
+	       */
               ?>
             </ul> -->
 
-            <select onchange="document.location.href = this.value" class="custom-select custom-select-sm smalltext">
+	    <p class="card-text">
+	    Vous trouverez ci-dessous les archives de mes projets réalisés dans le cadre de l'Access Code School, classées par mois et années
+            <select onchange="document.location.href = this.value" class="custom-select custom-select-sm smalltext mt-4">
 					         <option selected>Mois - années</option>
 					         <?php
 					         $stmt = $db->query("SELECT Month(projetDate) as Month, Year(projetDate) as Year FROM projets GROUP BY Month(projetDate), Year(projetDate) ORDER BY projetDate DESC");
@@ -275,9 +283,12 @@ include_once 'header.php';
 						            echo "<option value='archives.php?month=" . $row['Month'] . "&year=" . $row['Year'] . "'>" . $monthName . "-" . $row['Year'] . "</option>";
 					        }
 					        ?>
-				   </select>
+	   </select>
+	   </p>
+	  </div>
+	</div>
+	</div>	
 
-        </div>
       </div>
     </div>
   </div>
