@@ -124,11 +124,17 @@ if(!$user->is_logged_in()){
                <input type="file" name="projetImage" class="form-control">
              </div>
              <div class="form-group">
-               <label for="projetCat">Catégorie du projet</label>
-               <input type="text" name="projetCat" class="form-control" id="projetCat" value='<?php if(isset($error)){ echo $_POST['projetCat']; } ?>'>
+               	<label for="projetCat">Catégorie du projet</label>
+	       	<!--<input type="text" name="projetCat" class="form-control" id="projetCat" value='<?php if(isset($error)){ echo $_POST['projetCat']; } ?>'>-->
+		<select class="form-control" id="projetCat" name="projetCat">
+    			<option>HTML-CSS</option>
+    			<option>PHP-SQL</option>
+    			<option>JS</option>
+  		</select>
              </div>
-
-              <div class="text-right"><button type='submit' class="btn btn-primary" name='submit'>Ajouter</button></div>
+		<div class="text-right pt-5">
+			<button type='reset' class="btn btn-secondary">Annuler</button> <button type='submit' class="btn btn-primary" name='submit'>Ajouter</button>
+		</div>
           </form>
 
         </div>
