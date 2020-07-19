@@ -75,9 +75,6 @@ if(!$user->is_logged_in()){
       $error[] = 'Veuillez entrer une ou plusieurs catégories';
     }
 
-    if($projetFilter ==''){
-      $error[] = 'Veuillez entrer un filtre de catégorie';
-    }
 
     if(isset($_FILES['projetImage'])){
        // find thevtype of image
@@ -105,13 +102,12 @@ if(!$user->is_logged_in()){
 			try {
 
 				//insert into database
-				$stmt = $db->prepare('UPDATE projets SET projetTitre = :projetTitre, projetTexte = :projetTexte, projetCat = :projetCat, projetFilter = :projetFilter, projetDate = :projetDate, projetVues = :projetVues
+				$stmt = $db->prepare('UPDATE projets SET projetTitre = :projetTitre, projetTexte = :projetTexte, projetCat = :projetCat, projetDate = :projetDate, projetVues = :projetVues
           WHERE projetID = :projetID');
 				$stmt->execute(array(
 					':projetTitre' => $projetTitre,
 					':projetTexte' => $projetTexte,
           ':projetCat' => $projetCat,
-          ':projetFilter' => $projetFilter,
           ':projetDate' => date('Y-m-d H:i:s'),
           ':projetVues' => '1',
           ':projetID' => $projetID
@@ -150,7 +146,7 @@ if(!$user->is_logged_in()){
 
 		try {
 
-			$stmt = $db->prepare('SELECT projetID, projetTitre, projetTexte, projetCat, projetFilter, projetImage FROM projets WHERE projetID = :projetID') ;
+			$stmt = $db->prepare('SELECT projetID, projetTitre, projetTexte, projetCat, projetImage FROM projets WHERE projetID = :projetID') ;
 			$stmt->execute(array(':projetID' => $_GET['id']));
 			$row = $stmt->fetch();
 
@@ -198,10 +194,6 @@ if(!$user->is_logged_in()){
      <div class="form-group">
        <label for="projetCat">Catégorie du projet</label>
        <input type="text" name="projetCat" class="form-control" id="projetCat" value="<?php echo $row['projetCat']; ?>">
-     </div>
-     <div class="form-group">
-       <label for="projetCat">Filtres du projet</label>
-       <input type="text" name="projetFilter" class="form-control" id="projetFilter" value="<?php echo $row['projetFilter']; ?>">
      </div>
 
       <div class="text-right pt-5"><button type='submit' class="btn btn-primary" name='submit'>Editer le projet</button></div>

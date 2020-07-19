@@ -40,9 +40,6 @@ if(!$user->is_logged_in()){
               $error[] = 'Veuillez entrer une ou plusieurs catégories';
             }
 
-            if($projetFilter ==''){
-              $error[] = 'Veuillez entrer un filtre de catégorie';
-            }
 
             if(isset($_FILES['projetImage'])){
 	             // find thevtype of image
@@ -70,12 +67,11 @@ if(!$user->is_logged_in()){
               try {
 
                 //insert into database
-                $stmt = $db->prepare('INSERT INTO projets (projetTitre, projetTexte, projetCat, projetFilter, projetDate, projetVues) VALUES (:projetTitre, :projetTexte, :projetCat, :projetFilter, :projetDate, :projetVues)') ;
+                $stmt = $db->prepare('INSERT INTO projets (projetTitre, projetTexte, projetCat, projetDate, projetVues) VALUES (:projetTitre, :projetTexte, :projetCat, :projetDate, :projetVues)') ;
                 $stmt->execute(array(
                   ':projetTitre' => $projetTitre,
                   ':projetTexte' => $projetTexte,
                   ':projetCat' => $projetCat,
-                  ':projetFilter' => $projetFilter,
                   ':projetDate' => date('Y-m-d H:i:s'),
                   ':projetVues' => '1'
                 ));
@@ -130,10 +126,6 @@ if(!$user->is_logged_in()){
              <div class="form-group">
                <label for="projetCat">Catégorie du projet</label>
                <input type="text" name="projetCat" class="form-control" id="projetCat" value='<?php if(isset($error)){ echo $_POST['projetCat']; } ?>'>
-             </div>
-             <div class="form-group">
-               <label for="projetCat">Filtres du projet</label>
-               <input type="text" name="projetFilter" class="form-control" id="projetFilter" value='<?php if(isset($error)){ echo $_POST['projetFilter']; } ?>'>
              </div>
 
               <div class="text-right"><button type='submit' class="btn btn-primary" name='submit'>Ajouter</button></div>

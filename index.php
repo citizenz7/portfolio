@@ -273,16 +273,15 @@ include_once 'header.php';
 	    <p class="card-text">
 	    Vous trouverez ci-dessous les archives de mes projets réalisés dans le cadre de l'Access Code School, classées par mois et années
             <select onchange="document.location.href = this.value" class="custom-select custom-select-sm smalltext mt-4">
-					         <option selected>Mois - années</option>
-					         <?php
-					         $stmt = $db->query("SELECT Month(projetDate) as Month, Year(projetDate) as Year FROM projets GROUP BY Month(projetDate), Year(projetDate) ORDER BY projetDate DESC");
-					         while($row = $stmt->fetch()){
-						            $monthName = date_fr("F", mktime(0, 0, 0, html($row['Month']), 10));
-						            $year = date_fr(html($row['Year']));
-						            //$slug = 'a-'.html($row['Month']).'-'.html($row['Year']);
-						            echo "<option value='archives.php?month=" . $row['Month'] . "&year=" . $row['Year'] . "'>" . $monthName . "-" . $row['Year'] . "</option>";
-					        }
-					        ?>
+		<option selected>Mois - années</option>
+		<?php
+		$stmt = $db->query("SELECT Month(projetDate) as Month, Year(projetDate) as Year FROM projets GROUP BY Month(projetDate), Year(projetDate) ORDER BY projetDate DESC");
+		while($row = $stmt->fetch()){
+			$monthName = date_fr("F", mktime(0, 0, 0, html($row['Month']), 10));
+			$year = date_fr(html($row['Year']));
+			echo "<option value='archives.php?month=" . html($row['Month']) . "&year=" . html($row['Year']) . "'>" . html($monthName) . "-" . html($row['Year']) . "</option>";
+		}
+		?>
 	   </select>
 	   </p>
 	  </div>

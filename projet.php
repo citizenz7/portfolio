@@ -2,7 +2,7 @@
 <?php include_once 'header.php'; ?>
 
 <?php
-$stmt = $db->prepare('SELECT projetID, projetTitre, projetTexte, projetGithub, projetDate, projetCat, projetFilter, projetImage, projetVues FROM projets WHERE projetID = :projetID');
+$stmt = $db->prepare('SELECT projetID, projetTitre, projetTexte, projetGithub, projetDate, projetCat, projetImage, projetVues FROM projets WHERE projetID = :projetID');
 $stmt->execute(array(':projetID' => $_GET['id']));
 $row = $stmt->fetch();
 

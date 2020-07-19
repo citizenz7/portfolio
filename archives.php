@@ -38,33 +38,29 @@ $stmt->execute(array(
     <div class="col-sm-12 px-3 py-3">
 
           <h2 class="pt-3 pb-4">Archives mois de <?php echo $monthName; ?> <?php echo $yearNumber; ?></h2>
+		<?php
+		while($row = $stmt->fetch()){
+			echo '<div class="border my-3">';
+			   echo '<h3 class="px-3 py-3"><a href="projet.php?id='.html($row['projetID']).'">'.html($row['projetTitre']).'</a></h3>';
+			   echo '<p class="muted smalltext px-3">publié le '.date_fr('d-m-Y H:i:s', strtotime(html($row['projetDate']))).' dans <em>' . html($row['projetCat']) . '</em></p>';
+			   echo '<div class="px-3 text-justify">' . nl2br($row['projetTexte']) . '</div>';
+			   echo '<p class="px-3"><a href="projet.php?id=' . html($row['projetID']) . '">Lire la suite</a></p>';
+			echo '</div>';
+		}
 
-					<?php
-					while($row = $stmt->fetch()){
+		//echo '<div class="text-center">' . $pages->page_links("archives.php?month=$month&year=$year&") . '</div>';
+		?>
+		<div class="row justify-content-center">
+          		<div class="col-4">
+            			<?php echo $pages->page_links("archives.php?month=$month&year=$year&"); ?>
+          		</div>
+        	</div>
+		<?php
+}
 
-						echo '<div class="border my-3">';
-							  echo '<h3 class="px-3 py-3"><a href="projet.php?id='.$row['projetID'].'">'.$row['projetTitre'].'</a></h3>';
-							  echo '<p class="muted smalltext px-3">publié le '.date_fr('d-m-Y H:i:s', strtotime($row['projetDate'])).' dans <em>' . $row['projetCat'] . '</em></p>';
-							  echo '<div class="px-3 text-justify">';
-									  echo nl2br($row['projetTexte']);
-							  echo '</div>';
-							  echo '<p class="px-3"><a href="projet.php?id=' . $row['projetID'] . '">Lire la suite</a></p>';
-					  echo '</div>';
-				}
-
-				//echo '<div class="text-center">' . $pages->page_links("archives.php?month=$month&year=$year&") . '</div>';
-				?>
-				<div class="row justify-content-center">
-          <div class="col-4">
-            <?php echo $pages->page_links("archives.php?month=$month&year=$year&"); ?>
-          </div>
-        </div>
-<?php
-	}
-
-  catch(PDOException $e) {
-			echo $e->getMessage();
-	}
+catch(PDOException $e) {
+	echo $e->getMessage();
+}
 ?>
 
 </div>
