@@ -31,7 +31,7 @@ include_once 'header.php';
 	<a class="btn btn-sm btn-warning" href="index.php?cat=JS" role="button">Javascript</a>
     </div>
 
-    <div class="row">
+    <div class="row row-cols-1 row-cols-md-3">
 
         <?php
         try {
@@ -76,31 +76,49 @@ include_once 'header.php';
         while($row = $stmt->fetch()){
 	?>
 
-        <div class="column <?php //echo $row['projetFilter']; ?>">
-          <div class="content">
-            <div class="container2">
-              <img class="img-fluid img-thumbnail image2" src="<?php echo $row['projetImage']; ?>" alt="<?php echo $row['projetTitre']; ?>">
-              <div class="middle">
-                <div class="text2"><?php echo $row['projetCat']; ?></div>
-              </div>
-            </div>
-            <h4 class="titre-projet pt-2"><a href="projet.php?id=<?php echo $row['projetID']; ?>"><?php echo $row['projetTitre']; ?></a></h4>
-            <p>
-              <?php
-                $max = 125;
+        <div class="col mt-4 mb-4">
+          <div class="card h-100">
+              <img class="img-fluid card-img-top image2" src="<?php echo $row['projetImage']; ?>" alt="<?php echo $row['projetTitre']; ?>">
+	      <div class="card-body texte-projet">
+
+		<?php
+		if($row['projetCat'] == "HTML-CSS") {
+			echo '<button class="btn btn-primary btn-sm btn-block">';
+			    echo $row['projetCat'];
+			echo '</button>';
+		}
+		elseif($row['projetCat'] == "PHP-SQL") {
+			echo '<button class="btn btn-success btn-sm btn-block">';
+                            echo $row['projetCat'];
+                        echo '</button>';
+		}
+		elseif($row['projetCat'] == "JS") {
+                        echo '<button class="btn btn-warning btn-sm btn-block">';
+                            echo $row['projetCat'];
+                        echo '</button>';
+                }
+		?>
+            	<h5 class="card-title titre-projet pt-2"><a href="projet.php?id=<?php echo $row['projetID']; ?>"><?php echo $row['projetTitre']; ?></a></h5>
+            	<p class="card-text texte-projet">
+              	<?php
+                $max = 150;
                 $chaine = $row['projetTexte'];
                 if (strlen($chaine) >= $max) {
 	                 $chaine = substr($chaine, 0, $max);
 	                 $espace = strrpos($chaine, " ");
 	                 $chaine = substr($chaine, 0, $espace).' ...';
                 }
-                echo '<div class="texte-projet">' . nl2br($chaine) . '</div>';
+                echo nl2br($chaine);
                 ?>
-            </p>
-            <small class="text-muted tinytext">
-              <i class="far fa-calendar-alt"></i> Publié le : <?php echo date_fr('d-m-Y à H:i:s', strtotime($row['projetDate'])); ?> | Lectures : <?php echo $row['projetVues']; ?>
-              <p style="margin-top: -5px;"><i class="fas fa-tag"></i> Catégorie : <?php echo $row['projetCat']; ?></p>
-            </small>
+		</p>
+	      </div>
+	      <div class="card-footer">
+		<small class="text-muted tinytext">
+			<i class="far fa-calendar-alt"></i> Publié le : <?php echo date_fr('d-m-Y à H:i:s', strtotime($row['projetDate'])); ?>
+			<p class="mb-1"><i class="fas fa-tag"></i> Catégorie : <?php echo $row['projetCat']; ?></p>
+			<p class="mb-1"><i class="fas fa-eye"></i> Lectures : <?php echo $row['projetVues']; ?></p>
+		</small>
+              </div>
           </div>
         </div>
         <?php
