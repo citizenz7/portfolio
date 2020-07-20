@@ -175,7 +175,7 @@ label {
 
 .overlay-content {
   position: relative;
-  top: 5%;
+  top: 4%;
   width: 100%;
   text-align: center;
   margin-top: 30px;
@@ -278,7 +278,7 @@ h1 {
 }
 
 .photo {
-  max-width: 170px;
+  max-width: 150px;
   width: 100%;
   margin-right: 20px;
 }
@@ -347,7 +347,7 @@ h1 {
 .apropostext {
   background: linear-gradient(to right bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
   font-size: 0.8vw;
-  text-align: justify; 
+  text-align: justify;
 }
 
 @media only screen and (max-width: 767px) {

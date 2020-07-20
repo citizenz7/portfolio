@@ -70,7 +70,7 @@
       <span onclick="openNav()">&#9776;</span>
     </div>
     <div class="hero-text">
-      <div class="type-writer-text pb-5">
+      <div class="type-writer-text pb-2">
         Je suis un <span class="barre">Dave</span> <i class="fas fa-music barre"></i> ... dev !
       </div>
       <h1>

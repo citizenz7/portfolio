@@ -54,13 +54,13 @@ include_once 'header.php';
                 $pages->set_total($stmt->rowCount());
 
 		if($cat == "HTML-CSS") {
-        		$stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetID DESC '.$pages->get_limit());
+        		$stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetDate DESC '.$pages->get_limit());
 		}
 		elseif($cat == "PHP-SQL") {
-                	$stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetID DESC '.$pages->get_limit());
+                	$stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetDate DESC '.$pages->get_limit());
 		}
 		elseif($cat == "JS") {
-                	$stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetID DESC '.$pages->get_limit());
+                	$stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetDate DESC '.$pages->get_limit());
         	}
 	}
 	else {
@@ -178,7 +178,7 @@ include_once 'header.php';
     	                 $chaine = substr($chaine, 0, $espace).'... <p class="text-right pt-4"><i class="fas fa-angle-double-right"></i> <a href="article.php?id=' . $row['articleID'] . '">Lire la suite</a></p>';
                     }
                     echo '<div class="texte-article">' . nl2br($chaine) . '</div>';
-                ?>
+                    ?>
                 </p>
               </div>
               <div class="card-footer text-center">
@@ -223,7 +223,7 @@ include_once 'header.php';
             $stmt->execute(array(':memberID' => 1));
             $row = $stmt->fetch();
             ?>
-            <img src="img/citizenz2.png" class="mx-auto d-block mr-xl-4 img-fluid img-thumbnail rounded-circle float-xl-left" alt="<?php echo $row['username']; ?>">
+            <img src="img/citizenz2.png" class="mx-auto d-block mr-xl-4 img-fluid img-thumbnail rounded-circle float-xl-left photo" alt="<?php echo $row['username']; ?>">
             <?php echo $row['apropos']; ?>
           </div>
           <div class="text-center text-white pt-5">
@@ -304,7 +304,7 @@ include_once 'header.php';
 	   </p>
 	  </div>
 	</div>
-	</div>	
+	</div>
 
       </div>
     </div>
