@@ -151,7 +151,7 @@ include_once 'header.php';
             //On détermine le nombre total d'enregistrements
             $pages->set_total($stmt->rowCount());
 
-            $stmt = $db->query('SELECT articleID, articleTitre, articleTexte, articleDate, articleImage FROM articles ORDER BY articleID DESC ' .$pages->get_limit());
+            $stmt = $db->query('SELECT articleID, articleTitre, articleTexte, articleDate, articleImage, articleVues FROM articles ORDER BY articleID DESC ' .$pages->get_limit());
 
             while($row = $stmt->fetch()){
           ?>
@@ -175,7 +175,7 @@ include_once 'header.php';
               </div>
               <div class="card-footer text-center">
                 <small class="text-muted smalltext">
-                  <i class="far fa-calendar-alt"></i> Publié le : <?php echo date_fr('d-m-Y à H:i:s', strtotime($row['articleDate'])); ?>
+                  <i class="far fa-calendar-alt"></i> Publié le : <?php echo date_fr('d-m-Y à H:i:s', strtotime($row['articleDate'])); ?> | Lectures : <?php echo $row['articleVues']; ?>
                 </small>
               </div>
             </div>

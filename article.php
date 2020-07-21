@@ -1,6 +1,11 @@
 <?php include_once 'header.php'; ?>
 
 <?php
+$id = html($_GET['id']);
+
+// on met à jour le nb de vues de l'article
+$stmt2 = $db->query('UPDATE articles SET articleVues = articleVues+1 WHERE articleID = '.$id);
+
 $stmt = $db->prepare('SELECT articleID, articleTitre, articleTexte, articleDate, articleImage, articleVues FROM articles WHERE articleID = :articleID');
 $stmt->execute(array(':articleID' => $_GET['id']));
 $row = $stmt->fetch();
@@ -47,10 +52,5 @@ s.setAttribute('data-timestamp', +new Date());
 	</div>
     </div>
   </div>
-
-  <?php
-  // on met à jour le nb de vues de l'article
-  $stmt2 = $db->query('UPDATE articles SET articleVues = articleVues+1 WHERE articleID = '.$row['articleID']);
-  ?>
 
 <?php include_once 'footer.php'; ?>

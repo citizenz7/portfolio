@@ -65,9 +65,4 @@ s.setAttribute('data-timestamp', +new Date());
     </div>
   </div>
 
-  <?php
-  // on met à jour le nb de vues de l'article
-  //$stmt2 = $db->query('UPDATE projets SET projetVues = projetVues+1 WHERE projetID = '.$row['projetID']);
-  ?>
-
 <?php include_once 'footer.php'; ?>
