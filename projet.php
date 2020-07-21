@@ -2,8 +2,13 @@
 <?php include_once 'header.php'; ?>
 
 <?php
+$id = html($_GET['id']);
+
+// on met à jour le nb de vues de l'article
+$stmt2 = $db->query('UPDATE projets SET projetVues = projetVues+1 WHERE projetID = '.$id);
+
 $stmt = $db->prepare('SELECT projetID, projetTitre, projetTexte, projetGithub, projetDate, projetCat, projetImage, projetVues FROM projets WHERE projetID = :projetID');
-$stmt->execute(array(':projetID' => $_GET['id']));
+$stmt->execute(array(':projetID' => $id));
 $row = $stmt->fetch();
 
 if($row['projetID'] == ''){
@@ -62,7 +67,7 @@ s.setAttribute('data-timestamp', +new Date());
 
   <?php
   // on met à jour le nb de vues de l'article
-  $stmt2 = $db->query('UPDATE projets SET projetVues = projetVues+1 WHERE projetID = '.$row['projetID']);
+  //$stmt2 = $db->query('UPDATE projets SET projetVues = projetVues+1 WHERE projetID = '.$row['projetID']);
   ?>
 
 <?php include_once 'footer.php'; ?>
