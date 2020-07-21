@@ -7,7 +7,7 @@
 <?php
 if(isset($_POST['requete']) && $_POST['requete'] != NULL) {
   $requete = html($_POST['requete']);
-  $req = $db->prepare('SELECT * FROM projets WHERE projetTitre LIKE :requete ORDER BY projetDate DESC');
+  $req = $db->prepare('SELECT * FROM projets WHERE projetTitre LIKE :requete OR projetTexte LIKE :requete ORDER BY projetDate DESC');
   $req->execute(array('requete' => '%'.$requete.'%'));
 
   $nb_resultats = $req->rowCount();
@@ -74,7 +74,7 @@ else { // formulaire html
 ?>
 
   <h2>Rechercher un projet :</h2>
-  <p class="pt-5">Veuillez un ou plusieurs mots pour réaliser une recherche.</p>
+  <p class="pt-4">Veuillez entrer un ou plusieurs mots pour réaliser une recherche.<br>La recherche s'effectuera dans <b>les titres</b> et <b>les contenus</b> des projets.</p>
   <form class="form-group" action="" method="Post">
     <input type="text" class="form-control" placeholder="Veuillez entrer un ou plusieurs mots pour votre recherche" name="requete" size="40">
     <p class="text-right mt-2">
