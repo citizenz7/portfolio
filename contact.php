@@ -9,7 +9,6 @@ require 'vendors/PHPMailer/src/Exception.php';
 require 'vendors/PHPMailer/src/PHPMailer.php';
 require 'vendors/PHPMailer/src/SMTP.php';
 
-$response = '';
 
 if (isset($_POST['submit'])) {
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
@@ -20,17 +19,8 @@ if (isset($_POST['submit'])) {
                 $error[] = "Veuillez remplir tous les champs";
         }
 
-        //reCaptcha
-				// $secret = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
-				// $response = $_POST['g-recaptcha-response'];
-				// $remoteip = $_SERVER['REMOTE_ADDR'];
-				// $api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
-        // 		. $secret
-        // 		. "&response=" . $response
-        // 		. "&remoteip=" . $remoteip ;
-  			// $decode = json_decode(file_get_contents($api_url), true);
 
-        // if ($decode['success'] == true) {
+	if ($_POST['captcha'] == 'linux') {
 
            if(!isset($error)) {
                 $name = $_POST["name"];
@@ -72,7 +62,11 @@ if (isset($_POST['submit'])) {
                 // PHPMailer
 
             }// if no $error
-        //}// captcha
+	}// captcha
+
+	else {
+		header("Location: contact.php?action=wrongcaptcha");
+	}
       }// if post submit
 ?>
 
@@ -91,10 +85,11 @@ if (isset($_POST['submit'])) {
               echo 'Erreur: ' . $mail->ErrorInfo;
               echo '</div>';
           }
-
-          // if(isset($_GET['wrong_code'])) {
-					//     echo '<div class="alert alert-danger mt-3 alert-dismissible fade show">Mauvais code anti-spam !<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
-				  // }
+	  
+	  if(isset($_GET['action']) && $_GET['action'] == "wrongcaptcha") {
+	  	echo '<div class="alert alert-danger mt-3 alert-dismissible fade show">Mauvais code anti-spam !<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+	  }
+	  
       ?>
 
         <div class="card-body">
@@ -119,11 +114,11 @@ if (isset($_POST['submit'])) {
                     <label for="msg">Message</label>
                     <textarea class="form-control" id="msg" name="msg" rows="7"></textarea>
                   </div>
-                  <!-- <div class="form-group">
-                    <label for="verif_box">Anti-spam : <br>
-           							<div class="g-recaptcha" data-sitekey="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"></div>
-        						</label>
-                  </div> -->
+		  <div class="form-group">
+                    <label for="captcha"><i class="fas fa-mail-bulk"></i> Anti-spam : Recopiez le mot <b>linux</b><br>
+                        <input class="form-control" type="text" name="captcha" id="captcha"></div>
+                    </label>
+                  </div>
                   <div class="form-group text-right pt-4">
                     <button type="submit" name="submit" class="btn btn-primary">Envoyer le message</button>
                     <button type="reset" class="btn btn-secondary">Annuler</button>
