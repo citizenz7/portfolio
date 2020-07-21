@@ -3,17 +3,20 @@
     <div class="col text-center text-white">
       <h2 id="contact">Réseaux sociaux</h2>
       <div>
-        <!--<a class="text-decoration-none" href="mailto:oprieur@protonmail.com">
-          <img src="img/email.png" class="img-fluid img-social" alt="E-mail">
-        </a>-->
         <a class="text-decoration-none" href="https://www.facebook.com/oprieur.pro.7">
-          <img src="../img/facebook.png" class="img-fluid img-social" alt="Facebook">
+          <!-- <img src="img/facebook.png" class="img-fluid img-social" alt="Facebook"> -->
+          <i class="fab fa-facebook-f fa-3x px-3"></i>
         </a>
         <a class="text-decoration-none" href="https://twitter.com/citizenz58">
-          <img src="../img/twitter.png" class="img-fluid img-social" alt="Facebook">
+          <!-- <img src="img/twitter.png" class="img-fluid img-social" alt="Facebook"> -->
+          <i class="fab fa-twitter fa-3x px-3"></i>
         </a>
         <a class="text-decoration-none" href="https://www.linkedin.com/in/olivier-prieur">
-          <img src="../img/linkedin.png" class="img-fluid img-social" alt="LinkedIn">
+          <!-- <img src="img/linkedin.png" class="img-fluid img-social" alt="LinkedIn"> -->
+          <i class="fab fa-linkedin-in fa-3x px-3"></i>
+        </a>
+        <a class="text-decoration-none" href="rss.php">
+          <i class="fas fa-rss fa-3x px-3"></i>
         </a>
       </div>
 

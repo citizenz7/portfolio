@@ -44,7 +44,11 @@ if(isset($_POST['requete']) && $_POST['requete'] != NULL) {
 		?>
 		</tbody>
   </table>
-  <p class="text-center lead font-weight-bold">Faire une <a href="recherche.php">nouvelle recherche</a></p>
+
+  <div class="pt-5">
+    <p class="text-center lead font-weight-bold"><i class="fas fa-search"></i> Faire une <a href="recherche.php">nouvelle recherche</a></p>
+    <p class="text-center font-weight-bold"><i class="fas fa-home"></i> Retourner sur <a href="index.php">l'accueil</a></p>
+  </div>
 
 	<?php
 } // Fin d'affichage des résultats if
@@ -53,7 +57,12 @@ else {
 ?>
   <h4>Aucun résultat ! ;(</h4>
   <p>Nous n'avons trouvé aucun résultat pour votre requête "<?php echo html($_POST['requete']); ?>".</p>
-  <p class="text-center leader font-weight-bold">Faire une <a href="recherche.php">nouvelle recherche</a></p>
+
+  <div class="pt-5">
+    <p class="text-center lead font-weight-bold"><i class="fas fa-search"></i> Faire une <a href="recherche.php">nouvelle recherche</a></p>
+    <p class="text-center font-weight-bold"><i class="fas fa-home"></i> Retourner sur <a href="index.php">l'accueil</a></p>
+  </div>
+  
 <?php
 }// fin de l'affichage aucun résulat
 
