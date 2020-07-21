@@ -48,25 +48,6 @@
 
 <body id="tothetop">
 
-  <!-- <div id="myNav" class="overlay">
-    <a href="javascript:void(0)" class="closebtn2" onclick="closeNav()">&times;</a>
-    <div class="overlay-content">
-      <a href="./">
-        < Accueil /></a>
-      <a href="index.php#projets">
-        < Projets /></a>
-      <a href="index.php#articles">
-        < Articles /></a>
-      <a href="index.php#apropos">
-        < A propos /></a>
-      <a href="contact.php">
-        < Contact /></a>
-      <a href="index.php#archives">
-        < Archives /></a>
-    </div>
-  </div> -->
-
-
   <div class="hero-image">
     <div class="menu">
       <p><a class="text-decoration-none text-white" href="./">< Accueil /></a</p>
@@ -75,6 +56,7 @@
       <p><a class="text-decoration-none text-white" href="index.php#apropos">< A propos /></a></p>
       <p><a class="text-decoration-none text-white" href="contact.php">< Contact /></a></p>
       <p><a class="text-decoration-none text-white" href="index.php#archives">< Archives /></a></p>
+      <p><a class="text-decoration-none text-white" href="recherche.php">< Recherche /></a></p>
     </div>
     <div class="menu__toggler"><span></span></div>
     <script >
@@ -93,17 +75,3 @@
         <p class="title1">Développeur web et web mobile</p>
       </div>
     </div>
-
-  <!-- <div id="projets" class="container-fluid">
-    <div class="container pb-3">
-      <div class="text-center">
-        <h2>Projets / Portfolio</h2>
-      </div>
-
-      <div class="text-center" id="mybtn2Container">
-        <button class="btn2 active" onclick="filterSelection('all')"> Tous</button>
-        <button class="btn2" onclick="filterSelection('html')"> HTML/CSS</button>
-        <button class="btn2" onclick="filterSelection('php')"> PHP/MySQL</button>
-        <button class="btn2" onclick="filterSelection('js')"> Javascript</button>
-      </div>
-    </div> -->

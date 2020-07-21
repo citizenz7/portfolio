@@ -85,25 +85,6 @@ function deluser(id, title)
 
 <body id="tothetop">
 
-  <!-- <div id="myNav" class="overlay">
-    <a href="javascript:void(0)" class="closebtn2" onclick="closeNav()">&times;</a>
-    <div class="overlay-content">
-      <a href="../index.php">
-        < Accueil /></a>
-      <a href="../index.php#projets">
-        < Projets /></a>
-      <a href="../index.php#articles">
-        < Articles /></a>
-      <a href="../index.php#apropos">
-        < A propos /></a>
-      <a href="../contact.php">
-        < Contact /></a>
-      <a href="../index.php#archives">
-        < Archives /></a>
-    </div>
-  </div> -->
-
-
   <div class="hero-image">
     <div class="menu">
       <p><a class="text-decoration-none text-white" href="../">< Accueil /></a</p>
@@ -112,6 +93,7 @@ function deluser(id, title)
         <p><a class="text-decoration-none text-white" href="../index.php#apropos">< A propos /></a></p>
         <p><a class="text-decoration-none text-white" href="../contact.php">< Contact /></a></p>
         <p><a class="text-decoration-none text-white" href="../index.php#archives">< Archives /></a></p>
+        <p><a class="text-decoration-none text-white" href="../recherche.php">< Recherche /></a></p>
     </div>
     <div class="menu__toggler"><span></span></div>
     <script >
