@@ -85,7 +85,7 @@ function deluser(id, title)
 
 <body id="tothetop">
 
-  <div id="myNav" class="overlay">
+  <!-- <div id="myNav" class="overlay">
     <a href="javascript:void(0)" class="closebtn2" onclick="closeNav()">&times;</a>
     <div class="overlay-content">
       <a href="../index.php">
@@ -101,19 +101,32 @@ function deluser(id, title)
       <a href="../index.php#archives">
         < Archives /></a>
     </div>
-  </div>
+  </div> -->
+
 
   <div class="hero-image">
-    <div class="px-3 py-3 burger">
-      <span onclick="openNav()">&#9776;</span>
+    <div class="menu">
+      <p><a class="text-decoration-none text-white" href="../">< Accueil /></a</p>
+        <p><a class="text-decoration-none text-white" href="../index.php#projets">< Projets /></a></p>
+        <p><a class="text-decoration-none text-white" href="../index.php#articles">< Articles /></a></p>
+        <p><a class="text-decoration-none text-white" href="../index.php#apropos">< A propos /></a></p>
+        <p><a class="text-decoration-none text-white" href="../contact.php">< Contact /></a></p>
+        <p><a class="text-decoration-none text-white" href="../index.php#archives">< Archives /></a></p>
     </div>
-    <div class="hero-text">
-      <div class="type-writer-text pb-5">
-        Je suis un <span class="barre">Dave</span> <i class="fas fa-music barre"></i> ... dev !
+    <div class="menu__toggler"><span></span></div>
+    <script >
+      const toggler = document.querySelector('.menu__toggler');
+      const menu = document.querySelector('.menu');
+      toggler.addEventListener('click', () => {
+        toggler.classList.toggle('active');
+        menu.classList.toggle('active');
+      });
+    </script>
+      <div class="hero-text">
+        <div class="type-writer-text pb-2">
+          Je suis un <span class="barre">Dave</span> <i class="fas fa-music barre"></i> ... dev !
+        </div>
+        <h1>< Olivier Prieur /></h1>
+        <p class="title1">Développeur web et web mobile</p>
       </div>
-      <h1>
-        < Olivier Prieur />
-      </h1>
-      <p class="title1">Développeur web et web mobile</p>
     </div>
-  </div>
