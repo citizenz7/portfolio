@@ -15,15 +15,6 @@ include_once 'header.php';
       <h2 class="text-center">Projets / Portfolio</h2>
     </div>
 
-<!--
-    <div class="text-center" id="mybtn2Container">
-      <button class="btn2 active" onclick="filterSelection('all')"> Tous</button>
-      <button class="btn2" onclick="filterSelection('html')"> HTML/CSS</button>
-      <button class="btn2" onclick="filterSelection('php')"> PHP/MySQL</button>
-      <button class="btn2" onclick="filterSelection('js')"> Javascript</button>
-    </div>
--->
-
     <div class="text-center">
 	<a class="btn btn-sm btn-dark" href="./" role="button">Tous</a>
 	<a class="btn btn-sm btn-primary" href="index.php?cat=HTML-CSS" role="button">HTML-CSS</a>
@@ -38,65 +29,66 @@ include_once 'header.php';
           //Pagination : on instancie la class
           $pages = new Paginator('3','proj');
 
-	if(isset($_GET['cat'])) {
-		$cat = html($_GET['cat']);
+	         if(isset($_GET['cat'])) {
+		           $cat = html($_GET['cat']);
 
-		// Tri des projets par catégorie
-		if (!empty($cat) && !in_array($cat, array('HTML-CSS','PHP-SQL','JS'))) {
+		           // Tri des projets par catégorie
+		           if (!empty($cat) && !in_array($cat, array('HTML-CSS','PHP-SQL','JS'))) {
                 	header('Location: index.php');
                 	exit();
-		}
+		           }
 
-		//on collecte tous les enregistrements de la fonction
+		           //on collecte tous les enregistrements de la fonction
                 $stmt = $db->query('SELECT projetID FROM projets WHERE projetCat="'.$cat.'"');
 
                 //On détermine le nombre total d'enregistrements
                 $pages->set_total($stmt->rowCount());
 
-		if($cat == "HTML-CSS") {
-        		$stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetDate DESC '.$pages->get_limit());
-		}
-		elseif($cat == "PHP-SQL") {
+		           if($cat == "HTML-CSS") {
+        		       $stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetDate DESC '.$pages->get_limit());
+		           }
+		           elseif($cat == "PHP-SQL") {
                 	$stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetDate DESC '.$pages->get_limit());
-		}
-		elseif($cat == "JS") {
+		           }
+		           elseif($cat == "JS") {
                 	$stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetDate DESC '.$pages->get_limit());
-        	}
-	}
-	else {
-		//on collecte tous les enregistrements de la fonction
-          	$stmt = $db->query('SELECT projetID FROM projets');
+        	     }
+	         }
+	         else {
+		           //on collecte tous les enregistrements de la fonction
+          	   $stmt = $db->query('SELECT projetID FROM projets');
 
-          	//On détermine le nombre total d'enregistrements
-          	$pages->set_total($stmt->rowCount());
+          	   //On détermine le nombre total d'enregistrements
+          	   $pages->set_total($stmt->rowCount());
 
-		$stmt = $db->query('SELECT * FROM projets ORDER BY projetID DESC ' .$pages->get_limit());
-	}
+		           $stmt = $db->query('SELECT * FROM projets ORDER BY projetID DESC ' .$pages->get_limit());
+	        }
 
-        while($row = $stmt->fetch()){
-	?>
+          while($row = $stmt->fetch()){
+	        ?>
 
         <div class="col mt-4 mb-4">
           <div class="card h-100">
-              <img class="img-fluid card-img-top image2" src="<?php echo $row['projetImage']; ?>" alt="<?php echo $row['projetTitre']; ?>">
-	      <div class="card-body texte-projet">
+                <img class="img-fluid card-img-top image2" src="<?php echo $row['projetImage']; ?>" alt="<?php echo $row['projetTitre']; ?>">
 
-		<?php
-		if($row['projetCat'] == "HTML-CSS") {
-			echo '<button class="btn btn-primary btn-sm btn-block">';
-			    echo $row['projetCat'];
-			echo '</button>';
-		}
-		elseif($row['projetCat'] == "PHP-SQL") {
-			echo '<button class="btn btn-success btn-sm btn-block">';
-                            echo $row['projetCat'];
-                        echo '</button>';
-		}
-		elseif($row['projetCat'] == "JS") {
-                        echo '<button class="btn btn-warning btn-sm btn-block">';
-                            echo $row['projetCat'];
-                        echo '</button>';
-                }
+	              <div class="card-body texte-projet">
+
+		    <?php
+		    if($row['projetCat'] == "HTML-CSS") {
+			       echo '<button class="btn btn-primary btn-sm btn-block">';
+			       echo $row['projetCat'];
+			       echo '</button>';
+		    }
+		    elseif($row['projetCat'] == "PHP-SQL") {
+			       echo '<button class="btn btn-success btn-sm btn-block">';
+             echo $row['projetCat'];
+             echo '</button>';
+		    }
+		    elseif($row['projetCat'] == "JS") {
+             echo '<button class="btn btn-warning btn-sm btn-block">';
+             echo $row['projetCat'];
+            echo '</button>';
+        }
 		?>
             	<h5 class="card-title titre-projet pt-2"><a href="projet.php?id=<?php echo $row['projetID']; ?>"><?php echo $row['projetTitre']; ?></a></h5>
             	<p class="card-text texte-projet">
@@ -131,8 +123,8 @@ include_once 'header.php';
       </div><!-- END GRID -->
 
       <!-- Pagination -->
-      <div class="row justify-content-center">
-        <div class="col-sm-4">
+      <div class="row justify-content-center ">
+        <div class="col-md-3 col-md-offset-4">
           <?php echo $pages->page_links(); ?>
         </div>
       </div>
@@ -274,33 +266,20 @@ include_once 'header.php';
        <div class="col-sm-6">
 	<div class="card">
 	 <div class="card-body text-center">
-             <h5 class="card-title">Archives des projets</h5>
-             <!-- <ul class="list-group">
-	      <?php
-	      /*
-              $stmt = $db->query("SELECT Month(projetDate) as Month, Year(projetDate) as Year FROM projets GROUP BY Month(projetDate), Year(projetDate) ORDER BY projetDate DESC");
-              while($row = $stmt->fetch()){
-                $monthName = date_fr("F", mktime(0, 0, 0, $row['Month'], 10));
-                //$slug = 'a-'.$row['Month'].'-'.$row['Year'];
-                echo "<li class='list-group-item'><a href='archives.php?month=" . $row['Month'] . "&year=" . $row['Year'] . "'>" . $monthName . "-" . $row['Year'] . "</a></li>";
-	      }
-	       */
-              ?>
-            </ul> -->
-
+      <h5 class="card-title">Archives des projets</h5>
 	    <p class="card-text">
 	    Vous trouverez ci-dessous les archives de mes projets réalisés dans le cadre de l'Access Code School, classées par mois et années
-            <select onchange="document.location.href = this.value" class="custom-select custom-select-sm smalltext mt-4">
-		<option selected>Mois - années</option>
-		<?php
-		$stmt = $db->query("SELECT Month(projetDate) as Month, Year(projetDate) as Year FROM projets GROUP BY Month(projetDate), Year(projetDate) ORDER BY projetDate DESC");
-		while($row = $stmt->fetch()){
-			$monthName = date_fr("F", mktime(0, 0, 0, html($row['Month']), 10));
-			$year = date_fr(html($row['Year']));
-			echo "<option value='archives.php?month=" . html($row['Month']) . "&year=" . html($row['Year']) . "'>" . html($monthName) . "-" . html($row['Year']) . "</option>";
-		}
-		?>
-	   </select>
+        <select onchange="document.location.href = this.value" class="custom-select custom-select-sm smalltext mt-4">
+		        <option selected>Mois - années</option>
+		        <?php
+		        $stmt = $db->query("SELECT Month(projetDate) as Month, Year(projetDate) as Year FROM projets GROUP BY Month(projetDate), Year(projetDate) ORDER BY projetDate DESC");
+		        while($row = $stmt->fetch()){
+			           $monthName = date_fr("F", mktime(0, 0, 0, html($row['Month']), 10));
+			           $year = date_fr(html($row['Year']));
+			           echo "<option value='archives.php?month=" . html($row['Month']) . "&year=" . html($row['Year']) . "'>" . html($monthName) . "-" . html($row['Year']) . "</option>";
+		        }
+		        ?>
+	     </select>
 	   </p>
 	  </div>
 	</div>

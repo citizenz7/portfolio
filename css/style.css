@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 
 body, html {
@@ -166,6 +165,7 @@ label {
   display: flex;
   align-items: center;
 }
+
 .menu__toggler span,
 .menu__toggler span::before,
 .menu__toggler span::after {
@@ -177,26 +177,32 @@ label {
   border-radius: 20px;
   transition: 500ms cubic-bezier(0.77, 0, 0.175, 1);
 }
+
 .menu__toggler span::before {
   top: -8px;
 }
+
 .menu__toggler span::after {
   top: 8px;
 }
-.menu__toggler.active > span {
+
+.menu__toggler.active>span {
   background: transparent;
 }
-.menu__toggler.active > span::before, .menu__toggler.active > span::after {
+
+.menu__toggler.active>span::before, .menu__toggler.active>span::after {
   background: #005c9c;
   top: 0px;
 }
-.menu__toggler.active > span::before {
+
+.menu__toggler.active>span::before {
   -webkit-transform: rotate(-225deg);
-          transform: rotate(-225deg);
+  transform: rotate(-225deg);
 }
-.menu__toggler.active > span::after {
+
+.menu__toggler.active>span::after {
   -webkit-transform: rotate(225deg);
-          transform: rotate(225deg);
+  transform: rotate(225deg);
 }
 
 .menu {
@@ -206,7 +212,7 @@ label {
   color: #005c9c;
   background: rgba(59, 61, 62, 0.8);
   -webkit-clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
-          clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
   width: 30%;
   height: 100%;
   padding: 100px;
@@ -215,6 +221,7 @@ label {
   justify-content: center;
   transition: 300ms left cubic-bezier(0.77, 0, 0.175, 1);
 }
+
 @media only screen and (max-width: 600px) {
   .menu {
     width: 250px;
@@ -222,9 +229,11 @@ label {
     padding: 50px;
   }
 }
+
 .menu.active {
   left: 0;
 }
+
 .menu p {
   font-size: 1.4rem;
   margin-bottom: 1rem;
@@ -240,66 +249,6 @@ label {
   padding: 0;
   box-sizing: border-box;
 }
-
-
-/* .burger {
-  cursor: pointer;
-  font-size: 48px;
-  color: white;
-}
-
-.overlay {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.9);
-  overflow-x: hidden;
-  transition: 0.5s;
-}
-
-.overlay-content {
-  position: relative;
-  top: 4%;
-  width: 100%;
-  text-align: center;
-  margin-top: 30px;
-}
-
-.overlay a {
-  padding: 8px;
-  text-decoration: none;
-  font-size: 28px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.overlay a:hover, .overlay a:focus {
-  color: #f1f1f1;
-}
-
-.overlay .closebtn2 {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
-}
-
-@media screen and (max-height: 450px) {
-  .overlay a {
-    font-size: 20px
-  }
-
-  .overlay .closebtn2 {
-    font-size: 40px;
-    top: 15px;
-    right: 35px;
-  }
-} */
 
 /* Center website */
 .main {
@@ -387,12 +336,19 @@ h1 {
 }
 
 .image2 {
-  opacity: 1;
+  /*opacity: 1;
   display: block;
   width: 100%;
   height: auto;
   transition: .5s ease;
-  backface-visibility: hidden;
+  */
+  max-height: 230px;
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+}
+
+.image2:hover {
+  opacity: 1;
 }
 
 .middle {
@@ -450,39 +406,42 @@ h1 {
 }
 
 /* PAGINATION */
-
 .pagination {
-    clear: both;
-    padding-bottom: 10px;
-    padding-top: 10px;
+  clear: both;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
+
 .pagination a {
-    border: 1px solid #D5D5D5;
-    color: #666666;
-    font-size: 11px;
-    font-weight: bold;
-    height: 25px;
-    padding: 4px 8px;
-    text-decoration: none;
-  margin:2px;
+  border: 1px solid #D5D5D5;
+  color: #666666;
+  font-size: 11px;
+  font-weight: bold;
+  height: 25px;
+  padding: 4px 8px;
+  text-decoration: none;
+  margin: 2px;
 }
+
 .pagination a:hover, .pagination a:active {
-    background:#efefef;
+  background: #efefef;
 }
+
 .pagination span.disabled {
-    background-color: #687282;
-    border: 1px solid #D5D5D5;
-    color: #ffffff;
-    font-size: 11px;
-    font-weight: bold;
-    height: 25px;
-    padding: 4px 8px;
-    text-decoration: none;
-    margin:2px;
+  background-color: #687282;
+  border: 1px solid #D5D5D5;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: bold;
+  height: 25px;
+  padding: 4px 8px;
+  text-decoration: none;
+  margin: 2px;
 }
+
 .pagination span.current {
-    border: 1px solid #EEEEEE;
-    color: #DDDDDD;
-    margin: 2px;
-    padding: 2px 5px;
+  border: 1px solid #EEEEEE;
+  color: #DDDDDD;
+  margin: 2px;
+  padding: 2px 5px;
 }
