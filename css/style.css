@@ -343,7 +343,7 @@ h1 {
   transition: .5s ease;
   */
   max-height: 230px;
-  opacity: 0.3;
+  opacity: 0.4;
   filter: alpha(opacity=30);
 }
 
