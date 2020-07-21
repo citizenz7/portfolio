@@ -146,7 +146,6 @@ if (isset($_POST['submit'])) {
   </div>
 </div>
 
-
 <?php
 include_once 'footer.php';
 ?>
