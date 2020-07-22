@@ -26,45 +26,45 @@ include_once 'header.php';
 
         <?php
         try {
-          //Pagination : on instancie la class
-          $pages = new Paginator('3','proj');
+	//Pagination : on instancie la class
+        $pages = new Paginator('3','proj');
 
-	         if(isset($_GET['cat'])) {
-		           $cat = html($_GET['cat']);
+	if(isset($_GET['cat'])) {
+	  	$cat = html($_GET['cat']);
 
-		           // Tri des projets par catégorie
-		           if (!empty($cat) && !in_array($cat, array('HTML-CSS','PHP-SQL','JS'))) {
+		// Tri des projets par catégorie
+		if (!empty($cat) && !in_array($cat, array('HTML-CSS','PHP-SQL','JS'))) {
                 	header('Location: index.php');
                 	exit();
-		           }
+		}
 
-		           //on collecte tous les enregistrements de la fonction
+		//on collecte tous les enregistrements de la fonction
                 $stmt = $db->query('SELECT projetID FROM projets WHERE projetCat="'.$cat.'"');
 
                 //On détermine le nombre total d'enregistrements
                 $pages->set_total($stmt->rowCount());
 
-		           if($cat == "HTML-CSS") {
-        		       $stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetDate DESC '.$pages->get_limit());
-		           }
-		           elseif($cat == "PHP-SQL") {
-                	$stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetDate DESC '.$pages->get_limit());
-		           }
-		           elseif($cat == "JS") {
-                	$stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetDate DESC '.$pages->get_limit());
-        	     }
-	         }
-	         else {
-		           //on collecte tous les enregistrements de la fonction
-          	   $stmt = $db->query('SELECT projetID FROM projets');
+		if($cat == "HTML-CSS") {
+        		$stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetID DESC '.$pages->get_limit());
+		}
+		elseif($cat == "PHP-SQL") {
+                	$stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetID DESC '.$pages->get_limit());
+		}
+		elseif($cat == "JS") {
+                	$stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetID DESC '.$pages->get_limit());
+        	}
+	}
+	else {
+		//on collecte tous les enregistrements de la fonction
+          	$stmt = $db->query('SELECT projetID FROM projets');
 
-          	   //On détermine le nombre total d'enregistrements
-          	   $pages->set_total($stmt->rowCount());
+          	//On détermine le nombre total d'enregistrements
+          	$pages->set_total($stmt->rowCount());
 
-		           $stmt = $db->query('SELECT * FROM projets ORDER BY projetID DESC ' .$pages->get_limit());
-	        }
+		$stmt = $db->query('SELECT * FROM projets ORDER BY projetID DESC ' .$pages->get_limit());
+	}
 
-          while($row = $stmt->fetch()){
+        while($row = $stmt->fetch()){
 	        ?>
 
         <div class="col mt-4 mb-4">
