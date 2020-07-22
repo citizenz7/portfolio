@@ -125,7 +125,9 @@ include_once 'header.php';
       <!-- Pagination -->
       <div class="row justify-content-center ">
         <div class="col-md-3 col-md-offset-4">
-          <?php echo $pages->page_links(); ?>
+	<?php
+	echo $pages->page_links();
+	?>
         </div>
       </div>
 
