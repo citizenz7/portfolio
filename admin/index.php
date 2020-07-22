@@ -69,7 +69,7 @@ include_once 'header.php';
 
             <table class="table table-responsive-sm">
               <tr>
-                <td><span class="lead font-weight-bold">Projets</span></td>
+                <td><span id="projets" class="lead font-weight-bold">Projets</span></td>
                 <td class="text-right"><a href="add-projet.php" class="mx-auto"><button type="button" class="btn btn-success btn-sm">Ajouter un projet</button></a></td>
               </tr>
             </table>
@@ -87,7 +87,7 @@ include_once 'header.php';
               <?php
               try {
                 //Pagination : on instancie la class
-                $pages = new Paginator('3','pp');
+                $pages = new Paginator('4','proj');
 
                 //on collecte tous les enregistrements de la fonction
                 $stmt = $db->query('SELECT projetID FROM projets');
@@ -161,7 +161,7 @@ include_once 'header.php';
 
           <table class="table table-responsive-sm">
             <tr>
-              <td><span class="lead font-weight-bold">Articles</span></td>
+              <td><span id="articles" class="lead font-weight-bold">Articles</span></td>
               <td class="text-right"><a href="add-article.php" class="mx-auto"><button type="button" class="btn btn-success btn-sm">Ajouter un article</button></a></td>
             </tr>
           </table>
@@ -179,7 +179,7 @@ include_once 'header.php';
             <?php
             try {
               //Pagination : on instancie la class
-              $pages = new Paginator('3','pa');
+              $pages = new Paginator('4','art');
 
               //on collecte tous les enregistrements de la fonction
               $stmt = $db->query('SELECT articleID FROM articles');
@@ -236,7 +236,7 @@ include_once 'header.php';
     </div>
     <!-- Pagination -->
     <div class="row justify-content-center">
-      <div class="col-4">
+      <div class="col-4 pb-5 mb-5">
         <?php echo $pages->page_links(); ?>
       </div>
     </div>
