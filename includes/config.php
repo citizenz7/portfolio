@@ -21,9 +21,9 @@ define('SITEKEYWORDS','Nevers,'.SITENAME.',libre,free,opensource,gnu,télécharg
 //define('SITEURLHTTPS','https://www.'.SITENAMELONG);
 define('SITEOWNORNAME','Olivier Prieur');
 define('SITEAUTOR','citizenz7');
-define('SITEOWNORADDRESS','57 rue de Marzy 58000 Nevers');
+define('SITEOWNORADDRESS','xxxxxxxxxxxxxxxxxxxxxxx');
 define('SITEVERSION','1.0.1');
-define('SITEDATE','10/07/20');
+define('SITEDATE','xxxxxxxxxxxxxxx');
 define('COPYDATE','2020');
 define('CHARSET','UTF-8');
 
@@ -45,10 +45,10 @@ date_default_timezone_set('Europe/Paris');
 //-----------------------------------------------------
 //MAIL
 //-----------------------------------------------------
-define('SITEMAIL','contact@olivierprieur.fr');
-define('SITEMAILPASSWORD','7T=u82VPzp!f8Ns2mS');
-define('SMTPHOST','mail.s2ii.xyz');
-define('SMTPPORT','587');
+define('SITEMAIL','xxxxxxxxxxxxxx');
+define('SITEMAILPASSWORD','xxxxxxxxxxxxxxxxxxxxx');
+define('SMTPHOST','xxxxxxxxxxxxxxxxxxxxxx');
+define('SMTPPORT','xxx');
 
 
 //-----------------------------------------------------
