@@ -17,13 +17,13 @@ define('SITESLOGAN','');
 define('SITEDESCRIPTION','Portfolio d\'Olivier Prieur');
 define('SITEKEYWORDS','Nevers, '.SITENAME.', ACS, HTML, PHP, MySQL, Javascript, Bootstrap, PC, C, C++');
 //define('SITEURL','http://www.'.SITENAMELONG);
-define('SITEURL','127.0.0.1/olivier/portfolio/');
+define('SITEURL','xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
 define('SITEURLHTTPS','https://www.'.SITENAMELONG);
 define('SITEOWNORNAME','Olivier Prieur');
 define('SITEAUTOR','citizenz7');
-define('SITEOWNORADDRESS','');
+define('SITEOWNORADDRESS','xxxxxxxxxxxxxxxxxxxxxx');
 define('SITEVERSION','1.0.2');
-define('SITEDATE','17/07/20');
+define('SITEDATE','xxxxxxxxxxxxxxxxxxx');
 define('COPYDATE','2020');
 define('CHARSET','UTF-8');
 
@@ -43,10 +43,10 @@ date_default_timezone_set('Europe/Paris');
 //-----------------------------------------------------
 //MAIL
 //-----------------------------------------------------
-define('SITEMAIL','contact@olivierprieur.fr');
+define('SITEMAIL','xxxxxxxxxxxxxxxxxxxxxx');
 define('SITEMAILPASSWORD','123456789');
-define('SMTPHOST','mail.s2ii.xyz');
-define('SMTPPORT','587');
+define('SMTPHOST','xxxxxxxxxxxxxxxxxxxx');
+define('SMTPPORT','xxx');
 
 
 //-----------------------------------------------------
