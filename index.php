@@ -16,10 +16,10 @@ include_once 'header.php';
     </div>
 
     <div class="text-center">
-	<a class="btn btn-sm btn-dark" href="./" role="button">Tous</a>
-	<a class="btn btn-sm btn-primary" href="index.php?cat=HTML-CSS" role="button">HTML-CSS</a>
-	<a class="btn btn-sm btn-success" href="index.php?cat=PHP-SQL" role="button">PHP-SQL</a>
-	<a class="btn btn-sm btn-warning" href="index.php?cat=JS" role="button">Javascript</a>
+	<a class="btn btn-sm btn-dark" href="index.php#projets" role="button">Tous</a>
+	<a class="btn btn-sm btn-primary" href="index.php?cat=HTML-CSS#projets" role="button">HTML-CSS</a>
+	<a class="btn btn-sm btn-success" href="index.php?cat=PHP-SQL#projets" role="button">PHP-SQL</a>
+	<a class="btn btn-sm btn-warning" href="index.php?cat=JS#projets" role="button">Javascript</a>
     </div>
 
     <div class="row row-cols-1 row-cols-md-3">
