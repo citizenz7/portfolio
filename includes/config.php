@@ -11,19 +11,19 @@ include_once 'sql.php';
 //-----------------------------------------------------
 //Paramètres du site
 //-----------------------------------------------------
-define('SITENAME','Port folio');
+define('SITENAME','Portfolio');
 define('SITENAMELONG','Portfolio d\'Olivier Prieur');
-define('SITESLOGAN','');
+//define('WEBPATH','/var/www/'.SITENAMELONG.'/web/'); //Chemin complet pour les fichiers du site
+define('SITESLOGAN','Je suis un dev...');
 define('SITEDESCRIPTION','Portfolio d\'Olivier Prieur');
-define('SITEKEYWORDS','Nevers, '.SITENAME.', ACS, HTML, PHP, MySQL, Javascript, Bootstrap, PC, C, C++');
+define('SITEKEYWORDS','Nevers,'.SITENAME.',libre,free,opensource,gnu,téléchargement,download,upload,xbt,tracker,php,mysql,linux,bsd,os,système,system,exploitation,debian,arch,fedora,ubuntu,manjaro,mint,film,movie,picture,video,mp3,musique,music,mkv,avi,mpeg,gpl,creativecommons,cc,mit,apache,cecill,artlibre');
 //define('SITEURL','http://www.'.SITENAMELONG);
-define('SITEURL','xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-define('SITEURLHTTPS','https://www.'.SITENAMELONG);
+//define('SITEURLHTTPS','https://www.'.SITENAMELONG);
 define('SITEOWNORNAME','Olivier Prieur');
 define('SITEAUTOR','citizenz7');
-define('SITEOWNORADDRESS','xxxxxxxxxxxxxxxxxxxxxx');
-define('SITEVERSION','1.0.2');
-define('SITEDATE','xxxxxxxxxxxxxxxxxxx');
+define('SITEOWNORADDRESS','57 rue de Marzy 58000 Nevers');
+define('SITEVERSION','1.0.1');
+define('SITEDATE','10/07/20');
 define('COPYDATE','2020');
 define('CHARSET','UTF-8');
 
@@ -37,16 +37,18 @@ $HEIGHT_MAX = 400; //Hauteur max de l'image en pixels
 $REP_IMAGES_PROJETS = 'img/projets'; //Répertoires des images projets
 $REP_IMAGES_ARTICLES = 'img/articles'; //Répertoires des images projets
 
+
+
 //set timezone
 date_default_timezone_set('Europe/Paris');
 
 //-----------------------------------------------------
 //MAIL
 //-----------------------------------------------------
-define('SITEMAIL','xxxxxxxxxxxxxxxxxxxxxx');
-define('SITEMAILPASSWORD','123456789');
-define('SMTPHOST','xxxxxxxxxxxxxxxxxxxx');
-define('SMTPPORT','xxx');
+define('SITEMAIL','contact@olivierprieur.fr');
+define('SITEMAILPASSWORD','7T=u82VPzp!f8Ns2mS');
+define('SMTPHOST','mail.s2ii.xyz');
+define('SMTPPORT','587');
 
 
 //-----------------------------------------------------
