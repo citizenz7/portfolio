@@ -45,10 +45,10 @@ date_default_timezone_set('Europe/Paris');
 //-----------------------------------------------------
 //MAIL
 //-----------------------------------------------------
-define('SITEMAIL','xxxxxxxxxxxxxxxx');
-define('SITEMAILPASSWORD','xxxxxxxxxxxxxxxxxxxxxx');
-define('SMTPHOST','xxxxxxxxxxxxxxxxxxxx');
-define('SMTPPORT','xxx');
+define('SITEMAIL','contact@olivierprieur.fr');
+define('SITEMAILPASSWORD','7T=u82VPzp!f8Ns2mS');
+define('SMTPHOST','mail.s2ii.xyz');
+define('SMTPPORT','587');
 
 
 //-----------------------------------------------------
