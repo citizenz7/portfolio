@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
         }
 
 
-	if ($_POST['captcha'] == 'linux') {
+	       if ($_POST['captcha'] == 'linux') {
 
            if(!isset($error)) {
                 $name = $_POST["name"];
@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
                 //$mail->SMTPDebug = 2;                                 // Debug perposes
                 $mail->From = $from;                                    // L'adresse mail de l'emetteur du mail
                 $mail->FromName = $name;                                // Le nom de l'emetteur qui s'affichera dans le mail
-                $mail->addAddress(SITEMAIL);          // Destinataire du mail
+                $mail->addAddress(SITEMAIL);                            // Destinataire du mail
                 $mail->Subject = 'Message depuis le ' . SITEDESCRIPTION . ' : '.$subject;  // Le sujet de l'email
 
                 $message = "Nom: ".$name."<br><br>".$message;
@@ -50,24 +50,19 @@ if (isset($_POST['submit'])) {
                 $mail->Body = nl2br($message);                          // Le contenu du mail en HTML
 
                 if(!$mail->send()) {
-                        header("Location: contact.php?action=notok");
-                        //echo '<div>';
-                        //echo '<span class="fa fa-warning"></span>&nbsp;Le message ne peut être envoyé :( <br>';
-                        //echo 'Erreur: ' . $mail->ErrorInfo;
-                        //echo '</div>';
+                  header("Location: contact.php?action=notok");
                 }
                 else {
-                        header("Location: contact.php?action=ok");
+                  header("Location: contact.php?action=ok");
                 }
-                // PHPMailer
-
             }// if no $error
-	}// captcha
+
+	      }// captcha
 
 	else {
 		header("Location: contact.php?action=wrongcaptcha");
 	}
-      }// if post submit
+}// if post submit
 ?>
 
 <div class="container pb-5">
@@ -85,11 +80,10 @@ if (isset($_POST['submit'])) {
               echo 'Erreur: ' . $mail->ErrorInfo;
               echo '</div>';
           }
-	  
-	  if(isset($_GET['action']) && $_GET['action'] == "wrongcaptcha") {
-	  	echo '<div class="alert alert-danger mt-3 alert-dismissible fade show">Mauvais code anti-spam !<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
-	  }
-	  
+
+	        if(isset($_GET['action']) && $_GET['action'] == "wrongcaptcha") {
+	  	        echo '<div class="alert alert-danger mt-3 alert-dismissible fade show">Mauvais code anti-spam !<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+	        }
       ?>
 
         <div class="card-body">
@@ -97,35 +91,33 @@ if (isset($_POST['submit'])) {
            <div class="h4 mt-0 title">Me contacter</div>
            Vous pouvez me contacter par mail pour tout sujet concernant mes projets, mes articles, mon CV, ... Merci d'utiliser le formulaire ci-dessous. J'essaierai de répondre le plus rapidement possible à votre message.
 
-              <form class="" method="post" action="contact.php">
-                  <div class="form-group pt-4">
-                    <label for="email">Votre adresse e-mail</label>
-                    <input class="form-control" type="email" id="email" name="email">
-                  </div>
-                  <div class="form-group">
+          <form class="" method="post" action="contact.php">
+            <div class="form-group pt-4">
+              <label for="email">Votre adresse e-mail</label>
+              <input class="form-control" type="email" id="email" name="email">
+            </div>
+            <div class="form-group">
                     <label for="name">Votre nom/pseudo</label>
                     <input class="form-control" type="text" id="name" name="name">
-                  </div>
-                  <div class="form-group">
+            </div>
+            <div class="form-group">
                     <label for="subject">Sujet du message</label>
                     <input class="form-control" type="text" id="subject" name="subject">
-                  </div>
-                  <div class="form-group">
+            </div>
+            <div class="form-group">
                     <label for="msg">Message</label>
                     <textarea class="form-control" id="msg" name="msg" rows="7"></textarea>
-                  </div>
-		  <div class="form-group">
-                    <label for="captcha"><i class="fas fa-mail-bulk"></i> Anti-spam : Recopiez le mot <b>linux</b><br>
-                        <input class="form-control" type="text" name="captcha" id="captcha"></div>
-                    </label>
-                  </div>
-                  <div class="form-group text-right pt-4">
+            </div>
+		        <div class="form-group">
+                    <label for="captcha"><i class="fas fa-mail-bulk"></i> Anti-spam : Recopiez le mot <b>linux</b></label>
+                        <input class="form-control" type="text" name="captcha" id="captcha">
+            </div>
+          <div class="form-group text-right pt-4">
                     <button type="submit" name="submit" class="btn btn-primary">Envoyer le message</button>
                     <button type="reset" class="btn btn-secondary">Annuler</button>
-                  </div>
-              </form>
-        </div>
-
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
