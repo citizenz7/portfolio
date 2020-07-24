@@ -25,17 +25,17 @@ if($row['projetID'] == ''){
           <p class="text-muted">
             <i class="far fa-calendar-alt"></i> Publié le : <?php echo date_fr('d-m-Y à H:i:s', strtotime($row['projetDate'])); ?> |
             <i class="fas fa-tag"></i> Catégorie : <?php echo html($row['projetCat']); ?> |
-            <i class="fas fa-eye"></i> Lectures : <?php echo $row['projetVues']; ?>
+            <i class="fas fa-eye"></i> Lectures : <?php echo html($row['projetVues']); ?>
           </p>
         </div>
-        <img class="img-fluid img-thumbnail float-left img-article" src="<?php echo $row['projetImage']; ?>" alt="<?php html($row['projetTitre']); ?>">
+        <img class="img-fluid img-thumbnail float-left img-article" src="<?php echo html($row['projetImage']); ?>" alt="<?php html($row['projetTitre']); ?>">
           <?php echo $row['projetTexte']; ?>
 
           <?php
           if(!empty($row['projetGithub'])) {
           ?>
             <br>
-            <a class="text-dark" href="<?php echo $row['projetGithub']; ?>" target="_blank"><i class="fab fa-github fa-2x"></i> <?php echo $row['projetGithub']; ?></a>
+            <a class="text-dark" href="<?php echo html($row['projetGithub']); ?>" target="_blank"><i class="fab fa-github fa-2x"></i> <?php echo html($row['projetGithub']); ?></a>
           <?php
           }
           ?>

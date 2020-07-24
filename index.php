@@ -16,81 +16,81 @@ include_once 'header.php';
     </div>
 
     <div class="text-center">
-	<a class="btn btn-sm btn-dark" href="index.php#projets" role="button">Tous</a>
-	<a class="btn btn-sm btn-primary" href="index.php?cat=HTML-CSS#projets" role="button">HTML-CSS</a>
-	<a class="btn btn-sm btn-success" href="index.php?cat=PHP-SQL#projets" role="button">PHP-SQL</a>
-	<a class="btn btn-sm btn-warning" href="index.php?cat=JS#projets" role="button">Javascript</a>
+	     <a class="btn btn-sm btn-dark" href="index.php#projets" role="button">Tous</a>
+	     <a class="btn btn-sm btn-primary" href="index.php?cat=HTML-CSS#projets" role="button">HTML-CSS</a>
+	     <a class="btn btn-sm btn-success" href="index.php?cat=PHP-SQL#projets" role="button">PHP-SQL</a>
+	     <a class="btn btn-sm btn-warning" href="index.php?cat=JS#projets" role="button">Javascript</a>
     </div>
 
     <div class="row row-cols-1 row-cols-md-3">
 
         <?php
         try {
-	//Pagination : on instancie la class
-        $pages = new Paginator('3','proj');
+	         //Pagination : on instancie la class
+           $pages = new Paginator('3','proj');
 
-	if(isset($_GET['cat'])) {
-	  	$cat = html($_GET['cat']);
+	         if(isset($_GET['cat'])) {
+	  	         $cat = html($_GET['cat']);
 
-		// Tri des projets par catégorie
-		if (!empty($cat) && !in_array($cat, array('HTML-CSS','PHP-SQL','JS'))) {
-                	header('Location: index.php');
-                	exit();
-		}
+		           // Tri des projets par catégorie
+               if (!empty($cat) && !in_array($cat, array('HTML-CSS','PHP-SQL','JS'))) {
+                  header('Location: index.php');
+                  exit();
+		           }
 
-		//on collecte tous les enregistrements de la fonction
-                $stmt = $db->query('SELECT projetID FROM projets WHERE projetCat="'.$cat.'"');
+		           //on collecte tous les enregistrements de la fonction
+               $stmt = $db->query('SELECT projetID FROM projets WHERE projetCat="'.$cat.'"');
 
-                //On détermine le nombre total d'enregistrements
-                $pages->set_total($stmt->rowCount());
+               //On détermine le nombre total d'enregistrements
+               $pages->set_total($stmt->rowCount());
 
-		if($cat == "HTML-CSS") {
-        		$stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetID DESC '.$pages->get_limit());
-		}
-		elseif($cat == "PHP-SQL") {
-                	$stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetID DESC '.$pages->get_limit());
-		}
-		elseif($cat == "JS") {
-                	$stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetID DESC '.$pages->get_limit());
-        	}
-	}
-	else {
-		//on collecte tous les enregistrements de la fonction
-          	$stmt = $db->query('SELECT projetID FROM projets');
+		           if($cat == "HTML-CSS") {
+                 $stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetID DESC '.$pages->get_limit());
+		           }
+		           elseif($cat == "PHP-SQL") {
+                 $stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetID DESC '.$pages->get_limit());
+		           }
+		           elseif($cat == "JS") {
+                 $stmt = $db->query('SELECT * FROM projets WHERE projetCat="'.$cat.'" ORDER BY projetID DESC '.$pages->get_limit());
+               }
+	           }
+	           else {
+		             //on collecte tous les enregistrements de la fonction
+                 $stmt = $db->query('SELECT projetID FROM projets');
 
-          	//On détermine le nombre total d'enregistrements
-          	$pages->set_total($stmt->rowCount());
+                 //On détermine le nombre total d'enregistrements
+                 $pages->set_total($stmt->rowCount());
 
-		$stmt = $db->query('SELECT * FROM projets ORDER BY projetID DESC ' .$pages->get_limit());
-	}
+		             $stmt = $db->query('SELECT * FROM projets ORDER BY projetID DESC ' .$pages->get_limit());
+	           }
 
-        while($row = $stmt->fetch()){
-	        ?>
+             while($row = $stmt->fetch()){
+	           ?>
 
         <div class="col mt-4 mb-4">
           <div class="card h-100">
-                <img class="img-fluid card-img-top image2" src="<?php echo $row['projetImage']; ?>" alt="<?php echo $row['projetTitre']; ?>">
+                <img class="img-fluid card-img-top image2" src="<?php echo html($row['projetImage']); ?>" alt="<?php echo html($row['projetTitre']); ?>">
 
 	              <div class="card-body texte-projet">
 
 		    <?php
 		    if($row['projetCat'] == "HTML-CSS") {
 			       echo '<button class="btn btn-primary btn-sm btn-block">';
-			       echo $row['projetCat'];
+			       echo html($row['projetCat']);
 			       echo '</button>';
 		    }
 		    elseif($row['projetCat'] == "PHP-SQL") {
 			       echo '<button class="btn btn-success btn-sm btn-block">';
-             echo $row['projetCat'];
+             echo html($row['projetCat']);
              echo '</button>';
 		    }
 		    elseif($row['projetCat'] == "JS") {
              echo '<button class="btn btn-warning btn-sm btn-block">';
-             echo $row['projetCat'];
+             echo html($row['projetCat']);
             echo '</button>';
         }
 		?>
-            	<h5 class="card-title titre-projet pt-2"><a href="projet.php?id=<?php echo $row['projetID']; ?>"><?php echo $row['projetTitre']; ?></a></h5>
+            	<h5 class="card-title titre-projet pt-2"><a href="projet.php?id=<?php echo html($row['projetID']); ?>"><?php echo html($row['projetTitre']); ?></a></h5>
             	<p class="card-text texte-projet">
               	<?php
                 $max = 150;
@@ -107,8 +107,8 @@ include_once 'header.php';
 	      <div class="card-footer">
 		<small class="text-muted tinytext">
 			<i class="far fa-calendar-alt"></i> Publié le : <?php echo date_fr('d-m-Y à H:i:s', strtotime($row['projetDate'])); ?>
-			<p class="mb-1"><i class="fas fa-tag"></i> Catégorie : <?php echo $row['projetCat']; ?></p>
-			<p class="mb-1"><i class="fas fa-eye"></i> Lectures : <?php echo $row['projetVues']; ?></p>
+			<p class="mb-1"><i class="fas fa-tag"></i> Catégorie : <?php echo html($row['projetCat']); ?></p>
+			<p class="mb-1"><i class="fas fa-eye"></i> Lectures : <?php echo html($row['projetVues']); ?></p>
 		</small>
               </div>
           </div>
@@ -160,16 +160,16 @@ include_once 'header.php';
 
             <div class="card mb-4">
               <div class="card-body">
-                <h4 class="card-title titre-article"><a href="article.php?id=<?php echo $row['articleID']; ?>"><?php echo $row['articleTitre']; ?></a></h4>
+                <h4 class="card-title titre-article"><a href="article.php?id=<?php echo html($row['articleID']); ?>"><?php echo $row['articleTitre']; ?></a></h4>
                 <p>
-                  <img class="img-fluid img-article float-xl-left" src="<?php echo $row['articleImage']; ?>" alt="<?php echo $row['articleTitre']; ?>">
+                  <img class="img-fluid img-article float-xl-left" src="<?php echo html($row['articleImage']); ?>" alt="<?php echo $row['articleTitre']; ?>">
                   <?php
                     $max = 900;
                     $chaine = $row['articleTexte'];
                     if (strlen($chaine) >= $max) {
     	                 $chaine = substr($chaine, 0, $max);
     	                 $espace = strrpos($chaine, " ");
-    	                 $chaine = substr($chaine, 0, $espace).'... <p class="text-right pt-4"><i class="fas fa-angle-double-right"></i> <a href="article.php?id=' . $row['articleID'] . '">Lire la suite</a></p>';
+    	                 $chaine = substr($chaine, 0, $espace).'... <p class="text-right pt-4"><i class="fas fa-angle-double-right"></i> <a href="article.php?id=' . html($row['articleID']) . '">Lire la suite</a></p>';
                     }
                     echo '<div class="texte-article">' . nl2br($chaine) . '</div>';
                     ?>
@@ -177,7 +177,7 @@ include_once 'header.php';
               </div>
               <div class="card-footer text-center">
                 <small class="text-muted smalltext">
-                  <i class="far fa-calendar-alt"></i> Publié le : <?php echo date_fr('d-m-Y à H:i:s', strtotime($row['articleDate'])); ?> | Lectures : <?php echo $row['articleVues']; ?>
+                  <i class="far fa-calendar-alt"></i> Publié le : <?php echo date_fr('d-m-Y à H:i:s', strtotime($row['articleDate'])); ?> | Lectures : <?php echo html($row['articleVues']); ?>
                 </small>
               </div>
             </div>
@@ -217,8 +217,8 @@ include_once 'header.php';
             $stmt->execute(array(':memberID' => 1));
             $row = $stmt->fetch();
             ?>
-            <img src="img/citizenz2.png" class="mx-auto d-block mr-xl-4 img-fluid img-thumbnail rounded-circle float-xl-left photo" alt="<?php echo $row['username']; ?>">
-            <?php echo $row['apropos']; ?>
+            <img src="img/citizenz2.png" class="mx-auto d-block mr-xl-4 img-fluid img-thumbnail rounded-circle float-xl-left photo" alt="<?php echo html($row['username']); ?>">
+            <?php echo html($row['apropos']); ?>
           </div>
           <div class="text-center text-white pt-5">
             <h4>Mes projets et sites web</h4>
